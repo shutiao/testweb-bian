@@ -1,0 +1,12 @@
+{
+	"name": "NodeExpressAngularjs",
+	"version": "0.0.0",
+	"description": "Angular1 Test Target Site",
+	"main": "app.js",
+	"dependencies": {
+		"express": "^4.16.2"
+	},
+	"author": "Harrison Xu <harrison_xu@sphinx.work>",
+	"license": "BSD",
+	"private": true
+}
