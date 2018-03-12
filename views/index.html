@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html ng-app="testTarget">
+
+<html ng-app="test">
 	<head>
 		<script type = "text/javascript" src = "../angular.min.js"></script>
 		<script type = "text/javascript" src = "../ngstart.js"></script>
 	</head>
-	<body >
+	<body>
 		<h1>node+express+angularjs测试靶站</h1>
-		<h2>basics</h2>
+		<hr>
+		<h2>Data Binding</h2>
 		<div>
 			<label>Name:</label>
 			<input type = "text" ng-model="name" placeholder="Enter a name here">
-			<hr>
 			<h3>Hello {{name}}!</h3>
+		</div>
+		<hr>
+		<div ng-controller = "ubbController as ubb">
+			<h2>ng-controller reading data from js</h2>
+			<ul>
+				<li><p>name: {{ubb.content[0].name}}</p></li>
+				<li><p>enabled: {{ubb.content[0].enabled}}</p></li>
+				<li><p>action: {{ubb.content[0].action}}</p></li>
+			</ul>
+		</div>
+		<hr>
+		
+		<div ng-controller = "ubbApiController as ubbApi">
+			<h2>ng-controller reading data from api call</h2>
+			<ul>
+				<li><p>name: {{ubbApi.rules[1].enabled}}</p></li>
+				<li><p>enabled: {{ubbApi.rules[1].enabled}}</p></li>
+				<li><p>action: {{ubbApi.rules[1].action}}</p></li>
+			</ul>
 		</div>
 	</body>
 </html>

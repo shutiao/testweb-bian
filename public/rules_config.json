@@ -1,0 +1,58 @@
+[
+    {
+        "name": "rule", 
+        "enabled": false, 
+        "action": "block", 
+        "rule_id": 1, 
+        "condition": "path == '/form/moved/'", 
+        "description": "\u4e00\u6b21\u6027\u963b\u6321\u52a8\u4f5c\u9a8c\u8bc1"
+    }, 
+    {
+        "name": "rule", 
+        "enabled": true, 
+        "action": "10m block ip 10s 50%", 
+        "rule_id": 2, 
+        "condition": "path == '/form/moved/'", 
+        "description": "\u6301\u7eed\u6027\u968f\u673a\u963b\u6321\u52a8\u4f5c\u9a8c\u8bc1"
+    }, 
+    {
+        "name": "rule", 
+        "enabled": false, 
+        "action": "block 10s", 
+        "rule_id": 3, 
+        "condition": "path == '/form/moved/'", 
+        "description": "\u4e00\u6b21\u6027\u5ef6\u8fdf\u963b\u6321\u52a8\u4f5c\u9a8c\u8bc1"
+    }, 
+    {
+        "name": "rule", 
+        "enabled": false, 
+        "action": "delay 10s", 
+        "rule_id": 4, 
+        "condition": "path == '/form/moved/'", 
+        "description": "\u4e00\u6b21\u6027\u5ef6\u8fdf\u52a8\u4f5c\u9a8c\u8bc1"
+    }, 
+    {
+        "name": "rule", 
+        "enabled": false, 
+        "action": "blank 10s", 
+        "rule_id": 6, 
+        "condition": "path == '/form/moved/'", 
+        "description": "\u4e00\u6b21\u6027\u8fd4\u56de\u7a7a\u767d\u9875\u52a8\u4f5c\u9a8c\u8bc1"
+    }, 
+    {
+        "name": "rule", 
+        "enabled": false, 
+        "action": "10m delay ip 20s 50%", 
+        "rule_id": 7, 
+        "condition": "path == '/form/moved/'", 
+        "description": "\u6301\u7eed\u6027\u968f\u673a\u5ef6\u8fdf\u52a8\u4f5c\u9a8c\u8bc1"
+    }, 
+    {
+        "name": "rule", 
+        "enabled": false, 
+        "action": "10m block ip", 
+        "rule_id": 8, 
+        "condition": "path == '/form/moved/'", 
+        "description": "\u6301\u7eed\u6027\u963b\u6321\u52a8\u4f5c\u9a8c\u8bc1"
+    }
+]
