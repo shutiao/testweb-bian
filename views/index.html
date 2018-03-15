@@ -6,14 +6,23 @@
 		<script type = "text/javascript" src = "../ngstart.js"></script>
 	</head>
 	<body>
-		<h1>node+express+angularjs测试靶站</h1>
+		<header>
+			<img ng-src = "/logo_brand.png" style = "float:left ;display: inline; background-color: #ca4d37; height: 54px"/>
+			<h1>AngularJs Testing Target Site</h1>
+		</header>
+		
 		<hr>
-		<h2>Data Binding</h2>
-		<div>
+		
+		<div ng-controller = 'NgmoduleController as Api'>
+			<h2 ng-include = "'APIReference.html'"/>Data Binding</h2>
+			<h2>Data Binding</h2>
 			<label>Name:</label>
 			<input type = "text" ng-model="name" placeholder="Enter a name here">
 			<h3>Hello {{name}}!</h3>
+			<input type = "text" ng-model="url" placeholder="please enter abc here">
+			<h4><a href = {{url}} >Dynamically Generated Url</a></h4>
 		</div>
+
 		<hr>
 		<div ng-controller = "ubbController as ubb">
 			<h2>ng-controller reading data from js</h2>
@@ -27,12 +36,21 @@
 		
 		<div ng-controller = "ubbApiController as ubbApi">
 			<h2>ng-controller reading data from api call</h2>
-			<ul>
-				<li><p>name: {{ubbApi.rules[1].enabled}}</p></li>
-				<li><p>enabled: {{ubbApi.rules[1].enabled}}</p></li>
-				<li><p>action: {{ubbApi.rules[1].action}}</p></li>
-			</ul>
+			<div ng-repeat = 'rule in ubbApi.rules'>
+				<div ng-show = 'rule.enabled'>
+					<h4>name: {{rule.name}}</h4>
+					<ul class = "list-group">
+						<li class = "list-group-item"><p>enabled: {{rule.enabled}}</p></li>
+						<li><p>action: {{rule.action}}</p></li>
+						<li><p>condition: {{rule.condition}}</p></li>
+						<li><p>description: {{rule.description}}</p></li>
+					</ul>
+				</div>
+			</div>
 		</div>
+
+		<custom-directive></custom-directive>
+
 	</body>
 </html>
 

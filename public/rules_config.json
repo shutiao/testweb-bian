@@ -49,7 +49,7 @@
     }, 
     {
         "name": "rule", 
-        "enabled": false, 
+        "enabled": true, 
         "action": "10m block ip", 
         "rule_id": 8, 
         "condition": "path == '/form/moved/'", 

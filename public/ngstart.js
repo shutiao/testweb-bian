@@ -1,5 +1,10 @@
 (function(){
 	var app = angular.module('test', []);
+
+	app.controller('NgmoduleController', function(){
+		this.name = 'NgModule';
+	});
+
 	app.controller('ubbController', function(){
 		this.content = rules_config;
 	});
@@ -19,4 +24,11 @@
 			ubbConf.rules = data;
 		});
 	}]);
+
+	app.directive('customDirective', function(){
+		return {
+			restrict: 'E',
+			templateUrl: 'APIReference.html'
+		};
+	});
 })();
