@@ -34,6 +34,13 @@
 		};
 	});
 
+	app.directive('commonHeader', function(){
+		return {
+			restrict: 'E',
+			templateUrl: 'nav.html'
+		};
+	});
+
 	app.controller('alertCtl', function(){
 		//alert('Welcome');
 	});

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html ng-app="test">
+	<head>
+		<script type = "text/javascript" src = "../angular.min.js"></script>
+		<script type = "text/javascript" src = "../ngstart.js"></script>	
+		<link rel="stylesheet" href="bootstrap.min.css">	
+		<link rel="stylesheet" type = 'text/css' href="rsLayout.css">				
+		<link rel="stylesheet" type = 'text/css' href="rsCommon.css">
+		<link rel="stylesheet" type = 'text/css' href="caseStyle.css">
+	</head>
+	<body>
+		<common-header></common-header>
+		<hr>
+		<div>
+			<h2 class = "panel-heading">Testcase# NGJS-1 ngModel: Two-Way Data Binding</h2>
+			<div class="panel-body">
+				<label>Name:</label>
+				<input type = "text" ng-model="world" placeholder="Enter a name here" class="form-control">
+				<p class = 'ExecutionResult'>Hello {{world}}!</p>
+				<label>relativeURL:</label>
+				<input type = "text" ng-model="url" placeholder="please enter abc here" class="form-control">
+				<h4 class = 'ExecutionResult'><a href = {{url}} >Dynamically Generated Url: </a>Request URL: /{{url}} </h4>
+			</div>
+		</div>
+		<hr>
+		<div ng-controller = "ubbController as ubb">
+			<h2 class = "panel-heading">Testcase# NGJS-2 ngBind</h2>
+			<div class="panel-body">
+				<p>Bind ng var to HTML element</p>
+				<ul>
+					<li><p>name: {{ubb.content[0].name}}</p></li>
+					<li><p>enabled: {{ubb.content[0].enabled}}</p></li>
+					<li><p>action: {{ubb.content[0].action}}</p></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		
+		<div ng-controller = "ubbApiController as ubbApi">
+			<h2 class = "panel-heading">Testcase# NGJS-3 $http</h2>
+			<div class="panel-body rs-asp-common-marginTop20">
+				<button ng-click = "fetchUbbConf()" class="new-btn-info  rs-asp-button">Fetch UBB Conf</button>
+				<table class="table table-bordered rs-asp-common-table">
+					<thead>
+						<tr>
+							<th class = 'td-center'>enabled</th>
+							<th class = 'td-center'>action</th>
+							<th class = 'td-center'>condition</th>
+							<th class = 'td-center'>description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = 'rule in ubbApi.rules' ng-show = 'rule.enabled'>
+								<td class = 'td-center'>{{rule.enabled}}</td>
+								<th class = 'td-center'>{{rule.action}}</th>
+								<th class = 'td-center'>{{rule.condition}}</th>
+								<th class = 'td-center'>{{rule.description}}</th>
+						</tr>
+					</tbody>
+				</table>
+				<div ng-repeat = 'rule in ubbApi.rules'>
+					<div ng-show = 'rule.enabled'>
+						<h4>name: {{rule.name}}</h4>
+						<ul class = "list-group">
+							<li class = "list-group-item"><p>enabled: {{rule.enabled}}</p></li>
+							<li><p>action: {{rule.action}}</p></li>
+							<li><p>condition: {{rule.condition}}</p></li>
+							<li><p>description: {{rule.description}}</p></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

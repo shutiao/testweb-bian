@@ -1,6 +1,17 @@
 .ExecutionResult{
-    color: #3a87ad; 
-    background-color: #d9edf7;
+    box-sizing: border-box;
+    max-width: 42rem;
+    width: 100%;
+    display: table;
+    margin: 0 0 20px;
+    border-style: solid;
+    background: #e4f0f5;
+    border-collapse: separate;
+    border-color: #3f87a6;
+    clear: left;
+    padding: 8px 32px 8px 12px;
+    border-width: 0 0 0 5px;
+    margin: 10px 0;
 }
 
 .panel-heading {
@@ -15,3 +26,32 @@
     font-size: 16px;
     font-weight: 600;
 }
+
+a {
+  color: #c05133;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+  
+  .nav-pills {
+    margin-bottom: 30px;
+  }
+  
+  .nav-pills > li > a:hover,
+  .nav-pills > li > a:focus{
+    color: #c05133;
+  }
+  
+  .nav-pills > li.active > a,
+  .btn-primary,
+  .btn-primary:focus {
+    background: #c05133;
+    border: 0;
+  }
+  
+  .nav-pills > li.active > a:hover,
+  .btn-primary:hover {
+    background: #c05133;
+  }
