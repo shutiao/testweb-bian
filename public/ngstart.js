@@ -17,12 +17,14 @@
 		condition: "path == '/form/moved/'"
 	}];
 
-	app.controller('ubbApiController', ['$http', function($http){
+	app.controller('ubbApiController', ['$scope', '$http', function($scope, $http){
 		var ubbConf = this;
 		ubbConf.rules = [];
-		$http.get('/rules_config.json').success(function(data){
-			ubbConf.rules = data;
-		});
+		$scope.fetchUbbConf = function(){
+			$http.get('/rules_config.json').success(function(data){
+				ubbConf.rules = data;
+			});
+		}
 	}]);
 
 	app.directive('customDirective', function(){
@@ -30,5 +32,9 @@
 			restrict: 'E',
 			templateUrl: 'APIReference.html'
 		};
+	});
+
+	app.controller('alertCtl', function(){
+		//alert('Welcome');
 	});
 })();

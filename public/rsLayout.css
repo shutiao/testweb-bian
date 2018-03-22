@@ -1,0 +1,990 @@
+@charset "UTF-8";
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+html, body {
+    width:100%;
+    height:100%;
+    overflow:scroll;
+}
+
+
+body {
+    padding-top:50px;
+    font-family: Arial, "SimHei","STHeiti","WenQuanYi Micro Hei", "Microsoft YaHei","Hiragino Sans GB","Microsoft YaHei","STHeiti",sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 21px;
+    color: #333;
+    background-color: #ffffff;
+}
+
+.rs-asp-baselogin-body {
+    background-image: url('../img/bg1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /*background-color:rgb(205,32,42)*/
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #1a1921;
+    /*border-right: 1px solid #eee;*/
+    color: #333;
+    font-size: 14px;
+	font-weight: 700;
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+
+}
+.nav-sidebar > li > a{
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #d0d1d4;
+  text-decoration: none;
+}
+
+.panel-collapse > .panel-body > .normal_sidebar_item,
+.normal_sidebar_item {
+  padding: 10px;
+  padding-left: 40px;
+  background-color: #22222a;
+  color: #333;
+}
+
+.panel-collapse > .panel-body > .normal_sidebar_item > a,
+.normal_sidebar_item > a{
+  color: #c0c1c4;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+.nav-sidebar > li > a:hover,
+.panel-collapse > .panel-body > .normal_sidebar_item > a:hover
+ {
+  color: #FFF;
+  text-decoration: none;
+  background-color: rgba(51,51,51,0.7);
+    padding-left:16px;
+}
+
+.nav-sidebar > li#nav_alerts > a:hover
+{
+  color: #FFF;
+  text-decoration: none;
+  background-color: #a94442
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus,
+.active_normal_sidebar_item > a,
+.active_normal_sidebar_item
+{
+  color: #fff;
+  background-color: #57b382;
+    padding-left: 16px;
+}
+
+.active_normal_sidebar_item{
+  padding: 10px;
+  padding-left: 40px;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+    padding-right: 40px;
+    padding-left: 40px;
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.site {
+	width:auto;
+	height:auto;
+}
+
+.site upArraw {
+	border-color: #666 #22222c #22222c;
+	border-style: solid;
+	border-width: 4px;
+	position:absolute;
+	top:15px;
+	left: 180px;
+}
+
+ .site downArraw {
+	border-color: #1a1921 #22222c #666;
+	border-style: solid;
+	border-width: 4px;
+	position:absolute;
+	top:15px;
+	left: 180px;
+}
+
+.wizard {
+	width: 600px;
+}
+
+.new-panel-heading {
+	color: #c05133;
+	background-color: #EEEEEE;
+	padding: 10px 47px 10px 47px;
+	border-bottom: 1px solid transparent;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.panel-heading-alert {
+    color: #a94442;
+    background-color: #f2dede;
+    padding: 10px 45px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-heading-warning {
+    color: #ff8800;
+    background-color: #fff8d7;
+    padding: 10px 45px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-heading-info {
+    color: #ff8800;
+    background-color: #e1f7f9;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.nav-sidebar > .active_alerts > a,
+.nav-sidebar > .active_alerts > a:hover,
+.nav-sidebar > .active_alerts > a:focus
+{
+  color: #fff;
+  background-color: #a94442;
+}
+
+.new-btn-info {
+	padding: 6px 16px;
+	text-align: center;
+	cursor: pointer;
+	background: #c05133;
+	color: #fff;
+	border: 0 none;
+	-webkit-appearance: none;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-transition: all .1s ease-in;
+}
+
+.td-middleleft {
+	vertical-align: middle;
+	text-align: left;
+}
+
+.rs-asp-base-sidebar {
+    float:left;
+    width:200px;
+    overflow-y:auto;
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    border:0px;
+
+}
+
+.rs-asp-base-content {
+    margin-left: 240px;
+    margin-right: 0px;
+    min-width:400px;
+    height:100%;
+    overflow:auto;
+}
+
+.main{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.dropdown-menu>li>a{
+    padding-left: 20px;
+    color:#333;
+}
+.dropdown-menu{
+    min-width: 100px;
+    /*background-color:rgba(0,0,0,0.7);*/
+}
+.navbar-inverse {
+    background-color: #444648;
+}
+.sidebar {
+    top: 60px;
+    background-color: #444648;
+    padding: 0px 20px 20px 20px;
+}
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+.navbar-collapse.collapse {
+    min-height: 60px;
+}
+.navbar-brand{
+    margin-left: 0px;
+    height: 60px;
+    padding: 20px 60px;
+}
+.nav>li{
+    /*border-left: 4px solid #444648;*/
+    height:50px;
+}
+.nav>li > a{
+    height:50px;
+    color: #fff;
+    font-size: 14px;
+    padding-top: 13px;
+}
+.active{
+    background-color: #373433;
+}
+.nav-sidebar > .active{
+    border-left: 4px solid rgb(75, 163, 255);
+}
+.panel-collapse > .panel-body > .normal_sidebar_item > a:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #373433;
+}
+.normal_sidebar_item {
+    /*padding-top:13px;*/
+    /*padding-left: 60px;*/
+    background-color: #444648;
+    /*border-left: 4px solid #444648;*/
+    text-decoration :none;
+    height: 50px;
+    /*position: relative;*/
+    /*padding-left:30px;*/
+    padding:0px;
+}
+.normal_sidebar_item > a:hover {
+    text-decoration: none;
+    padding-left:40px;
+}
+.active_normal_sidebar_item > a:hover {
+    text-decoration: none;
+}
+.active_normal_sidebar_item > a{
+    background-color: #373433;
+    height:50px;
+    padding-left:40px;
+}
+
+.active_normal_sidebar_item{
+    /*padding-top:13px;*/
+    /*padding-left:30px;*/
+    background-color: #373433;
+    height: 50px;
+    /*position: relative;*/
+    border-left: 4px solid rgb(62,172,188);
+    padding:0px;
+}
+.site upArraw {
+	border-color: #fff transparent transparent;
+	/*right: 10px;*/
+}
+
+.site downArraw {
+	border-color: transparent transparent #fff;
+	/*right: 10px;*/
+}
+
+.leftArraw {
+	border-color: #373433 #fff #373433 #373433;
+	right: -1px;
+	border-style: solid;
+	border-width: 15px;
+	position:absolute;
+	top:10px;
+}
+
+.rs-asp-logoBrand{
+    float: left;
+    height: 60px;
+    margin-left: -15px;
+    background-color: #c05133;
+    width:240px;
+}
+.rs-asp-logoBrand-img{
+    height: 42px;
+    margin-top: -26px;
+    margin-left: 60px;
+    display: inline-block;
+}
+.rs-asp-sidebar-item-a{
+    /*border-bottom: 1px solid #292929;*/
+    border-bottom:1px solid rgb(102,102,102);
+    background-color:#333 !important;
+}
+.rs-asp-sidebar-item-img{
+    width:24px;
+    height: 24px;
+    margin-right: 12px;
+    margin-top:-3px;
+}
+.rs-asp-banner-user-menu{
+    float: left;
+    margin-top: 2px;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px; 
+    margin-left:15px;
+}
+.rs-asp-banner-right-menu-li{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 60px;
+    border-left: 1px solid darkgrey;
+}
+
+/* writer:gongxu */
+.new-btn-info {
+	height: 30px;
+    font-size: 14px;
+    line-height: 23px;
+    padding: 4px 12px !important;
+    background-color: #c05133;
+    min-width:70px;
+    /*display: inline-block;*/
+    color:white;
+    text-decoration: none;
+}
+
+.new-btn-info:hover, .new-btn-info a:hover {
+    color:white;
+    text-decoration: none;
+    background-color: #FF8A65;
+}
+
+.new-btn-info:active, .new-btn-info a:active {
+    color:white;
+    text-decoration: none;
+    background-color: #EF5350;
+}
+
+.new-btn-info:focus, .new-btn-info a:focus {
+    color:white;
+    text-decoration: none;
+    background-color: #EF5350;
+}
+
+.rs-asp-error-dropdown-ul {
+    background-color:white;
+    width:240px;
+}
+
+.rs-asp-error-dropdown-ul li {
+    line-height:28px;
+}
+
+.rs-asp-error-dropdown-ul li:first-child {
+    border-bottom:1px solid lightgray;
+    margin-bottom:6px;
+}
+
+.rs-asp-dropdownbtn {
+    height:28px;
+    line-height:12px;
+}
+
+.rs-asp-sidebar li {
+    cursor: pointer;
+}
+
+.rs-asp-sidebar li:hover {
+    background-color:rgb(55, 52, 51) !important;
+    border-left:4px solid rgb(105, 105, 105);
+}
+
+.active-noborder {
+    border-left:0px;
+    background-color:rgb(55, 52, 51) !important;
+}
+
+.rs-asp-secondList li:last-child {
+    margin-bottom:12px;
+}
+
+.alert-danger {
+    border-radius:0px;
+}
+
+.rs-asp-errorField .new-btn-info {
+    margin-left:8px;
+}
+
+.rs-asp-advancedBtnDiv {
+    height: 50px;
+    background-color: rgb(228,234,236);
+    padding-top: 13px;
+    padding-right: 12px;
+}
+
+/* login view */
+.rs-asp-login-formboxstyle {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.6);
+	/*max-width: 433px;*/
+    width: 448px;
+}
+
+.rs-asp-login-logostyle {
+	background-color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-top: 24px;
+    margin-bottom: 36px;
+    text-align: center;
+    padding: 18px;
+    box-shadow: 0px 0px 5px 5px rgba(205,32,42,0.8);
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.rs-asp-login-formgroup {
+	width:300px;
+}
+
+.rs-asp-login-formgroup .rs-asp-login-formrow {
+	width:100%;
+}
+
+.rs-asp-login-formgroup .rs-asp-login-formrow input {
+	width:100%;
+}
+
+.rs-asp-login-forgetpassword a {
+	text-align:center;
+	margin-top:16px;
+	color:white;
+}
+
+.rs-asp-login-loginbtn {
+	background-color: rgb(205,32,42);
+    color: white;
+    height: 38px;
+    margin-top: 8px;
+	border-color:#333;
+}
+
+.rs-asp-login-loginpanel {
+	position: relative;
+    padding-top: 16px;
+    padding-bottom: 20px;
+}
+
+.rs-asp-login-loginheader {
+	margin-bottom: 36px;
+    text-align: center;
+}
+
+.rs-asp-login-productdes {
+	margin-top:-20px;
+	color:white;
+    font-size:16px;
+}
+
+/* forget password : reset passwork token */
+.rs-asp-resetpsdtoken-wapper {
+	background-color: rgba(255,255,255,.9);
+    border-radius: 6px;
+    padding: 12px;
+	margin-top:10%;
+}
+
+.rs-asp-resetpsdtoken-header {
+    border-bottom: 1px solid lightgray;
+}
+
+.rs-asp-resetpsdtoken-h3 {
+	line-height: 50px;
+    color: rgb(205,38,48);
+    font-size: 24px;
+}
+
+.rs-asp-resetpsdtoken-helpImg {
+	margin-right:6px;
+}
+
+.rs-asp-resetpsdtoken-helpdes {
+	padding:0px 12px;
+}
+
+.rs-asp-resetpsdtoken-serarea {
+	margin:24px 0px;
+	padding:0px 12px;
+}
+
+.rs-asp-resetpsdtoken-btnfield {
+	border-top: 1px solid lightgray;
+    padding: 16px 16px;
+}
+
+.rs-asp-resetpsdtoken-submitbtn {
+	background-color:rgb(205, 38, 48);
+	color:white;
+	border:1px solid #ccc;
+}
+
+.rs-asp-resetpsdtoken-submitbtn:hover {
+	background-color:rgb(187, 33, 42);
+	color:white;
+	border:1px solid #ccc;
+}
+
+.rs-asp-resetpsdtoken-submitbtn:active {
+	background-color:rgb(160, 24, 31);
+	color:white;
+	border:1px solid #ccc;
+}
+
+.rs-asp-resetpsdtoken-submitbtn:focus {
+	background-color:rgb(160, 24, 31);
+	color:white;
+	border:1px solid #ccc;
+}
+
+#reset_password_form .form-group{
+	width:100%;
+}
+
+.rs-asp-resetpsdtoken-serarea .textarea {
+	width:100%;
+}
+
+/* reset password */
+.rs-asp-resetpassword-field {
+	background-color: rgba(255,255,255,.9);
+    border-radius: 6px;
+    padding: 8px 18px;
+	margin-top:10%;
+}
+
+.rs-asp-resetpassword-field #password_form .control-group  {
+	padding:8px 0px;
+}
+
+.rs-asp-resetpassword-field #password_form .control-group input  {
+	margin:8px 0px;
+	width:100%;
+}
+
+.rs-asp-resetpassword-bottom {
+	border-top:1px solid lightgray;
+	padding:12px 0px;
+}
+
+.rs-asp-resetpassword-modifybtn {
+
+}
+
+
+/* common style */
+.rs-asp-common-header {
+	line-height: 50px;
+    color: rgb(205,38,48);
+    font-size: 24px;
+}
+
+.rs-asp-common-header-bottomline {
+	border-bottom:1px solid lightgray;
+}
+
+.rs-asp-common-login-btn {
+	background-color: rgb(205,38,48);
+    color: white;
+	bodrder-radius:6px;
+}
+
+.rs-asp-wizard-groupPanel {
+    padding:10px 30px 10px 0px;
+    height:auto;
+    width:100%;
+}
+
+.rs-asp-wizard-textTd {
+    float:left;
+    width:auto;
+    margin-right:24px;
+}
+
+.rs-asp-wizard-td {
+    margin-bottom:8px;
+    height:32px;
+    line-height:24px;
+}
+
+.rs-asp-wizard-btnNav {
+    width:300px;
+}
+
+.rs-asp-alert-des {
+    padding:6px 0px 6px 45px;
+    background-color: rgb(228,234,236);
+    margin-top:50px;
+}
+
+.rs-asp-leftBtns {
+    list-style:none;
+    margin-bottom:16px;
+    float:left;
+    -webkit-padding-start:0px;
+    padding:0px;
+    margin:0px;
+    margin-bottom:8px;
+}
+
+.rs-asp-leftBtns > li {
+    float:left;
+    padding:4px;
+}
+
+.rs-asp-leftBtns > li:first-child {
+    padding-left:0px;
+}
+
+.rs-asp-error-div {
+    padding-top:20px;
+    margin-top:20px;
+    border-top:1px solid #ccc;
+}
+
+.rs-asp-btnTd {
+    width:100px;
+}
+
+.rs-asp-addRowBtn {
+    float: right;
+    width: 84px;
+    margin-right: 8px;
+}
+
+.rs-asp-proxy-btnMargin {
+    margin-left:20px;
+    margin-right:6px;
+}
+
+.rs-asp-button {
+    min-width:84px;
+}
+
+.rs-asp-tdCenter {
+    text-align:center;
+}
+
+.rs-asp-proxyBtnUl {
+    float:right;
+    list-style: none;
+    margin-top: -3px;
+}
+
+.rs-asp-proxyBtnUl li {
+    float:left;
+    line-height:20px;
+    margin-right:6px;
+}
+
+.rs-asp-proxyBtnUl li:last-child {
+    margin-right:0px;
+}
+
+.form-control {
+    height:30px;
+}
+
+.rs-asp-paddingLeft16 {
+    padding-left:16px;
+}
+
+.row {
+    margin-left:-14px;
+    margin-right:-14px;
+}
+
+.panel-body {
+    padding:15px 48px;
+}
+
+.rs-asp-paddingLeft15 {
+    padding-left:15px;
+}
+
+.rs-asp-containerFluid {
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    width: 100%;
+    padding-left:0px;
+    padding-right:0px;
+}
+
+#id_old_password:active, #id_old_password:focus {
+    color:#ccc;
+}
+
+.logoFontDiv {
+    margin-top: 12px;
+    display:inline-block;
+    color: white;
+    margin-left:4px;
+}
+
+.wapper {
+    padding:5% 0;
+}
+.rs-asp-resetBtn {
+    float:left;
+}
+
+.rs-asp-resetBtn input {
+    margin-left:0px;
+    height:32px;
+}
+
+.rs-asp-common-tips {
+    color:#333;
+}
+
+.rs-asp-common-allSaveBtn {
+    padding-top:10px;
+}
+
+.rs-asp-fixedBottom {
+    margin-left:-120px;
+    padding: 0px 122px;
+}
+
+/*-------------proxy-config override the nav-tabs from bootstrapts--------------*/
+.nav-tabs{
+  background-color: white;
+}
+.tab-content{
+    background-color: #fefefe;
+    color: #000000;
+    padding-top: 50px;
+    padding-bottom:10px;
+}
+.nav-tabs > li{
+    height: 30px;
+    margin: 2px 2px 0px 2px;
+    background-color: #f0f0f0;
+    border-radius: 2px 2px 0px 0px;
+}
+.nav-tabs > li > a{
+    height: 30px;
+    margin-right: 0px;
+    font-weight: bold;
+    border: medium none;
+    line-height: 6px;
+    color: black;
+}
+.nav-tabs > li > a:hover{
+    height: 30px;
+    background-color: #f0f0f0 ;
+    border: medium none;
+    color: #334c85;
+}
+.nav-tabs > li.active >a,.nav-tabs>li.active>a:focus{
+    height: 30px;
+    background:#334c85;
+    color: white;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    height: 30px;
+    border:none;
+    background-color: #beddfd;
+    color: #064c94;
+}
+.tab-pane.active{
+    background-color: transparent;
+}
+.layout-fixed-bottom {
+    padding:0px 136px;
+}
+
+.en-logo-img {
+    margin-top: 9px;
+    margin-left: 45px;
+}
+
+.en-font-div {
+    margin-top:20px
+}
+
+.rs-asp-layout-fixed-bottom {
+    margin-left: 240px;
+    width: inherit;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.layout-remove-col {
+    width:100%;
+    margin-left:0px;
+}
+
+.layout-diff-row {
+    margin-left:0px;
+    margin-right:0px;
+}
+
+.wizard-des-list {
+    margin-left: -22px;
+}
+
+.wizard-proxy-checkbox {
+    margin-top:20px;
+    margin-left:50px;
+}
+
+.wizard-proxy-button {
+    margin-left:35px;
+}
+
+.wizard-cluster-button {
+    padding-left:0px !important;
+}
+
+.alert-btn {
+    margin-left:-4px !important;
+}
+
+.rs-asp-common-tips {
+    margin-left:0px !important;
+}
+
+.crossdomain-btn {
+    margin-left:-4px;
+}
+
+.rs-asp-top-btn {
+    margin-right:0px;
+}
+
+.alert {
+    padding:15px 45px;
+}
+
+.rs-asp-common-circle-green {
+    background-color:rgb(64,172,188);
+    display: none;
+}
+
+.rs-asp-common-fixed-bottom{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    padding: 10px 60px;
+    background: #EEE;
+    text-align: right;
+}
+.rs-asp-common-fixed-bottom span{
+    margin-right: 10px;
+    font-size: 13px;
+    color: #f5a623;
+}
+
+#alerts {
+    height:60px;
+}
+
+
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:focus,
+.navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff !important;
+    background-color: rgba(51, 51, 51, 0.7) !important
+}
+
+
+
+#system_labs_home {
+    width: 100%;
+    background-image: url(/static/img/labs/img-lab-bg/img-lab-bg.png);
+    background-position: 95% 90%;
+    height: 100%;
+    background-repeat: no-repeat;
+}

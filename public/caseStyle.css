@@ -1,0 +1,17 @@
+.ExecutionResult{
+    color: #3a87ad; 
+    background-color: #d9edf7;
+}
+
+.panel-heading {
+    color: #c05133;
+    background-color: #EEEEEE;
+    padding: 10px 47px 10px 47px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-radius: 0px;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 600;
+}
