@@ -5,8 +5,17 @@
 		this.name = 'NgModule';
 	});
 
-	app.controller('ubbController', function(){
-		this.content = rules_config;
+	app.controller('AddruleController', function(){
+		this.rules = rules_config;
+		this.rule = {};
+		this.addRule = function(){
+			alert('addRule is called');
+			console.log(this.rules);
+			this.rule.createdOn = Date.now();
+			this.rule.rule_id = this.rules.length + 1;
+			this.rules.push(this.rule);
+			this.rule = {};
+		}
 	});
 
 	var rules_config = [{
@@ -27,21 +36,10 @@
 		}
 	}]);
 
-	app.directive('customDirective', function(){
-		return {
-			restrict: 'E',
-			templateUrl: 'APIReference.html'
-		};
-	});
-
 	app.directive('commonHeader', function(){
 		return {
 			restrict: 'E',
 			templateUrl: 'nav.html'
 		};
-	});
-
-	app.controller('alertCtl', function(){
-		//alert('Welcome');
 	});
 })();

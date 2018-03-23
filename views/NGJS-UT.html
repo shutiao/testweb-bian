@@ -18,22 +18,105 @@
 				<label>Name:</label>
 				<input type = "text" ng-model="world" placeholder="Enter a name here" class="form-control">
 				<p class = 'ExecutionResult'>Hello {{world}}!</p>
-				<label>relativeURL:</label>
-				<input type = "text" ng-model="url" placeholder="please enter abc here" class="form-control">
-				<h4 class = 'ExecutionResult'><a href = {{url}} >Dynamically Generated Url: </a>Request URL: /{{url}} </h4>
+				<label>Relative URL:</label>
+				<input type = "text" ng-model="url" placeholder="please enter NG here" class="form-control">
+				<p class = 'ExecutionResult'><a href = {{url}} >Dynamically Generated Url: </a>Request URL: /{{url}} </p>
 			</div>
 		</div>
 		<hr>
-		<div ng-controller = "ubbController as ubb">
+		<div ng-controller = "AddruleController as ubbrules">
 			<h2 class = "panel-heading">Testcase# NGJS-2 ngBind</h2>
-			<div class="panel-body">
-				<p>Bind ng var to HTML element</p>
-				<ul>
-					<li><p>name: {{ubb.content[0].name}}</p></li>
-					<li><p>enabled: {{ubb.content[0].enabled}}</p></li>
-					<li><p>action: {{ubb.content[0].action}}</p></li>
+			<p class="panel-body">Bind ng var to HTML element</p>
+			<div class="panel-body" ng-repeat = 'rule in ubbrules.rules'>
+				<h4>ruleid: {{rule.rule_id}}</h4>
+				<ul class = "list-group">
+					<li><p>enabled: {{rule.enabled}}</p></li>
+					<li><p>action: {{rule.action}}</p></li>
+					<li><p>action: {{rule.condition}}</p></li>
 				</ul>
 			</div>
+
+			<!-- Rule Form -->
+
+			<section class="panel-body">
+				<h4>Submit a Rule</h4>
+				<form name = "ubbRuleForm" action = 'abc' ng-submit = 'ubbrules.addRule()'>
+					<select class="form-control" ng-model = 'ubbrules.rule.action'>
+						<option value = "">Choose the Action</option>
+						<option value = "block">Block</option>
+						<option value = "pass">Pass</option>
+						<option value = "blank">Blank</option>
+					</select>
+					<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition'></textarea>
+					<fieldset class="form-group">
+						<input type = 'submit' value = 'Submit Rule By ngSubmit' class="btn btn-primary pull-right"/>
+					</fieldset>
+				</form>
+			</section>
+
+			<section class="panel-body">
+				<h4>Submit a Rule</h4>
+				<form name = "ubbRuleForm" action = 'abc' Method = 'POST'>
+					<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+						<option value = "">Choose the Action</option>
+						<option value = "block">Block</option>
+						<option value = "pass">Pass</option>
+						<option value = "blank">Blank</option>
+					</select>
+					<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+					<fieldset class="form-group">
+						<input type = 'submit' value = 'Submit Rule By Default Action w/ Action' class="btn btn-primary pull-right"/>
+					</fieldset>
+				</form>
+				</section>
+			
+				<section class="panel-body">
+					<h4>Submit a Rule</h4>
+					<form name = "ubbRuleForm">
+						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+							<option value = "">Choose the Action</option>
+							<option value = "block">Block</option>
+							<option value = "pass">Pass</option>
+							<option value = "blank">Blank</option>
+						</select>
+						<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+						<fieldset class="form-group">
+							<input type = 'submit' value = 'Submit Rule By Default Action w/o Action' class="btn btn-primary pull-right"/>
+						</fieldset>
+					</form>
+					</section>
+
+				<section class="panel-body">
+						<h4>Submit a Rule</h4>
+						<form name = "ubbRuleForm" action = 'abc' Method = 'POST' onSubmit = 'return true;'>
+							<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+								<option value = "">Choose the Action</option>
+								<option value = "block">Block</option>
+								<option value = "pass">Pass</option>
+								<option value = "blank">Blank</option>
+							</select>
+							<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+							<fieldset class="form-group">
+								<input type = 'submit' value = 'Submit Rule By onSubmit' class="btn btn-primary pull-right"/>
+							</fieldset>
+						</form>
+						</section>
+
+				<section class="panel-body">
+					<h4>Submit a Rule</h4>
+					<form name = "ubbRuleForm" action = 'null' Method = 'POST'>
+						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+							<option value = "">Choose the Action</option>
+							<option value = "block">Block</option>
+							<option value = "pass">Pass</option>
+							<option value = "blank">Blank</option>
+						</select>
+						<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+						<fieldset class="form-group">
+							<input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'Submit Rule By ngClick (double-submission)' class="btn btn-primary pull-right"/>
+						</fieldset>
+					</form>
+				</section>
 		</div>
 		<hr>
 		
@@ -59,16 +142,6 @@
 						</tr>
 					</tbody>
 				</table>
-				<div ng-repeat = 'rule in ubbApi.rules'>
-					<div ng-show = 'rule.enabled'>
-						<h4>name: {{rule.name}}</h4>
-						<ul class = "list-group">
-							<li class = "list-group-item"><p>enabled: {{rule.enabled}}</p></li>
-							<li><p>action: {{rule.action}}</p></li>
-							<li><p>condition: {{rule.condition}}</p></li>
-							<li><p>description: {{rule.description}}</p></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</div>

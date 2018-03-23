@@ -27,9 +27,6 @@
     font-weight: 600;
 }
 
-a {
-  color: #c05133;
-}
 a:hover,
 a:focus {
   text-decoration: underline;
