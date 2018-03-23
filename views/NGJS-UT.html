@@ -40,7 +40,7 @@
 
 			<section class="panel-body">
 				<h4>Submit a Rule</h4>
-				<form name = "ubbRuleForm" action = 'abc' ng-submit = 'ubbrules.addRule()'>
+				<form name = "ubbRuleForm" action = 'javascript:void(0)' ng-submit = 'ubbrules.addRule()'>
 					<select class="form-control" ng-model = 'ubbrules.rule.action'>
 						<option value = "">Choose the Action</option>
 						<option value = "block">Block</option>
@@ -49,11 +49,25 @@
 					</select>
 					<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition'></textarea>
 					<fieldset class="form-group">
-						<input type = 'submit' value = 'Submit Rule By ngSubmit' class="btn btn-primary pull-right"/>
+						<input type = 'submit' value = 'Submit Rule By ngSubmit, action: javascript:void(0)' class="btn btn-primary pull-right"/>
 					</fieldset>
 				</form>
 			</section>
-
+			<section class="panel-body">
+					<h4>Submit a Rule</h4>
+					<form name = "ubbRuleForm" action = 'abc' ng-submit = 'ubbrules.addRule()'>
+						<select class="form-control" ng-model = 'ubbrules.rule.action'>
+							<option value = "">Choose the Action</option>
+							<option value = "block">Block</option>
+							<option value = "pass">Pass</option>
+							<option value = "blank">Blank</option>
+						</select>
+						<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition'></textarea>
+						<fieldset class="form-group">
+							<input type = 'submit' value = 'Submit Rule By ngSubmit, action: abc(double-submission)' class="btn btn-primary pull-right"/>
+						</fieldset>
+					</form>
+				</section>
 			<section class="panel-body">
 				<h4>Submit a Rule</h4>
 				<form name = "ubbRuleForm" action = 'abc' Method = 'POST'>
@@ -65,13 +79,13 @@
 					</select>
 					<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
 					<fieldset class="form-group">
-						<input type = 'submit' value = 'Submit Rule By Default Action w/ Action' class="btn btn-primary pull-right"/>
+						<input type = 'submit' value = 'Submit Rule By Default w/ Action' class="btn btn-primary pull-right"/>
 					</fieldset>
 				</form>
 				</section>
 			
 				<section class="panel-body">
-					<h4>Submit a Rule</h4>
+					<h4>AngularJS prevents the default action (form submission to the server) unless the form element has an action attribute specified.</h4>
 					<form name = "ubbRuleForm">
 						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 							<option value = "">Choose the Action</option>
@@ -81,30 +95,14 @@
 						</select>
 						<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
 						<fieldset class="form-group">
-							<input type = 'submit' value = 'Submit Rule By Default Action w/o Action' class="btn btn-primary pull-right"/>
+							<input type = 'submit' value = 'Submit Rule By Default w/o Action (no-submission)' class="btn btn-primary pull-right"/>
 						</fieldset>
 					</form>
 					</section>
 
 				<section class="panel-body">
-						<h4>Submit a Rule</h4>
-						<form name = "ubbRuleForm" action = 'abc' Method = 'POST' onSubmit = 'return true;'>
-							<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
-								<option value = "">Choose the Action</option>
-								<option value = "block">Block</option>
-								<option value = "pass">Pass</option>
-								<option value = "blank">Blank</option>
-							</select>
-							<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
-							<fieldset class="form-group">
-								<input type = 'submit' value = 'Submit Rule By onSubmit' class="btn btn-primary pull-right"/>
-							</fieldset>
-						</form>
-						</section>
-
-				<section class="panel-body">
 					<h4>Submit a Rule</h4>
-					<form name = "ubbRuleForm" action = 'null' Method = 'POST'>
+					<form name = "ubbRuleForm" action = 'abc' Method = 'POST' onSubmit = 'return true;'>
 						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 							<option value = "">Choose the Action</option>
 							<option value = "block">Block</option>
@@ -113,10 +111,42 @@
 						</select>
 						<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
 						<fieldset class="form-group">
-							<input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'Submit Rule By ngClick (double-submission)' class="btn btn-primary pull-right"/>
+							<input type = 'submit' value = 'Submit Rule By onSubmit' class="btn btn-primary pull-right"/>
 						</fieldset>
 					</form>
 				</section>
+
+				<section class="panel-body">
+					<h4>Submit a Rule(CRM-831, DAP-3270)</h4>
+					<form name = "ubbRuleForm"  Method = 'POST'>
+						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+							<option value = "">Choose the Action</option>
+							<option value = "block">Block</option>
+							<option value = "pass">Pass</option>
+							<option value = "blank">Blank</option>
+						</select>
+						<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+						<fieldset class="form-group">
+							<input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'Submit Rule By ngClick w/o Action' class="btn btn-primary pull-right"/>
+						</fieldset>
+					</form>
+				</section>
+
+				<section class="panel-body">
+						<h4>Submit a Rule(CRM-831, DAP-3270)</h4>
+						<form name = "ubbRuleForm"  action = 'null' Method = 'POST'>
+							<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+								<option value = "">Choose the Action</option>
+								<option value = "block">Block</option>
+								<option value = "pass">Pass</option>
+								<option value = "blank">Blank</option>
+							</select>
+							<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+							<fieldset class="form-group">
+								<input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'Submit Rule By ngClick w/ Action (double-submission)' class="btn btn-primary pull-right"/>
+							</fieldset>
+						</form>
+					</section>
 		</div>
 		<hr>
 		

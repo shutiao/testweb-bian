@@ -5,7 +5,7 @@
 		this.name = 'NgModule';
 	});
 
-	app.controller('AddruleController', function(){
+	app.controller('AddruleController', ['$scope', '$http', function($scope, $http){
 		this.rules = rules_config;
 		this.rule = {};
 		this.addRule = function(){
@@ -15,8 +15,14 @@
 			this.rule.rule_id = this.rules.length + 1;
 			this.rules.push(this.rule);
 			this.rule = {};
+		};
+		$scope.addRuleAjax = function(){
+			alert('addRuleAjax is called');
+			$http.get('/rules_config.json').success(function(data){
+				alert('OK');
+			});
 		}
-	});
+	}]);
 
 	var rules_config = [{
 		name: "rule",
