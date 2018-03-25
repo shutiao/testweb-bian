@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>chattr</title>
+        <link rel = 'stylesheet' href = '/chattr-console.css'>
+        <script src = '/socket.io/socket.io.js'></script>
+        <img ng-src = "/logo_bi-an.png" style = "float:left ;display: inline; background-color: #ca4d37; height: 54px"/>
+        <h1 class="navbar-brand">狴犴(bì àn) Web Framework Testing Target Site</h1>
+    </head>
+
+    <body>
+            <nav>
+                    <ul class = "nav nav-pills">
+                            <li class = 'active'><a href = 'NGJS'>AngularJS</a></li>
+                            <li><a href = 'NG'>Angular</a></li>
+                            <li><a href = 'React'>React</a></li>
+                            <li><a href = 'Vue'>Vue</a></li>
+                            <li><a href = 'chattr'>Socket.io</a></li>
+                    </ul>
+            </nav>
+        <h1>chattr</h1>
+        <ul id = 'chatters'></ul>
+        <div id = 'chat-console'>
+            <p id = 'status'>CONNECTING...</p>
+        </div>
+        <form id = 'chat-form'>
+            <input type = 'text' name = 'chat-input' id = 'chat-input' placeholder = 'type your message here...' autofocus autocomplete = 'off'>
+            <br><input type = 'submit' value = 'send'/>
+        </form>
+        <script src = '/chattr-console.js'></script>
+    </body>
+</html>

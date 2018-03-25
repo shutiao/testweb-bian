@@ -52,3 +52,17 @@ a:focus {
   .btn-primary:hover {
     background: #c05133;
   }
+
+  .learn-box {
+    border-color: #f69d3c;
+    background-color: #ffe8d4;
+    box-sizing: border-box;
+    width: 100%;
+    display: table;
+    margin: 0 0 20px;
+    border-style: solid;
+    border-collapse: separate;
+    clear: left;
+    padding: 12px 32px 12px 12px;
+    border-width: 0 0 0 5px;
+  }
