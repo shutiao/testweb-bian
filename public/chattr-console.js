@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect();
 /*
 socket.on('message', function (data){
     alert(data.hello);
