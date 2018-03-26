@@ -3,7 +3,7 @@
 <html ng-app="test">
 	<head>
 		<script type = "text/javascript" src = "../angular.min.js"></script>
-		<script type = "text/javascript" src = "../ngjsApp.js"></script>	
+		
 		<link rel="stylesheet" href="bootstrap.min.css">	
 		<link rel="stylesheet" type = 'text/css' href="rsLayout.css">				
 		<link rel="stylesheet" type = 'text/css' href="rsCommon.css">
@@ -24,8 +24,8 @@
 			</div>
 		</div>
 		<hr>
-		<div ng-controller = "AddruleController as ubbrules">
-			<h2 class = "panel-heading">Testcase# NGJS-2 ngBind</h2>
+		<div id = 'NGJS-2' ng-controller = "AddruleController as ubbrules">
+			<h2 class = "panel-heading">Testcase# NGJS-2 Forms</h2>
 			<p class="panel-body">Bind ng var to HTML element</p>
 			<div class="panel-body" ng-repeat = 'rule in ubbrules.rules'>
 				<h4>ruleid: {{rule.rule_id}}</h4>
@@ -117,7 +117,7 @@
 				</section>
 
 				<section class="panel-body">
-					<h4>Submit a Rule(CRM-831, DAP-3270)</h4>
+					<h4>Submit a Rule</h4>
 					<form name = "ubbRuleForm"  Method = 'POST'>
 						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 							<option value = "">Choose the Action</option>
@@ -133,7 +133,7 @@
 				</section>
 
 				<section class="panel-body">
-						<h4>Submit a Rule(CRM-831, DAP-3270)</h4>
+						<h4>Submit a Rule</h4>
 						<form name = "ubbRuleForm"  action = 'null' Method = 'POST'>
 							<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 								<option value = "">Choose the Action</option>
@@ -176,5 +176,6 @@
 			</div>
 		</div>
 	</body>
+	<script type = "text/javascript" src = "../ngjsApp.js"></script>	
 </html>
 
