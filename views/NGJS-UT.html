@@ -2,12 +2,13 @@
 
 <html ng-app="test">
 	<head>
-		<script type = "text/javascript" src = "../angular.min.js"></script>
-		
+		<!--script type = "text/javascript" src = "../angular.js"></script-->
+		<script type = "text/javascript" src = 'angular.min.js'></script>
 		<link rel="stylesheet" href="bootstrap.min.css">	
 		<link rel="stylesheet" type = 'text/css' href="rsLayout.css">				
 		<link rel="stylesheet" type = 'text/css' href="rsCommon.css">
 		<link rel="stylesheet" type = 'text/css' href="caseStyle.css">
+		<link rel="stylesheet" type = 'text/css' href="ngProgress.css">
 	</head>
 	<body>
 		<common-header></common-header>
@@ -20,7 +21,7 @@
 				<p class = 'ExecutionResult'>Hello {{world}}!</p>
 				<label>Relative URL:</label>
 				<input type = "text" ng-model="url" placeholder="please enter NG here" class="form-control">
-				<p class = 'ExecutionResult'><a href = {{url}} >Dynamically Generated Url: </a>Request URL: /{{url}} </p>
+				<p class = 'ExecutionResult'><a href = "{{url}}" >Dynamically Generated Url: </a>Request URL: /{{url}} </p>
 			</div>
 		</div>
 		<hr>
@@ -175,7 +176,24 @@
 				</div>
 			</div>
 		</div>
-	</body>
-	<script type = "text/javascript" src = "../ngjsApp.js"></script>	
-</html>
 
+		<div id="simple" ng-controller="MyController" class="panel-body">
+			<p>Let's try this simple notify service, injected into the controller...</p>
+			<input ng-init="message='test'" ng-model="message" >
+			<button ng-click="callNotify(message);">NOTIFY</button>
+			<p>(you have to click 3 times to see an alert)</p>
+		  </div>
+
+		<!--
+		<div ng-controller="progressCtrl" class="panel-body">
+		</div>
+	-->
+	
+	</body>
+	<script type = "text/javascript" src = "../ngjsApp.js"></script>
+	<!--
+	<script type = "text/javascript" src = "../ngprogress.js"></script>
+	<script type = "text/javascript" src = "../ngjsApp4.js"></script>
+	<script type = "text/javascript" src = "../angular-route.js"></script>	
+	-->	
+</html>

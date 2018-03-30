@@ -17,6 +17,10 @@ app.get('/NGJS', function(req, res){
     res.sendFile(__dirname + '/views/' + 'NGJS-UT.html');
 });
 
+app.get('/NGJS4', function(req, res){
+    res.sendFile(__dirname + '/views/' + 'NGJS4.html');
+});
+
 app.get('/NG', function(req, res){
     res.sendFile(__dirname + '/views/' + 'nav.html');
 });
@@ -33,6 +37,23 @@ app.get('/chattr', function(req, res){
     res.sendFile(__dirname + '/views/' + 'chattr-console.html');
 })
 
+app.get('/500', function(req, res){
+    res.status('500');
+    res.send('500 了哈');
+    res.end();
+})
+
+app.get('/403', function(req, res){
+    res.status('403');
+    res.send('403 了哈');
+    res.end();
+})
+
+app.get('/504', function(req, res){
+    res.status('504');
+    res.send('504 了哈');
+    res.end();
+})
 
 server.listen(3000);
 console.log('HTTP server started on port 3000');
