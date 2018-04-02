@@ -6,8 +6,6 @@
 		<% include ../head.html %>
 		<title>bian</title>
 		<script type = "text/javascript" src = '/lib/angular.js'></script>
-		<script type = "text/javascript" src = "/lib/angular-route.js"></script>
-		<base href = "/">
 		<!--	
 		<link rel="stylesheet" type = 'text/css' href="rsLayout.css">				
 		<link rel="stylesheet" type = 'text/css' href="rsCommon.css">
@@ -46,6 +44,7 @@
 
 			<section class="panel-body">
 				<h4>Submit a Rule</h4>
+				<p>Expect: addRule() is called and default action is prevented.</p>
 				<form name = "ubbRuleForm" action = 'javascript:void(0)' ng-submit = 'ubbrules.addRule()'>
 					<select class="form-control" ng-model = 'ubbrules.rule.action'>
 						<option value = "">Choose the Action</option>
@@ -61,6 +60,7 @@
 			</section>
 			<section class="panel-body">
 					<h4>Submit a Rule</h4>
+					<P>Expect: addRule() is called and default action is also triggered</P>
 					<form name = "ubbRuleForm" action = 'abc' ng-submit = 'ubbrules.addRule()'>
 						<select class="form-control" ng-model = 'ubbrules.rule.action'>
 							<option value = "">Choose the Action</option>
@@ -76,6 +76,7 @@
 				</section>
 			<section class="panel-body">
 				<h4>Submit a Rule</h4>
+				<p>Expect: default POST request is issued </p>
 				<form name = "ubbRuleForm" action = 'abc' Method = 'POST'>
 					<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 						<option value = "">Choose the Action</option>
@@ -92,6 +93,7 @@
 			
 				<section class="panel-body">
 					<p class = 'learn-box'>AngularJS prevents the default action (form submission to the server) unless the form element has an action attribute specified.</p>
+					<p>Expect: Nothing happened</p>
 					<form name = "ubbRuleForm">
 						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 							<option value = "">Choose the Action</option>
@@ -108,7 +110,8 @@
 
 				<section class="panel-body">
 					<h4>Submit a Rule</h4>
-					<form name = "ubbRuleForm" action = 'abc' Method = 'POST' onSubmit = 'return true;'>
+					<p>Expect: Nothing Happened</p>
+					<form name = "ubbRuleForm" action = 'abc' Method = 'POST' onSubmit = 'return false;'>
 						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 							<option value = "">Choose the Action</option>
 							<option value = "block">Block</option>
@@ -124,6 +127,7 @@
 
 				<section class="panel-body">
 					<h4>Submit a Rule</h4>
+					<p>Expect: addRule() is called and default action is killed by AngularJS</p>
 					<form name = "ubbRuleForm"  Method = 'POST'>
 						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 							<option value = "">Choose the Action</option>
@@ -140,6 +144,7 @@
 
 				<section class="panel-body">
 					<h4>Submit a Rule</h4>
+					<p>Expect: addRule() is called and default action is triggered</p>
 					<form name = "ubbRuleForm"  action = 'null' Method = 'POST'>
 						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
 							<option value = "">Choose the Action</option>
@@ -188,12 +193,7 @@
 			<button ng-click="callNotify(message);" class = "btn btn-primary">NOTIFY</button>
 			<p>(you have to click 3 times to see an alert)</p>
 		</div>
-
-		<!--
-		<div ng-controller="progressCtrl" class="panel-body">
-		</div>
-		-->
-
 		
 	<script type = "text/javascript" src = "/NGJS/ngjsApp.js"></script>
+	<script type = "text/javascript" src = "/NGJS/client.js"></script>
 </html>
