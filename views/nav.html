@@ -1,16 +1,37 @@
 <header>
-        <img ng-src = "/logo_bi-an.png" style = "float:left ;display: inline; background-color: #ca4d37; height: 54px"/>
+        <img src = "/asset/logo_bi-an.png" style = "float:left ;display: inline; background-color: #ca4d37; height: 54px"/>
         <h1 class="navbar-brand">狴犴(bì àn) Web Framework Testing Target Site</h1>
 </header>
 
 <nav>
-        <ul class = "nav nav-pills">
-                <li class = 'active'><a href = 'NGJS'>AngularJS</a></li>
-                <li><a href = 'NGJS4'>AngularJS Error: [$injector:unpr]</a></li>
-                <li><a href = 'NG'>Angular</a></li>
-                <li><a href = 'React'>React</a></li>
-                <li><a href = 'Vue'>Vue</a></li>
-                <li><a href = 'chattr'>Socket.io</a></li>
-                <li><a href = '500'>Status500</a></li>
-        </ul>
+        <div class = "dropdown">
+                <ul class = "nav nav-pills">
+                        <li>
+                                <button class = "btn btn-primary dropdown-toggle" type = "button" data-toggle = "dropdown">AngularJS
+                                <span class="caret"></span></button>
+                                <ul class = "dropdown-menu">
+                                        <li><a href = '/NGJS/main'>AngularJS</a></li>
+                                        <li><a href = '/NGJS/SPA'>AngularJS SPA</a></li>
+                                        <li><a href = '/NGJS/unpr'>AngularJS Error: [$injector:unpr]</a></li>
+                                        <li><a href = '/NGJS/chattr'>WebSocket Socket.IO</a></li>
+                                </ul>
+                        </li>
+                        <li>
+                                <button class = "btn btn-primary dropdown-toggle" type = "button" data-toggle = "dropdown">Vue
+                                <span class="caret"></span></button>
+                                <ul class = "dropdown-menu">
+                                        <li><a href = '/VUE'>Vue</a></li>
+                                </ul>
+                        </li>
+                        <li>
+                                <button class = "btn btn-primary dropdown-toggle" type = "button" data-toggle = "dropdown">Status Code
+                                <span class="caret"></span></button>
+                                <ul class = "dropdown-menu">
+                                        <li><a href = '/StatusCode/500'>Status: 500</a></li>
+                                        <li><a href = '/StatusCode/400'>Status: 400</a></li>
+                                </ul>
+                        </li>
+                </ul>
+                
+        </div>
 </nav>

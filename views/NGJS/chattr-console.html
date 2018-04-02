@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>chattr</title>
+        <% include ../head.html %>
+        <link rel = 'stylesheet' href = '/lib/chattr-console.css'>
+        <script src = '/socket.io/socket.io.js'></script>
+    </head>
+
+    <body>
+        <% include ../nav.html %>
+        <h1>chattr</h1>
+        <ul id = 'chatters'></ul>
+        <div id = 'chat-console'>
+            <p id = 'status'>CONNECTING...</p>
+        </div>
+        <form id = 'chat-form'>
+            <input type = 'text' name = 'chat-input' id = 'chat-input' placeholder = 'type your message here...' autofocus autocomplete = 'off'>
+            <br><input type = 'submit' value = 'send'/>
+        </form>
+        <script src = '/NGJS/chattr-console.js'></script>
+    </body>
+</html>

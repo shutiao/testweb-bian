@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('test', []);
+	var app = angular.module('bian', []);
 
 	app.controller('NgmoduleController', function(){
 		this.name = 'NgModule';
@@ -36,8 +36,8 @@
 		var ubbConf = this;
 		ubbConf.rules = [];
 		$scope.fetchUbbConf = function(){
-			$http.get('/rules_config.json').success(function(data){
-				ubbConf.rules = data;
+			$http.get('/asset/rules_config.json').then(function(dataObject){
+				ubbConf.rules = dataObject.data;
 			});
 		}
 	}]);
@@ -45,7 +45,7 @@
 	app.directive('commonHeader', function(){
 		return {
 			restrict: 'E',
-			templateUrl: 'nav.html'
+			templateUrl: '/nav.html'
 		};
 	});
 

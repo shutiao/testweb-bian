@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 
-<html ng-app="test">
+<html ng-app="bian">
 	<head>
 		<!--script type = "text/javascript" src = "../angular.js"></script-->
-		<script type = "text/javascript" src = 'angular.min.js'></script>
-		<link rel="stylesheet" href="bootstrap.min.css">	
+		<% include ../head.html %>
+		<title>bian</title>
+		<script type = "text/javascript" src = '/lib/angular.js'></script>
+		<script type = "text/javascript" src = "/lib/angular-route.js"></script>
+		<base href = "/">
+		<!--	
 		<link rel="stylesheet" type = 'text/css' href="rsLayout.css">				
 		<link rel="stylesheet" type = 'text/css' href="rsCommon.css">
 		<link rel="stylesheet" type = 'text/css' href="caseStyle.css">
 		<link rel="stylesheet" type = 'text/css' href="ngProgress.css">
+		-->
 	</head>
 	<body>
 		<common-header></common-header>
 		<hr>
-		<div>
-			<h2 class = "panel-heading">Testcase# NGJS-1 ngModel: Two-Way Data Binding</h2>
-			<div class="panel-body">
+		<div id = 'NGJS-1'>
+			<h2>Testcase# NGJS-1 ngModel: Two-Way Data Binding</h2>
+			<div >
 				<label>Name:</label>
 				<input type = "text" ng-model="world" placeholder="Enter a name here" class="form-control">
 				<p class = 'ExecutionResult'>Hello {{world}}!</p>
@@ -134,27 +139,27 @@
 				</section>
 
 				<section class="panel-body">
-						<h4>Submit a Rule</h4>
-						<form name = "ubbRuleForm"  action = 'null' Method = 'POST'>
-							<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
-								<option value = "">Choose the Action</option>
-								<option value = "block">Block</option>
-								<option value = "pass">Pass</option>
-								<option value = "blank">Blank</option>
-							</select>
-							<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
-							<fieldset class="form-group">
-								<input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'Submit Rule By ngClick w/ Action (double-submission)' class="btn btn-primary pull-right"/>
-							</fieldset>
-						</form>
-					</section>
-		</div>
+					<h4>Submit a Rule</h4>
+					<form name = "ubbRuleForm"  action = 'null' Method = 'POST'>
+						<select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+							<option value = "">Choose the Action</option>
+							<option value = "block">Block</option>
+							<option value = "pass">Pass</option>
+							<option value = "blank">Blank</option>
+						</select>
+						<textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+						<fieldset class="form-group">
+							<input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'Submit Rule By ngClick w/ Action (double-submission)' class="btn btn-primary pull-right"/>
+						</fieldset>
+					</form>
+				</section>
+	</div>
 		<hr>
 		
 		<div ng-controller = "ubbApiController as ubbApi">
 			<h2 class = "panel-heading">Testcase# NGJS-3 $http</h2>
 			<div class="panel-body rs-asp-common-marginTop20">
-				<button ng-click = "fetchUbbConf()" class="new-btn-info  rs-asp-button">Fetch UBB Conf</button>
+				<button ng-click = "fetchUbbConf()" class = "btn btn-primary">Fetch UBB Conf</button>
 				<table class="table table-bordered rs-asp-common-table">
 					<thead>
 						<tr>
@@ -166,7 +171,7 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat = 'rule in ubbApi.rules' ng-show = 'rule.enabled'>
-								<td class = 'td-center'>{{rule.enabled}}</td>
+								<td class = 'td-center'>{{rule.enabled}}abc</td>
 								<th class = 'td-center'>{{rule.action}}</th>
 								<th class = 'td-center'>{{rule.condition}}</th>
 								<th class = 'td-center'>{{rule.description}}</th>
@@ -180,20 +185,15 @@
 		<div id="simple" ng-controller="MyController" class="panel-body">
 			<p>Let's try this simple notify service, injected into the controller...</p>
 			<input ng-init="message='test'" ng-model="message" >
-			<button ng-click="callNotify(message);">NOTIFY</button>
+			<button ng-click="callNotify(message);" class = "btn btn-primary">NOTIFY</button>
 			<p>(you have to click 3 times to see an alert)</p>
-		  </div>
+		</div>
 
 		<!--
 		<div ng-controller="progressCtrl" class="panel-body">
 		</div>
-	-->
-	
-	</body>
-	<script type = "text/javascript" src = "../ngjsApp.js"></script>
-	<!--
-	<script type = "text/javascript" src = "../ngprogress.js"></script>
-	<script type = "text/javascript" src = "../ngjsApp4.js"></script>
-	<script type = "text/javascript" src = "../angular-route.js"></script>	
-	-->	
+		-->
+
+		
+	<script type = "text/javascript" src = "/NGJS/ngjsApp.js"></script>
 </html>
