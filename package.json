@@ -1,7 +1,7 @@
 {
-	"name": "NodeExpressAngularjs",
+	"name": "testweb-bian",
 	"version": "0.0.0",
-	"description": "Angular1 Test Target Site",
+	"description": "Web Framework Test Target Site",
 	"main": "app.js",
 	"dependencies": {
 		"ejs": "^2.5.8",

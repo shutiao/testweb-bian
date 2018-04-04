@@ -35,8 +35,9 @@ app.get('/NGJS/:case', function(req, res){
     }
 });
 
-app.get('/VUE', function(req, res){
-    res.sendFile(__dirname + '/views/' + 'nav.html');
+app.get('/Vue', function(req, res){
+    var pathPrefix = __dirname + '/views/Vue/';
+    res.render(pathPrefix + 'playground.html');
 });
 
 app.route('/StatusCode/:code').get(function(req, res){
