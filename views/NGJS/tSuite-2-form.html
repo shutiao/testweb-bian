@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html ng-app="tSuite-2-form">
+	<head>
+		<% include ../partials/head.html %>
+		<title>bian</title>
+		<script type = "text/javascript" src = '/lib/angular.js'></script>
+	</head>
+	<body class = 'container'>
+        <% include ../partials/nav.html %>
+        <% include ../partials/echo.ejs %>
+        <div id = 'NGJS-2' ng-controller = "AddruleController as ubbrules">
+            <h2>Testcase# NGJS-2 Forms</h2>
+            <p>Bind ng var to HTML element</p>
+            <div ng-repeat = 'rule in ubbrules.rules'>
+                <h4>ruleid: {{rule.rule_id}}</h4>
+                <ul class = "list-inline">
+                    <li><p>enabled: {{rule.enabled}}</p></li>
+                    <li><p>action: {{rule.action}}</p></li>
+                    <li><p>condition: {{rule.condition}}</p></li>
+                </ul>
+            </div>
+
+            <!-- Rule Form -->
+
+            <section data-case='NGJS-2-1' class = 'col-md-6'>
+                <h4>NGJS-2-1: Submit a Rule</h4>
+                <p>Describe: Submit Rule By ngSubmit, action = 'javascript:void(0)'</p>
+                <p>Expect: addRule() is called and default action is prevented.</p>
+                <form name = "NGJS_2_1" action = 'javascript:void(0)' ng-submit = 'ubbrules.addRule()'>
+                    <select class="form-control" ng-model = 'ubbrules.rule.action'>
+                        <option value = "">Choose the Action</option>
+                        <option value = "block">Block</option>
+                        <option value = "pass">Pass</option>
+                        <option value = "blank">Blank</option>
+                    </select>
+                    <textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition'></textarea>
+                    <fieldset class="form-group">
+                        <input type = 'submit' value = 'submit' class="btn btn-success pull-right"/>
+                    </fieldset>
+                </form>
+            </section>
+            <section data-case='NGJS-2-2' class='col-md-6'>
+                    <h4 >NGJS-2-2: Submit a Rule</h4>
+                    <p>Describe: Submit Rule By ngSubmit, action: abc(double-submission)</p>
+                    <P>Expect: addRule() is called and default action is also triggered</P>
+                    <form name = "NGJS_2_2" action = '/NGJS/tSuite/2' ng-submit = 'ubbrules.addRule()'>
+                        <select class="form-control" ng-model = 'ubbrules.rule.action'>
+                            <option value = "">Choose the Action</option>
+                            <option value = "block">Block</option>
+                            <option value = "pass">Pass</option>
+                            <option value = "blank">Blank</option>
+                        </select>
+                        <textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition'></textarea>
+                        <fieldset class="form-group">
+                            <input type = 'submit' value = 'submit' class="btn btn-danger pull-right"/>
+                        </fieldset>
+                    </form>
+                </section>
+            <section data-case='NGJS_2_3' class='col-md-6'>
+                <h4>NGJS-2-3: Submit a Rule</h4>
+                <p>Describe: Submit Rule By Default w/ Action</p>
+                <p>Expect: default POST request is issued </p>
+                <form name = "NGJS-2-3" action = 'juy' Method = 'POST'>
+                    <select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+                        <option value = "">Choose the Action</option>
+                        <option value = "block">Block</option>
+                        <option value = "pass">Pass</option>
+                        <option value = "blank">Blank</option>
+                    </select>
+                    <textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+                    <input type = 'password' name = 'password'/>
+                    <fieldset class="form-group">
+                        <input type = 'submit' value = 'submit' class="btn btn-primary pull-right"/>
+                    </fieldset>
+                    
+                </form>
+            </section>
+            <section data-case='NGJS-2-4' class='col-md-6'>
+                <h4>NGJS-2-4: Submit a Rule</h4>
+                <p class = 'learn-box'>AngularJS prevents the default action (form submission to the server) unless the form element has an action attribute specified.</p>
+                <p>Describe: Submit Rule By Default w/o Action (no-submission)</p>
+                <p>Expect: Nothing happened</p>
+                <form name = "NGJS_2_4">
+                    <select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+                        <option value = "">Choose the Action</option>
+                        <option value = "block">Block</option>
+                        <option value = "pass">Pass</option>
+                        <option value = "blank">Blank</option>
+                    </select>
+                    <textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+                    <fieldset class="form-group">
+                        <input type = 'submit' value = 'Submit' class="btn btn-warning pull-right"/>
+                    </fieldset>
+                </form>
+            </section>
+
+            <section  data-case='NGJS-2-5' class='col-md-6'>
+                <h4>NGJS-2-5: Submit a Rule</h4>
+                <p>Describe: Submit Rule By onSubmit = 'return false;'</p>
+                <p>Expect: Nothing Happened</p>
+                <form name = "NGJS_2_5" action = '' Method = 'POST' onSubmit = 'return false;'>
+                    <select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+                        <option value = "">Choose the Action</option>
+                        <option value = "block">Block</option>
+                        <option value = "pass">Pass</option>
+                        <option value = "blank">Blank</option>
+                    </select>
+                    <textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+                    <fieldset class="form-group">
+                        <input type = 'submit' value = 'submit' class="btn btn-primary pull-right"/>
+                    </fieldset>
+                </form>
+            </section>
+
+            <section data-case='NGJS-2-6' class='col-md-6'>
+                <h4>NGJS-2-6: Submit a Rule</h4>
+                <P>Describe: Submit Rule By ngClick w/o Action</P>
+                <p>Expect: addRule() is called and default action is killed by AngularJS</p>
+                <form name = "NGJS_2_6"  Method = 'POST'>
+                    <select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+                        <option value = "">Choose the Action</option>
+                        <option value = "block">Block</option>
+                        <option value = "pass">Pass</option>
+                        <option value = "blank">Blank</option>
+                    </select>
+                    <textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+                    <fieldset class="form-group">
+                        <input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'submit' class="btn btn-primary pull-right"/>
+                    </fieldset>
+                </form>
+            </section>
+
+            <section data-case='NGJS2-7' class='col-md-6'>
+                <h4>NGJS-2-7: Submit a Rule</h4>
+                <p>Describe: Submit Rule By ngClick w/ Action (double-submission)</p>
+                <p>Expect: addRule() is called and default action is triggered</p>
+                <form name = "NGJS_2_7"  action = '' Method = 'POST'>
+                    <select class="form-control" ng-model = 'ubbrules.rule.action' name = 'action'>
+                        <option value = "">Choose the Action</option>
+                        <option value = "block">Block</option>
+                        <option value = "pass">Pass</option>
+                        <option value = "blank">Blank</option>
+                    </select>
+                    <textarea ng-model = 'ubbrules.rule.condition' class="form-control" placeholder = 'write a condition' name = 'condition'></textarea>
+                    <fieldset class="form-group">
+                        <input type = 'submit' ng-click = 'ubbrules.addRule()' value = 'submit' class="btn btn-primary pull-right"/>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+        <hr>
+        <script type = "text/javascript" src = "/NGJS/tSuite-2-form.js"></script>
+        <script type = "text/javascript" src = "/NGJS/tSuite-2-formHelper.js"></script>
+    </body>
+</html>

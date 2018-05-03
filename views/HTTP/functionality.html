@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head.html %>
+    </head>
+    <body class = 'container'>
+        <% include ../partials/nav.html %>
+        <% include ../partials/echo.ejs %>
+        <hr>
+    </body>
+    <script type = "text/javascript" src = "/HTTP/tSuite-3-functionality.js"></script>
+    <div id = 'HTTP-3-1' class = 'col-md-6' zendao-case = '2667'>
+        <h4>HTTP-3-1 (#2667) CSP发送违例报告的请求会被Sphinx保护</h4>
+        <p>Describe: 访问标准保护后的测试场景; 访问高级保护后的测试场景</p>
+        <p>Expect: 违例报告请求被cookie token/url token保护</p>
+        <form method = 'get'>
+            <div class="form-group">
+                <label for = 'Content-Security-Policy'>Content-Security-Policy</label>
+                <input type = 'text' id = 'Content-Security-Policy' name = 'Content-Security-Policy' value = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; report-uri /HTTP/functionality?case=csp-reports" class="form-control" />
+            </div>
+            <div>
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-1' class = 'form-control'/>
+            </div>
+            <!--a class = 'btn btn-info' onclick = 'HTTP_3_1();'>Switch to #2668</a-->
+            <input type = 'submit' value = 'Apply Response Header' class = 'btn btn-primary'/>
+        </form>
+    </div>
+    <div id = 'HTTP-3-2' class = 'col-md-6' zendao-case = '2668'>
+        <h4>HTTP-3-2 (#2668) CSP配置了report-uri，但无违例的情况</h4>
+        <p>Describe: 访问标准保护后的测试场景; 访问高级保护后的测试场景</p>
+        <p>Expect: Sphinx注入后应该没有违例报告</p>
+        <form method = 'get'>
+            <div class="form-group">
+                <label for = 'Content-Security-Policy'>Content-Security-Policy</label>
+                <input type = 'text' id = 'Content-Security-Policy' name = 'Content-Security-Policy'  value = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; report-uri /HTTP/functionality?case=csp-reports" class="form-control" />
+            </div>
+            <div>
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-2' class = 'form-control'/>
+            </div>
+            <!--a class = 'btn btn-info' onclick = 'HTTP_3_1();'>Switch to #2668</a-->
+            <input type = 'submit' value = 'Apply Response Header' class = 'btn btn-primary'/>
+        </form>
+    </div>
+
+    <div id = 'HTTP-3-3' class = 'col-md-6' zendao-case = '2553'>
+        <h4>HTTP-3-3 (#2553) 普通：GET = 301 + Location</h4>
+        <p>Describe: 高级保护，能正常跳转；</p>
+        <p>Expect: 1、能正常跳转; 2、该用例产生的请求无异常</p>
+        <form name = 'HTTP-3-3' method = 'get' class = 'form-inline'>
+            <div class="form-group">
+                <label for = 'Method'>HTTP Verb</label>
+                <input type = 'text' id = 'Method' name = 'Method' placeholder = "GET" value = 'GET' class="form-control" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <label for = 'StatusCode'>Status Code</label>
+                <input type = 'text' id = 'StatusCode' name = 'StatusCode' placeholder = "301" value = '301' class="form-control" readonly="readonly"/>
+            </div>
+            <!--
+                <a class = 'btn btn-info' onclick = 'HTTP_3_3();'>Switch to #2554</a>
+            -->
+            <div class="form-group">
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-3'/>
+            </div>
+            <input type = 'submit' value = '301 Redirect' class = 'btn btn-primary'/>
+        </form>
+    </div>
+
+    <div id = 'HTTP-3-4' class = 'col-md-6' zendao-case = '2554'>
+        <h4>HTTP-3-4 (#2554) 普通：POST = 302 + Location</h4>
+        <p>Describe: 高级保护，能正常跳转；</p>
+        <p>Expect: 1、能正常跳转; 2、该用例产生的请求无异常</p>
+        <form name = 'HTTP-3-3' method = 'post' class = 'form-inline'>
+            <div class="form-group">
+                <label for = 'Method'>HTTP Verb</label>
+                <input type = 'text' id = 'Method' name = 'Method' placeholder = "POST" value = 'POST' class="form-control" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <label for = 'StatusCode'>Status Code</label>
+                <input type = 'text' id = 'StatusCode' name = 'StatusCode' placeholder = "302" value = '302' class="form-control" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-4'/>
+            </div>
+            <input type = 'submit' value = '302 Redirect' class = 'btn btn-primary'/>
+        </form>
+    </div>
+</html>

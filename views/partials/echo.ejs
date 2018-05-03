@@ -1,0 +1,30 @@
+<div class='col-md-12'>
+    <!--h4>Request Line</h4-->
+    <div class='well'>
+        <%= reqLine %>
+    </div>
+</div>
+
+<div class='col-md-6 col-xs-6'>
+    <h4>Request Headers</h4>
+    <ul class = 'well echoColWell'>
+        <% Object.keys(headers).forEach(function(key){ %>
+            <li>
+            <label><%= key %>:</label>
+            <p><%= headers[key] %></p>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+
+<div class='col-md-6 col-xs-6'>
+    <h4>Request Body</h4>
+    <ul class = 'well echoColWell'>
+        <% Object.keys(body).forEach(function(key){ %>
+            <li>
+            <label><%= key %>:</label>
+            <p><%= body[key] %></p>
+            </li>
+        <% }); %>
+    </ul>
+</div>

@@ -1,10 +1,10 @@
 var app = new Vue({
-    el: '#app',
+    el: '#tSuite-1-basics',
     data: {
-        product: 'Socks',
-        image: '/asset/logo_bi-an.png',
-        url: '/NGJS/main',
-        enabled: false,
+        product: 'Vue',
+        image: '/asset/img-single-en.png',
+        url: '/',
+        doLove: true,
         rules: [{
             name: "rule",
             enabled: "false",
@@ -43,3 +43,5 @@ var app = new Vue({
         }
     }
 })
+
+

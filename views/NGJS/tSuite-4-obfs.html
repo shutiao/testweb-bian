@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app = 'NGJS4'>
+    <head>
+        <% include ../partials/head.html %>
+        <script type = "text/javascript" src = '/lib/angular.js'></script>
+        <!--script type = "text/javascript" src = "/lib/angular-route.js"></script-->	
+        <!--script type = "text/javascript" src = "/lib/ngprogress.js"></script-->
+        <script type = 'text/javascript' src = '/NGJS/tSuite-4-obfs.js'></script>
+    </head>
+    <body class = 'container'>
+        <% include ../partials/nav.html %>
+        <!--
+        <div data-case="NGJS-4-1" ng-controller="testMarkup">
+            <h4>NGJS-4-1: </h4>
+            
+            <p>AngularJS App will crash under power mode due to js var obfuscation</p>
+            <p class='well'>unknown provider $_681Provide</p>
+            <p>{{AmIOK}}</p>
+        </div><br>
+        -->
+
+        <div data-case='NGJS-4-1' ng-controller="NotifyServiceCtrl">
+            <h4>NGJS-4-1: Service Inject</h4>
+            <a class='btn btn-danger' href = 'https://forceshield.atlassian.net/browse/DAP-3548' target = 'blank'>DAP-3548</a>
+			<p>Let's try this simple notify service, injected into the controller</p>
+			<p>(you have to click 3 times to see an alert)</p>
+			<input ng-init="message='test'" ng-model="message" >
+			<button ng-click="callNotify(message);" class = "btn btn-primary">NOTIFY</button>
+		</div>
+    </body>
+</html>

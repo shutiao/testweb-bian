@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html ng-app="tSuite-1-url">
+	<head>
+		<!--script type = "text/javascript" src = "../angular.js"></script-->
+		<% include ../partials/head.html %>
+		<title>bian</title>
+		<script type = "text/javascript" src = '/lib/angular.js'></script>
+	</head>
+	<body class = 'container'>
+		<common-header></common-header>
+		<% include ../partials/echo.ejs %>
+		<hr>
+		<div data-case='NGJS-1-1'>
+			<h4>NGJS-1-1 ngModel: Two-Way Data Binding</h2>
+			<div >
+				<label>Name:</label>
+				<input type = "text" ng-model="world" placeholder="Enter a name here" class="form-control">
+				<p class = 'well'>Hello {{world}}!</p>
+			</div>
+		</div>
+		<div data-case='NGJS-1-2'>
+			<h4>NGJS-1-2 ngModel: Bind Data to href Value</h2>
+			<label>Relative URL:</label>
+			<input type = "text" ng-model="url" placeholder="please enter 2 here" class="form-control">
+			<p class = 'well'><a href = "{{url}}" >Dynamically Generated Url: </a>Request URL: /{{url}} </p>
+		</div>
+		<hr>
+		
+		<div data-case= 'NGJS-1-3' ng-controller = "ubbApiController as ubbApi">
+			<h4>NGJS-1-3 $http Get</h2>
+			<div >
+				<button ng-click = "fetchUbbConf()" class = "btn btn-primary">Fetch UBB Conf</button>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class = 'td-center'>enabled</th>
+							<th class = 'td-center'>action</th>
+							<th class = 'td-center'>condition</th>
+							<th class = 'td-center'>description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = 'rule in ubbApi.rules' ng-show = 'rule.enabled'>
+								<td class = 'td-center'>{{rule.enabled}}abc</td>
+								<th class = 'td-center'>{{rule.action}}</th>
+								<th class = 'td-center'>{{rule.condition}}</th>
+								<th class = 'td-center'>{{rule.description}}</th>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+	<script type = "text/javascript" src = "/NGJS/tSuite-1-url.js"></script>
+</html>

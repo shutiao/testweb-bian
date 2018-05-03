@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head.html %>
+    </head>
+    <body class = 'container'>
+        <% include ../partials/nav.html %>
+        <% include ../partials/echo.ejs %>
+        <hr>
+
+        <div id = 'HTTP-2-1' class = 'col-md-6' zendao-case = '2496'>
+            <h4>HTTP-2-1 (#2496) 静态可缓存HTML</h4>
+            <p>Describe: 若干与CDN相关的响应头与请求头，分别检查两个阶段的请求和两个阶段的响应</p>
+            <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
+            <form method = 'get'>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Cache-Control</label>
+                    <input type = 'text' id = 'Cache-Control' name = 'Cache-Control' placeholder = 's-maxage=600, max-age=2592000, public' value = 's-maxage=600, max-age=2592000, public' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Expires</label>
+                    <input type = 'text' id = 'Expires' name = 'Expires' placeholder = 'Mon, 17 Apr 2028 07:46:32 GMT' value = 'Mon, 17 Apr 2028 07:46:32 GMT' class="form-control" />
+                </div>
+                <div>
+                    <input type = 'hidden' name = 'case' value = 'HTTP-2-1' class = 'form-control'/>
+                </div>
+                <input type = 'submit' value = 'Apply Response Header' class = 'btn'/>
+            </form>
+        </div>
+
+        <div id = 'HTTP-2-2' class = 'col-md-6' zendao-case = '2548,2549'>
+            <h4>HTTP-2-2 (#2548,#2549) 动态不可/可缓存HTML</h4>
+            <p>Describe: 若干与CDN相关的响应头与请求头，分别检查两个阶段的请求和两个阶段的响应</p>
+            <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
+            <form method = 'get'>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Cache-Control</label>
+                    <input type = 'text' id = 'Cache-Control' name = 'Cache-Control' placeholder = 's-maxage=60, max-age=0' value = 'private, max-age=0' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Expires</label>
+                    <input type = 'text' id = 'Expires' name = 'Expires' placeholder = 'Mon, 17 Apr 2028 07:46:32 GMT' value = '-1' class="form-control" />
+                </div>
+                <div>
+                    <input type = 'hidden' name = 'case' value = 'HTTP-2-2' class = 'form-control'/>
+                </div>
+                <a class = 'btn btn-info' onclick = 'HTTP_2_2();'>Switch to #2549</a>
+                <input type = 'submit' value = 'Apply Response Header' class = 'btn'/>
+            </form>
+        </div><hr>
+
+       <div id = 'HTTP-2-3' class = 'col-md-6' zendao-case = '2550'>
+            <h4>HTTP-2-3 (#2550) 没有任何缓存相关头的HTML</h4>
+            <p>Describe: 响应头没有Cache-Control,Expires,ETag, Last-Modified</p>
+            <p>Step: 把<code>app.disable('etag')</code> 添加到/routes/index.js 重启，刷新本页面</p>
+            <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
+            <a href = ''>Refresh Page</a>
+        </div><hr>
+
+        <div id = 'HTTP-2-4' class = 'col-md-6' zendao-case = '2551'>
+            <h4>HTTP-2-4 (#2551) 动态不可缓存POST请求</h4>
+            <p>Describe: 若干与CDN相关的响应头与请求头，分别检查两个阶段的请求和两个阶段的响应</p>
+            <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
+            <form method = 'post'>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Cache-Control</label>
+                    <input type = 'text' id = 'Cache-Control' name = 'Cache-Control' placeholder = 's-maxage=0, no-cache, no-store, max-age=0, must-revalidate' value = 's-maxage=0, no-cache, no-store, max-age=0, must-revalidate' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Expires</label>
+                    <input type = 'text' id = 'Expires' name = 'Expires' placeholder = '-1' value = '-1' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Pragma</label>
+                    <input type = 'text' id = 'Pragma' name = 'Pragma' placeholder = 'no-cache' value = 'no-cache' class="form-control" />
+                </div>
+                <div>
+                    <input type = 'hidden' name = 'case' value = 'HTTP-2-4' class = 'form-control'/>
+                </div>
+                <input type = 'submit' value = 'Apply Response Header' class = 'btn'/>
+            </form>
+        </div>
+
+        <div id = 'HTTP-2-5' class = 'col-md-6' zendao-case = '2601'>
+            <h4>HTTP-2-5 (#2601) 缓存POST HTML</h4>
+            <p>Describe: 若干与CDN相关的响应头与请求头，分别检查两个阶段的请求和两个阶段的响应</p>
+            <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
+            <form method = 'post'>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Cache-Control</label>
+                    <input type = 'text' id = 'Cache-Control' name = 'Cache-Control' placeholder = 's-maxage=600, max-age=2592000, public' value = 's-maxage=600, max-age=2592000, public' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Expires</label>
+                    <input type = 'text' id = 'Expires' name = 'Expires' placeholder = 'Tue, 17 Apr 2028 07:46:32 GMT' value = 'Mon, 17 Apr 2028 07:46:32 GMT' class="form-control" />
+                </div>
+                <div>
+                    <input type = 'hidden' name = 'case' value = 'HTTP-2-5' class = 'form-control'/>
+                </div>
+                <input type = 'submit' value = 'Apply Response Header' class = 'btn'/>
+            </form>
+        </div>
+
+        <div id = 'HTTP-2-6' class = 'col-md-6' zendao-case = '2602'>
+            <h4>HTTP-2-6 (#2602) 缓存GET 404 HTML</h4>
+            <form method = 'get'>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Cache-Control</label>
+                    <input type = 'text' id = 'Cache-Control' name = 'Cache-Control' placeholder = 's-maxage=600, max-age=2592000, public' value = 's-maxage=600, max-age=2592000, public' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>Expires</label>
+                    <input type = 'text' id = 'Expires' name = 'Expires' placeholder = 'Mon, 17 Apr 2028 07:46:32 GMT' value = 'Mon, 17 Apr 2028 07:46:32 GMT' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for = 'Cache-Control'>StatusCode</label>
+                    <input type = 'text' id = 'StatusCode' name = 'StatusCode' placeholder = '404' value = '404' class="form-control" />
+                </div>
+                <div>
+                    <input type = 'hidden' name = 'case' value = 'HTTP-2-6' class = 'form-control'/>
+                </div>
+                <input type = 'submit' value = 'Apply Response Header' class = 'btn'/>
+            </form>
+        </div>
+    </body>
+    <script type = "text/javascript" src = "/HTTP/tSuite-2-cache.js"></script>
+</html>

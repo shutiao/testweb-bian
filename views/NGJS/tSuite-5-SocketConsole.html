@@ -1,13 +1,13 @@
 <html>
     <head>
         <title>chattr</title>
-        <% include ../head.html %>
+        <% include ../partials/head.html %>
         <link rel = 'stylesheet' href = '/lib/chattr-console.css'>
         <script src = '/socket.io/socket.io.js'></script>
     </head>
 
-    <body>
-        <% include ../nav.html %>
+    <body class = 'container'>
+        <% include ../partials/nav.html %>
         <h1>chattr</h1>
         <ul id = 'chatters'></ul>
         <div id = 'chat-console'>
@@ -17,6 +17,6 @@
             <input type = 'text' name = 'chat-input' id = 'chat-input' placeholder = 'type your message here...' autofocus autocomplete = 'off'>
             <br><input type = 'submit' value = 'send'/>
         </form>
-        <script src = '/NGJS/chattr-console.js'></script>
+        <script src = '/NGJS/tSuite-5-SocketConsole.js'></script>
     </body>
 </html>

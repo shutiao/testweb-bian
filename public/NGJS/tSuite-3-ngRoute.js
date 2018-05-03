@@ -1,4 +1,4 @@
-angular.module('ngRouteExample', ['ngRoute'])
+angular.module('tSuite-3-ngRoute', ['ngRoute'])
 
  .controller('MainController', function($scope, $route, $routeParams, $location) {
      $scope.$route = $route;

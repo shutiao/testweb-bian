@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head.html %>
+        <!--
+            <script type = "text/javascript" src = '/lib/vue.js'></script>
+        -->
+    </head>
+    <body class = 'container'>
+        <% include ../partials/nav.html %>
+        <% include ../partials/echo.ejs %>
+        <hr>
+        
+        <div id = 'HTTP-1-1' class = 'col-md-6' zendao-case = '2524'>
+            <h4>HTTP-1-1 (#2524) Ajax + GET + Accept = 200 + content-location</h4>
+            <p>Describe: 访问保护后的被测场景，比对sphinx接收到的请求和该请求经过sphinx后发送给上游的请求内容，以及查看response code及 是否能根据content-location内容正常访问协商后的地址</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的状态码、能根据content-location内容正常访问协商后的地址</p>
+            <button class = 'btn'>HTTP-1-1</button>
+        </div><hr>
+
+        <div id = 'HTTP-1-2' class = 'col-md-6' zendao-case = '2479'>
+            <h4>HTTP-1-2 (#2479) POST + 空Body = 200</h4>
+            <p>Describe: 访问保护后的被测场景，比对sphinx接收到的请求和该请求经过sphinx后发送给上游的请求内容，以及查看response code是否与原站一致</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的状态码</p>
+            <form method = 'post'>
+                <input type = 'submit' value = 'HTTP-1-2' class = 'btn'/>
+            </form>
+        </div><hr>
+
+        <div id = 'HTTP-1-3' class = 'col-md-6' zendao-case = '2481'>
+            <h4>HTTP-1-3 (#2481, #2482, #2476) DELETE = 200/202</h4>
+            <p>Describe: 通过修改code参数指定服务器返回的状态码。服务器将以JSON格式返回请求报文。</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的状态码</p>
+            <code>curl -i -X DELETE 'http://localhost:3000/HTTP/methods?case=HTTP-1-3&code=200'</code>
+            <br>
+            <form class = 'form-inline'>
+                <label for = 'code'>Status</label>
+                <input type = 'text' id = 'status' name = 'status' placeholder = '202' value = '202' class="form-control" />
+                <a class = 'btn btn-info' onclick ='HTTP_1_3()'>HTTP-1-3</a>
+            </form>
+        </div>
+    </body>
+    <script type = "text/javascript" src = "/HTTP/tSuite-1-methods.js"></script>
+</html>

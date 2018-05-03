@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html ng-app="tSuite-6-Ajax">
+	<head>
+		<!--script type = "text/javascript" src = "../angular.js"></script-->
+		<% include ../partials/head.html %>
+		<title>bian</title>
+		<script type = "text/javascript" src = '/lib/angular.js'></script>
+	</head>
+	<body class = 'container'>
+        <% include ../partials/nav.html %>
+
+        <div data-case='NGJS-6-1'>
+            <h4>NGJS-6-1 ng-include will fetch ng-included file via Ajax</h4>
+            <p>Expect: HTML is fetched on a separate request</p>
+            <div ng-include = "'/NGJS/book.html'" class='well'></div>
+        </div><hr>
+
+        <div data-case='NGJS-6-2' ng-controller='NGJS-6-2 as ctl'>
+            <h4>NGJS-6-2 include the external HTML content into the application</h4>
+            <p>Pass variable into ng-include</p>
+            <p>Expect: HTML is fetched on a separate request</p>
+            <div ng-include = "ctl.FileSrcURL" class='well'></div>
+        </div><hr>
+
+        <div data-case='NGJS-6-3' ng-controller = 'NGJS-6-3 as ctl'>
+            <h4>NGJS-6-2 include the external HTML content into the application</h4>
+            <p>Use variable Concatenation</p>
+            <p>Expect: HTML is fetched on a separate request</p>
+            <div ng-include = "ctl.ngIncludePath + ctl.ngIncludePathExt" class='well'></div>
+        </div><hr>
+
+        <script type = "text/javascript" src = "/NGJS/tSuite-6-Ajax.js"></script>
+    </body>
+</html>
