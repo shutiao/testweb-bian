@@ -9,6 +9,7 @@ app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/angular-app/dist'));
 routers(app);
 chattr(server);
 

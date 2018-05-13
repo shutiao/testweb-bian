@@ -2,34 +2,32 @@
 <html>
     <head>
         <% include ../partials/head.html %>
-        <!--
-            <script type = "text/javascript" src = '/lib/vue.js'></script>
-        -->
     </head>
     <body class = 'container'>
         <% include ../partials/nav.html %>
         <% include ../partials/echo.ejs %>
         <hr>
         
-        <div id = 'HTTP-1-1' class = 'col-md-6' zendao-case = '2524'>
-            <h4>HTTP-1-1 (#2524) Ajax + GET + Accept = 200 + content-location</h4>
-            <p>Describe: 访问保护后的被测场景，比对sphinx接收到的请求和该请求经过sphinx后发送给上游的请求内容，以及查看response code及 是否能根据content-location内容正常访问协商后的地址</p>
+        <div id = 'HTTP-1-1' class = 'col-md-6 caseModule' zendao-case = '2524'>
+            <h4>HTTP-1-1<span class = 'caseID'></span>Ajax + GET + Accept = 200 + content-location</h4>
+            <p>Describe: 访问保护后的被测场景，比对sphinx接收到的请求和该请求经过sphinx后发送给上游的请求内容</p>
             <p>Expect: 保护后不改变原请求信息以及响应的状态码、能根据content-location内容正常访问协商后的地址</p>
-            <button class = 'btn'>HTTP-1-1</button>
+            <button class = 'btn btn-default'>HTTP-1-1</button>
         </div><hr>
 
-        <div id = 'HTTP-1-2' class = 'col-md-6' zendao-case = '2479'>
-            <h4>HTTP-1-2 (#2479) POST + 空Body = 200</h4>
+        <div id = 'HTTP-1-2' class = 'col-md-6 caseModule' zendao-case = '2479'>
+            <h4>HTTP-1-2<span class = 'caseID'></span>POST + 空Body = 200</h4>
             <p>Describe: 访问保护后的被测场景，比对sphinx接收到的请求和该请求经过sphinx后发送给上游的请求内容，以及查看response code是否与原站一致</p>
             <p>Expect: 保护后不改变原请求信息以及响应的状态码</p>
             <form method = 'post'>
-                <input type = 'submit' value = 'HTTP-1-2' class = 'btn'/>
+                <input type = 'submit' value = 'HTTP-1-2' class = 'btn btn-default'/>
             </form>
+            <br>
         </div><hr>
 
-        <div id = 'HTTP-1-3' class = 'col-md-6' zendao-case = '2481'>
-            <h4>HTTP-1-3 (#2481, #2482, #2476) DELETE = 200/202</h4>
-            <p>Describe: 通过修改code参数指定服务器返回的状态码。服务器将以JSON格式返回请求报文。</p>
+        <div id = 'HTTP-1-3' class = 'col-md-6 caseModule' zendao-case = '2481,2482,2476'>
+            <h4>HTTP-1-3<span class = 'caseID'></span>DELETE = 200/202</h4>
+            <p>Describe: 使用Delete动作，指定服务器将返回的状态码，将以JSON格式返回请求报文</p>
             <p>Expect: 保护后不改变原请求信息以及响应的状态码</p>
             <code>curl -i -X DELETE 'http://localhost:3000/HTTP/methods?case=HTTP-1-3&code=200'</code>
             <br>
@@ -38,7 +36,85 @@
                 <input type = 'text' id = 'status' name = 'status' placeholder = '202' value = '202' class="form-control" />
                 <a class = 'btn btn-info' onclick ='HTTP_1_3()'>HTTP-1-3</a>
             </form>
-        </div>
+        </div><hr>
+
+        <div id = 'HTTP-1-4' class = 'col-md-6 caseModule' zendao-case = '2485'>
+            <h4>HTTP-1-4<span class = 'caseID'></span>POST = 201 + Location</h4>
+            <p>Describe: 访问保护后的被测场景，比对原站的请求和保护后请求经过sphinx后发送给上游的请求内容</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的response code、跳转后的location(?)</p>
+            <form method = 'post' name = 'HTTP-1-4' class = 'form-inline'>
+                <div class="form-group">
+                    <label for = 'StatusCode'>Status Code</label>
+                    <input type = 'text' id = 'StatusCode' name = 'StatusCode' placeholder = "201" value = '201' class="form-control" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <input type = 'hidden' name = 'case' value = 'HTTP-1-4'/>
+                </div>
+                <input type = 'submit' value = 'HTTP-1-4' class = 'btn btn-default'/>
+            </form><br>
+        </div><hr>
+
+        <div id = 'HTTP-1-5' class = 'col-md-6 caseModule' zendao-case = '2486'>
+            <h4>HTTP-1-5<span class = 'caseID'></span>PATCH = 204</h4>
+            <p>Describe: 在 PUT 请求中进行资源更新，但是不需要改变当前展示给用户的页面，那么返回 204 No Content</p>
+            <p>Expect: 204 响应默认是可以被缓存的。在响应中需要包含头信息 ETag。</p>
+            <code>curl -i -X PATCH 'http://localhost:3000/HTTP/methods?case=HTTP-1-5'</code>
+            <br>
+        </div><hr>
+
+        <div id = 'HTTP-1-6' class = 'col-md-6 caseModule' zendao-case = '2489,2492'>
+            <h4>HTTP-1-6<span class = 'caseID'></span>GET = 400/501 + HTML</h4>
+            <p>Describe: 可定制响应状态码</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的response code、HTML是否与原站一致（不包括sphinx插入的自己的信息）</p>
+            <form method = 'get' name = 'HTTP-1-6' class = 'form-inline'>
+                <div class="form-group">
+                    <label for = 'Status Code'>Status Code</label>
+                    <input type = 'text' name = 'StatusCode' placeholder = "501" value = '400' class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type = 'hidden' name = 'case' value = 'HTTP-1-6'/>
+                </div>
+                <input type = 'submit' value = 'HTTP-1-6' class = 'btn btn-default'/>
+            </form><br>
+        </div><hr>
+
+        <div id = 'HTTP-1-7' class = 'col-md-6 caseModule' zendao-case = '2490'>
+            <h4>HTTP-1-7<span class = 'caseID'></span>GET = 401 + WWW-Authenticate</h4>
+            <p>Describe: 完成完整的认证过程 </p>
+            <p>Expect: 保护后不改变原请求信息以及响应的response code、认证过程</p>
+            <form method = 'get' name = 'HTTP-1-7' class = 'form-inline'>
+                <div class="form-group">
+                    <input type = 'hidden' name = 'case' value = 'HTTP-1-7'/>
+                </div>
+                <input type = 'submit' value = 'HTTP-1-7' class = 'btn btn-default'/>
+            </form><br>
+        </div><hr>
+
+        <div id = 'HTTP-1-8' class = 'col-md-6 caseModule' zendao-case = '2484'>
+            <h4>HTTP-1-8<span class = 'caseID'></span>PUT + EXPECT (100-continue) = 100</h4>
+            <p>Describe: 一般用于Ajax请求</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的response code、EXPECT头引发的与server端的通信过程</p>
+            <code>curl -i -X PUT --header "Expect:100-continue" PUT 'http://localhost:3000/HTTP/methods?case=HTTP-1-8'
+            </code>
+            <br>
+        </div><hr>
+
+        <div id = 'HTTP-1-9' class = 'col-md-6 caseModule' zendao-case = '2487'>
+            <h4>HTTP-1-9<span class = 'caseID'></span>POST = 205</h4>
+            <p>Describe: 205 Reset Content</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的response code及205后的行为</p>
+            <form method = 'POST' name = 'HTTP-1-9' class = 'form-inline'>
+                <div class="form-group">
+                    <label for = 'Status Code'>Status Code</label>
+                    <input type = 'text' name = 'StatusCode' placeholder = "205" value = '205' class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type = 'hidden' name = 'case' value = 'HTTP-1-9'/>
+                </div>
+                <input type = 'submit' value = 'HTTP-1-9' class = 'btn btn-default'/>
+            </form><br>
+        </div><hr>
+
     </body>
     <script type = "text/javascript" src = "/HTTP/tSuite-1-methods.js"></script>
 </html>

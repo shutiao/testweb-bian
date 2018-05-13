@@ -17,6 +17,11 @@ chmod +x ./bin/www
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
+### Complie Angular App
+```
+cd angular-app
+ng build
+```
 ### Config Proxy to Speed Up
 ``` bash
 git config --global http.proxy 'socks5://10.10.8.66:1080'

@@ -7,4 +7,3 @@ statusR.route('/:code').get(function(req, res){
 });
 
 module.exports = statusR;
-

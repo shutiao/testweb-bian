@@ -17,7 +17,7 @@
 		
 			$http({
 				method: 'POST',
-				url: '/NGJS/tSuite-2-form',
+				url: '/NGJS/tSuite/2',
 				data: this.rule
 			}).then(function(response){
 				this.rules.push(response.data);

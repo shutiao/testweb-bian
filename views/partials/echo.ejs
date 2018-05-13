@@ -1,13 +1,13 @@
-<div class='col-md-12'>
+<div id = 'lineDiv' class='col-md-12'>
     <!--h4>Request Line</h4-->
-    <div class='well'>
+    <div id = 'line' class='well'>
         <%= reqLine %>
     </div>
 </div>
 
-<div class='col-md-6 col-xs-6'>
+<div id = 'headersDiv' class='col-md-6 col-xs-6'>
     <h4>Request Headers</h4>
-    <ul class = 'well echoColWell'>
+    <ul id = 'headers' class = 'well echoColWell'>
         <% Object.keys(headers).forEach(function(key){ %>
             <li>
             <label><%= key %>:</label>
@@ -17,9 +17,9 @@
     </ul>
 </div>
 
-<div class='col-md-6 col-xs-6'>
+<div id = 'bodyDiv' class='col-md-6 col-xs-6'>
     <h4>Request Body</h4>
-    <ul class = 'well echoColWell'>
+    <ul id = 'body' class = 'well echoColWell'>
         <% Object.keys(body).forEach(function(key){ %>
             <li>
             <label><%= key %>:</label>
