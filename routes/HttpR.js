@@ -268,4 +268,9 @@ HttpR.route('/cache/http-2-8')
     res.render(renderFile, options);
 });
 
+HttpR.route('/cache-o')
+    .get(function(req, res){
+        res.render(__dirname + '/../views/HTTP/cache-o.html');
+    });
+
 module.exports = HttpR;

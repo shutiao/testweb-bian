@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/head.html %>
+</head>
+<body class='container'>
+    <% include ../partials/nav.html %>
+    <% include ../partials/echo.ejs %>
+    <hr>
+
+    <div id = 'HTTP-4-1' class = 'col-md-6 caseModule' zendao-case = '2606'>
+        <h4>HTTP-4-1<span class = 'caseID'></span>不保护的静态可缓存资源Font任意头不会被篡改</h4>
+        <p>Describe: 访问保护后的被测场景，比对sphinx接收到的请求，该请求经过sphinx后发送给上游的请求，上游返回的响应，经过sphinx返回给客户端的响应。</p>
+        <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
+        <i class = 'glyphicon glyphicon-random'></i>
+        <i class = 'glyphicon glyphicon-briefcase'></i>
+    </div><hr>
+</body>
+<script type="text/javascript" src="/HTTP/tSuite-4-cache-o.js"></script>
+</html>
