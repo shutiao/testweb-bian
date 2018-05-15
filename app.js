@@ -4,7 +4,6 @@ var server = require('http').createServer(app);
 var routers = require('./routes');
 var chattr = require('./public/NGJS/tSuite-5-SocketServer.js');
 
-
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
