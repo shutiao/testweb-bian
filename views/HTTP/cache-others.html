@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <% include ../../partials/head.html %>
+    <% include ../partials/head.html %>
 </head>
 <body class='container'>
-    <% include ../../partials/nav.html %>
-    <% include ../../partials/echo.ejs %>
+    <% include ../partials/nav.html %>
+    <% include ../partials/echo.ejs %>
     <hr>
 
     <div id = 'HTTP-4-1' class = 'col-md-6 caseModule' zendao-case = '2606'>
@@ -18,8 +18,8 @@
 
 
     <!--2018/5/7-->
-    <div id='HTTP-4-2' class='col-md-6' zendao-case='2611'>
-        <h4>HTTP-4-2 (#2611) CDN缓存用户通过query标示不同版本的js</h4>
+    <div id='HTTP-4-2' class='col-md-6 caseModule' zendao-case='2611'>
+        <h4>HTTP-4-2<span class = 'caseID'></span>CDN缓存用户通过query标示不同版本的js</h4>
         <p>Describe: 用户html页面通过script src标签的qurey（version=1）引用版本1的js</p>
         <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的js内容正确被混淆</p>
         <form method='get' action="cache/http-4-2">
@@ -41,8 +41,8 @@
         </form>
     </div>
 
-    <div id='HTTP-4-3' class='col-md-6' zendao-case='2612'>
-        <h4>HTTP-4-3 (#2612)  CDN缓存用户不以名字和query标志不同版本的js</h4>
+    <div id='HTTP-4-3' class='col-md-6 caseModule' zendao-case='2612'>
+        <h4>HTTP-4-3<span class = 'caseID'></span>CDN缓存用户不以名字和query标志不同版本的js</h4>
         <p>Describe: 定制两个不同版本的客户js，方法名一样但是内部逻辑不一样，在html上调用其方法回显 </p>
         <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的期望的js，内容正确被混淆</p>
         <form method='get' action="cache/http-4-3">

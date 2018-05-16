@@ -1,6 +1,5 @@
 var express = require('express');
 var httpFunctionality = express.Router();
-var auth = require('basic-auth');
 
 httpFunctionality.route('/functionality')
     .get(function(req, res){

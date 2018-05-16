@@ -9,11 +9,12 @@ httpCacheHtml.route('/cache')
             res.render(__dirname + '/../../views/HTTP/cache.html');
         }
         else{
-            // Add Custom Header To Response
+            // options is for sendFile
             var options = {
-                root: __dirname + '/../../views/HTTP',
+                root: __dirname + '/../../views/HTTP/cache-html',
                 headers: {}
             };
+            // Add Response Header by Extracting it from Request Query
             for (var header in req.query){
                 if (header != 'case' &&	header != 'StatusCode'){
                     res.set(header, req.query[header]);

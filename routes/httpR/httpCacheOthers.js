@@ -1,10 +1,9 @@
 var express = require('express');
 var httpCacheOthers = express.Router();
-var auth = require('basic-auth');
 
 httpCacheOthers.route('/cache-o')
     .get(function(req, res){
-        res.render(__dirname + '/../../views/HTTP/cache-others/cache-o.html');
+        res.render(__dirname + '/../../views/HTTP/cache-others.html');
     });
 
 /**

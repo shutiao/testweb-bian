@@ -4,8 +4,7 @@ var express = require('express'),
 var ngjsR = require('./ngjsR'),
     vueR = require('./vueR'),
     ngR = require('./ngR.js'),
-    httpIndex = require('./http'),
-    //HttpR = require('./httpCacheHtml.js'),
+    httpR = require('./httpR'),
     statusR = require('./statusR.js');
 
 var bodyParser = require('body-parser'),
@@ -18,8 +17,7 @@ var template = require('./template');
 module.exports = exports = function(app){
     app.use(timeout);
     app.use(logger);
-    // Populate EJS Content
-    app.use(template);
+    app.use(template);    // Populate EJS Content
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(cookieParser());
@@ -29,7 +27,6 @@ module.exports = exports = function(app){
     app.use('/NGJS', ngjsR);
     app.use('/Vue', vueR);
     app.use('/angular', ngR);
-    app.use('/HTTP', httpIndex);
-    //app.use('/HTTP', HttpR);
+    app.use('/HTTP', httpR);
     app.use('/StatusCode', statusR);
 }
