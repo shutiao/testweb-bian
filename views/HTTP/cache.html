@@ -138,53 +138,6 @@
     </form>
 </div>
 
-<!--2018/5/7-->
-<div id='HTTP-2-7' class='col-md-6' zendao-case='2611'>
-    <h4>HTTP-2-7 (#2611) CDN缓存用户通过query标示不同版本的js</h4>
-    <p>Describe: 用户html页面通过script src标签的qurey（version=1）引用版本1的js</p>
-    <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的js内容正确被混淆</p>
-    <form method='get' action="cache/http-2-7">
-    <div class="form-group">
-        <label for='Cache-Control'>Cache-Control</label>
-        <input type='text' id='Cache-Control' name='Cache-Control' placeholder='s-maxage=60, max-age=9999'
-               value='public, max-age=0, s-maxage=60' class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label for='Cache-Control'>Expires</label>
-        <input type='text' id='Expires' name='Expires' placeholder='Mon, 17 Apr 2028 07:46:32 GMT'
-               value='Mon, 17 Apr 2028 07:46:32 GMT'
-               class="form-control"/>
-    </div>
-        <input type='submit' value='HTTP-2-7' class='btn btn-success'/>
-        <a href="cache/http-2-7-switch-version?version=1"><button type="button" class="btn btn-info">Switch to V1</button></a>
-        <a href="cache/http-2-7-switch-version?version=2"><button type="button" class="btn btn-info">Switch to V2</button></a>
-        Current Version: <span id="http-2-7-current-version" style="font-size: larger;color:#29ae17;font-weight: bold;"></span>
-    </form>
-</div>
-
-<div id='HTTP-2-8' class='col-md-6' zendao-case='2612'>
-    <h4>HTTP-2-8 (#2612)  CDN缓存用户不以名字和query标志不同版本的js</h4>
-    <p>Describe: 定制两个不同版本的客户js，方法名一样但是内部逻辑不一样，在html上调用其方法回显 </p>
-    <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的期望的js，内容正确被混淆</p>
-    <form method='get' action="cache/http-2-8">
-        <div class="form-group">
-            <label for='Cache-Control'>Cache-Control</label>
-            <input type='text' id='Cache-Control' name='Cache-Control' placeholder='s-maxage=60, max-age=9999'
-                   value='public, max-age=0, s-maxage=60' class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label for='Cache-Control'>Expires</label>
-            <input type='text' id='Expires' name='Expires' placeholder='Mon, 17 Apr 2028 07:46:32 GMT'
-                   value='Mon, 17 Apr 2028 07:46:32 GMT'
-                   class="form-control"/>
-        </div>
-        <input type='submit' value='HTTP-2-8' class='btn btn-success'/>
-        <a href="cache/http-2-8-switch-version?version=1"><button type="button" class="btn btn-info">Switch to V1</button></a>
-        <a href="cache/http-2-8-switch-version?version=2"><button type="button" class="btn btn-info">Switch to V2</button></a>
-        Current Version: <span id="http-2-8-current-version" style="font-size: larger;color:#29ae17;font-weight: bold;"></span>
-    </form>
-</div>
-<!--2018/5/7-->
 
 </body>
 <script type="text/javascript" src="/HTTP/tSuite-2-cache.js"></script>

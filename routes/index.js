@@ -4,7 +4,8 @@ var express = require('express'),
 var ngjsR = require('./ngjsR'),
     vueR = require('./vueR'),
     ngR = require('./ngR.js'),
-    HttpR = require('./HttpR.js'),
+    httpIndex = require('./http'),
+    //HttpR = require('./httpCacheHtml.js'),
     statusR = require('./statusR.js');
 
 var bodyParser = require('body-parser'),
@@ -28,6 +29,7 @@ module.exports = exports = function(app){
     app.use('/NGJS', ngjsR);
     app.use('/Vue', vueR);
     app.use('/angular', ngR);
-    app.use('/HTTP', HttpR);
+    app.use('/HTTP', httpIndex);
+    //app.use('/HTTP', HttpR);
     app.use('/StatusCode', statusR);
 }
