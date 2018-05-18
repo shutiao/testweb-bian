@@ -5,7 +5,9 @@ var ngjsR = require('./ngjsR'),
     vueR = require('./vueR'),
     ngR = require('./ngR.js'),
     httpR = require('./httpR'),
-    statusR = require('./statusR.js');
+    statusR = require('./statusR.js'),
+    htmlR = require('./htmlR'),
+    miscR = require('./miscR');
 
 var bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser');
@@ -29,4 +31,6 @@ module.exports = exports = function(app){
     app.use('/angular', ngR);
     app.use('/HTTP', httpR);
     app.use('/StatusCode', statusR);
+    app.use('/HTML', htmlR);
+    app.use('/Misc/', miscR);
 }

@@ -1,6 +1,6 @@
 # AngularApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.  
 特别鸣谢https://scotch.io/tutorials/mean-app-with-angular-2-and-the-angular-cli#toc-creating-the-angular-app
 
 ## Development server

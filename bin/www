@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var server = require('./../app');
-server.listen(3000, function() {
-    console.log('Express Server is Listening on Port 3000');
+var port = process.env.PORT || 3000;
+module.exports = server.listen(port, function() {
+    console.log('Express Server is Listening on Port', server.address().port);
 });

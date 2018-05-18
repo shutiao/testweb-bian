@@ -1,16 +1,32 @@
 # 狴犴
 开发新测试网站“狴犴”，整合多种JavaScript框架及复杂测试场景  
+演示地址：http://10.10.68.90:3000/  
 ## To Deploy the Web Server
 ```sh
 git clone https://github.com/SphinxWork/tests.git
 cd bian
 npm install
-```
-## To Run the Web Server
-``` bash
 chmod +x ./bin/www
+```
+## To run the Web Server  
+The app needs restart everytime source code is updated  
+Dependency module doesn't come with the source code, use npm install before restarting  
+``` bash
+tests$ git pull
+cd bian
+npm install
 ./bin/www
 ```
+## Routes Description
+Level-1 Name | Function
+----------- | --------
+/NGJS | AngularJS 1.x Framework Site
+/Vue | Vue Framework Site
+/Angular | Angular v5 Framework Site
+/HTTP | Core Web Use Case - HTTP Module
+/HTML | Core Web Use Case - HTML Module
+/Misc/HealthCheck | F5/Nginx Heath Check
+
 ## Helpful Commands
 ### Install [Node.js][0] in Ubuntu
 ``` bash
