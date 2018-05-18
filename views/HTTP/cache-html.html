@@ -27,7 +27,7 @@
         <div>
             <input type='hidden' name='case' value='HTTP-2-1' class='form-control'/>
         </div>
-        <input type='submit' value='Apply Response Header' class='btn'/>
+        <input type='submit' value='Apply Response Header' class="btn btn-default"/>
     </form>
 </div>
 
@@ -50,7 +50,7 @@
             <input type='hidden' name='case' value='HTTP-2-2' class='form-control'/>
         </div>
         <a class='btn btn-info' onclick='HTTP_2_2();'>Switch to #2549</a>
-        <input type='submit' value='Apply Response Header' class='btn'/>
+        <input type='submit' value='Apply Response Header' class="btn btn-default"/>
     </form>
 </div>
 <hr>
@@ -58,9 +58,10 @@
 <div id='HTTP-2-3' class='col-md-6' zendao-case='2550'>
     <h4>HTTP-2-3 (#2550) 没有任何缓存相关头的HTML</h4>
     <p>Describe: 响应头没有Cache-Control,Expires,ETag, Last-Modified</p>
-    <p>Step: 把<code>app.disable('etag')</code> 添加到/routes/index.js 重启，刷新本页面</p>
     <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
-    <a href=''>Refresh Page</a>
+    <a href='cache?case=HTTP-2-3'>
+        <button class="btn btn-default">HTTP-2-3</button>
+    </a>
 </div>
 <hr>
 
@@ -86,7 +87,7 @@
         <div>
             <input type='hidden' name='case' value='HTTP-2-4' class='form-control'/>
         </div>
-        <input type='submit' value='Apply Response Header' class='btn'/>
+        <input type='submit' value='Apply Response Header' class="btn btn-default"/>
     </form>
 </div>
 
@@ -109,7 +110,7 @@
         <div>
             <input type='hidden' name='case' value='HTTP-2-5' class='form-control'/>
         </div>
-        <input type='submit' value='Apply Response Header' class='btn'/>
+        <input type='submit' value='Apply Response Header' class="btn btn-default"/>
     </form>
 </div>
 
@@ -134,10 +135,36 @@
         <div>
             <input type='hidden' name='case' value='HTTP-2-6' class='form-control'/>
         </div>
-        <input type='submit' value='Apply Response Header' class='btn'/>
+        <input type='submit' value='Apply Response Header' class="btn btn-default"/>
     </form>
 </div>
 
+<!--2018-5-16-->
+<div id='HTTP-2-7' class='col-md-6' zendao-case='2660'>
+    <h4>HTTP-2-7 (#2660) 202 reload页面不能被缓存</h4>
+    <form method='get' action="cache/http-2-7">
+        <div class="form-group">
+            <label for='Cache-Control'>Cache-Control</label>
+            <input type='text' id='Cache-Control' name='Cache-Control' readonly
+                   placeholder='s-maxage=-1, max-age=-1, private' value='s-maxage=-1, max-age=-1, private'
+                   class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for='Cache-Control'>Expires</label>
+            <input type='text' id='Expires' name='Expires' readonly placeholder='-1'
+                   value='-1' class="form-control"/>
+        </div>
+        <input type='submit' value='HTTP-2-7' class="btn btn-default"/>
+    </form>
+</div>
+
+<!--2018-5-18-->
+<div id='HTTP-2-8' class='col-md-6' zendao-case='2662'>
+    <h4>HTTP-2-8 (#2662) 页面onload自动发起响应为当前页面的ajax请求</h4>
+    <p>Describe: 请求/HTTP/cache（当前页面）, 页面onload时会发起ajax请求, 检查控制台和网络请求 </p>
+    <p>Expect: 控制台没有异常,网络请求200</p>
+    <a href=""><button class="btn btn-default">Refresh</button></a>
+</div>
 
 </body>
 <script type="text/javascript" src="/HTTP/tSuite-2-cache.js"></script>
