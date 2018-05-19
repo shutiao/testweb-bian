@@ -241,7 +241,7 @@ module.exports = "/* HeroDetailComponent's private CSS styles */\nlabel {\n    d
 /***/ "./src/app/hero-detail/hero-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"hero\">\n  <h2>{{ hero.name | uppercase }} Details</h2>\n  <div><span>id: </span>{{hero.id}}</div>\n  <div>\n    <label>name: \n      <input [(ngModel)] = 'hero.name' placeholder = 'name'>\n    </label>\n  </div>\n  <button (click) = 'goBack()'>go back</button>\n<div>"
+module.exports = "<div *ngIf=\"hero\">\n  <h2>{{ hero.name | uppercase }} Details</h2>\n  <div><span>id: </span>{{hero.id}}</div>\n  <div>\n    <label>name: \n      <input [(ngModel)] = 'hero.name' placeholder = 'name'>\n    </label>\n  </div>\n  <button (click) = 'save()'>save</button>\n  <button (click) = 'goBack()'>go back</button>\n<div>"
 
 /***/ }),
 
@@ -285,6 +285,11 @@ var HeroDetailComponent = /** @class */ (function () {
         this.heroService.getHero(id)
             .subscribe(function (hero) { return _this.hero = hero; });
     };
+    HeroDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.heroService.updateHero(this.hero)
+            .subscribe(function () { return _this.goBack(); });
+    };
     HeroDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
@@ -315,8 +320,8 @@ var HeroDetailComponent = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeroService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_heroes__ = __webpack_require__("./src/app/mock-heroes.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__ = __webpack_require__("./node_modules/rxjs/_esm5/observable/of.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__ = __webpack_require__("./node_modules/rxjs/_esm5/observable/of.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__("./node_modules/rxjs/_esm5/operators.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__message_service__ = __webpack_require__("./src/app/message.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -333,25 +338,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+var httpOptions = {
+    headers: new __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' })
+};
 var HeroService = /** @class */ (function () {
     function HeroService(http, messageService) {
         this.http = http;
         this.messageService = messageService;
         this.heroesUrl = 'angular/api/heroes';
+        this.heroUrl = 'angular/api/hero';
     }
     HeroService.prototype.getHeroes = function () {
+        var _this = this;
         /** Get heroes from the server */
-        return this.http.get(this.heroesUrl);
+        return this.http.get(this.heroesUrl)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["b" /* tap */])(function (heroes) { return _this.log("fetched heroes"); }), Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["a" /* catchError */])(this.handleError('getHeroes', [])));
         //this.messageService.add('HeroService: fetched heroes');
         //return of(HEROES);
     };
     HeroService.prototype.getHero = function (id) {
-        this.messageService.add("HeroService: fetched hero id = " + id);
-        return Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__["a" /* of */])(__WEBPACK_IMPORTED_MODULE_1__mock_heroes__["a" /* HEROES */].find(function (hero) { return hero.id === id; }));
+        var url = this.heroUrl + "/" + id;
+        return this.http.get(url);
+        //this.messageService.add(`HeroService: fetched hero id = ${id}`);
+        //return of(HEROES.find(hero => hero.id === id));
+    };
+    HeroService.prototype.updateHero = function (hero) {
+        var _this = this;
+        return this.http.put(this.heroUrl, hero, httpOptions).pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["b" /* tap */])(function (_) { return _this.log("updated hero id=" + hero.id); }), Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["a" /* catchError */])(this.handleError('updateHero')));
     };
     /** Log a HeroService message with the MessageService */
     HeroService.prototype.log = function (message) {
         this.messageService.add('HeroService: ' + message);
+    };
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    HeroService.prototype.handleError = function (operation, result) {
+        var _this = this;
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+            // TODO: better job of transforming error for user consumption
+            _this.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            return Object(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__["a" /* of */])(result);
+        };
     };
     HeroService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -525,27 +560,6 @@ var MessagesComponent = /** @class */ (function () {
     return MessagesComponent;
 }());
 
-
-
-/***/ }),
-
-/***/ "./src/app/mock-heroes.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HEROES; });
-var HEROES = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
-];
 
 
 /***/ }),
