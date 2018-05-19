@@ -366,6 +366,16 @@ var HeroService = /** @class */ (function () {
         var _this = this;
         return this.http.put(this.heroUrl, hero, httpOptions).pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["b" /* tap */])(function (_) { return _this.log("updated hero id=" + hero.id); }), Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["a" /* catchError */])(this.handleError('updateHero')));
     };
+    HeroService.prototype.addHero = function (hero) {
+        var _this = this;
+        return this.http.post(this.heroUrl, hero, httpOptions).pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["b" /* tap */])(function (hero) { return _this.log("added hero w/ id=" + hero.id); }), Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["a" /* catchError */])(this.handleError('addHero')));
+    };
+    HeroService.prototype.deleteHero = function (hero) {
+        var _this = this;
+        var heroId = typeof hero === 'number' ? hero : hero.id;
+        var url = this.heroUrl + "/" + heroId;
+        return this.http.delete(url, httpOptions).pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["b" /* tap */])(function (_) { return _this.log("deleted hero id=" + heroId); }), Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["a" /* catchError */])(this.handleError('deleteHero')));
+    };
     /** Log a HeroService message with the MessageService */
     HeroService.prototype.log = function (message) {
         this.messageService.add('HeroService: ' + message);
@@ -418,14 +428,14 @@ var Hero = /** @class */ (function () {
 /***/ "./src/app/heroes/heroes.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* HeroesComponent's private CSS styles */\n.heroes {\n  margin: 0 0 2em 0;\n  list-style-type: none;\n  padding: 0;\n  width: 15em;\n}\n.heroes li {\n  position: relative;\n  cursor: pointer;\n  background-color: #EEE;\n  margin: .5em;\n  padding: .3em 0;\n  height: 1.6em;\n  border-radius: 4px;\n}\n.heroes li:hover {\n  color: #607D8B;\n  background-color: #DDD;\n  left: .1em;\n}\n.heroes a {\n  color: #888;\n  text-decoration: none;\n  position: relative;\n  display: block;\n  width: 250px;\n}\n.heroes a:hover {\n  color:#607D8B;\n}\n.heroes .badge {\n  display: inline-block;\n  font-size: small;\n  color: white;\n  padding: 0.8em 0.7em 0 0.7em;\n  background-color: #607D8B;\n  line-height: 1em;\n  position: relative;\n  left: -1px;\n  top: -4px;\n  height: 1.8em;\n  min-width: 16px;\n  text-align: right;\n  margin-right: .8em;\n  border-radius: 4px 0 0 4px;\n}"
+module.exports = "/* HeroesComponent's private CSS styles */\n.heroes {\n  margin: 0 0 2em 0;\n  list-style-type: none;\n  padding: 0;\n  width: 15em;\n}\n.heroes li {\n  position: relative;\n  cursor: pointer;\n  background-color: #EEE;\n  margin: .5em;\n  padding: .3em 0;\n  height: 1.6em;\n  border-radius: 4px;\n}\n.heroes li:hover {\n  color: #607D8B;\n  background-color: #DDD;\n  left: .1em;\n}\n.heroes a {\n  color: #888;\n  text-decoration: none;\n  position: relative;\n  display: block;\n  width: 250px;\n}\n.heroes a:hover {\n  color:#607D8B;\n}\n.heroes .badge {\n  display: inline-block;\n  font-size: small;\n  color: white;\n  padding: 0.8em 0.7em 0 0.7em;\n  background-color: #607D8B;\n  line-height: 1em;\n  position: relative;\n  left: -1px;\n  top: -4px;\n  height: 1.8em;\n  min-width: 16px;\n  text-align: right;\n  margin-right: .8em;\n  border-radius: 4px 0 0 4px;\n}\nbutton {\n  background-color: #eee;\n  border: none;\n  padding: 5px 10px;\n  border-radius: 4px;\n  cursor: pointer;\n  cursor: hand;\n  font-family: Arial;\n}\nbutton:hover {\n  background-color: #cfd8dc;\n}\nbutton.delete {\n  position: relative;\n  left: 194px;\n  top: -32px;\n  background-color: gray !important;\n  color: white;\n}"
 
 /***/ }),
 
 /***/ "./src/app/heroes/heroes.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>My Heroes</h2>\n<ul class = 'heroes'>\n  <li *ngFor = \"let hero of heroes\">\n    <a routerLink = '/detail/{{hero.id}}'>\n      <span class = 'badge'>{{hero.id}}</span> {{hero.name}}\n    </a>\n  </li>\n</ul>\n<!--Replace the heroes list view with the hero detail view\n<app-hero-detail [hero] = 'selectedHero'></app-hero-detail>\n-->\n\n"
+module.exports = "<h2>My Heroes</h2>\n\n<div>\n  <label>Hero name: \n    <input #heroName />\n  </label>\n  <!-- (click) pass input value to add() and then clears the input -->\n  <button (click) = \"add(heroName.value); heroName.value=''\">\n    add\n  </button>\n</div>\n\n<ul class = 'heroes'>\n  <li *ngFor = \"let hero of heroes\">\n    <a routerLink = '/detail/{{hero.id}}'>\n      <span class = 'badge'>{{hero.id}}</span> {{hero.name}}\n    </a>\n    <button class = 'delete' title = 'delete hero'\n      (click) = 'delete(hero)'>x</button>\n  </li>\n</ul>\n<!--Replace the heroes list view with the hero detail view\n<app-hero-detail [hero] = 'selectedHero'></app-hero-detail>\n-->\n\n"
 
 /***/ }),
 
@@ -455,10 +465,25 @@ var HeroesComponent = /** @class */ (function () {
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;
         // [Original] The HeroService.getHeroes() method has a synchronous signature
-        //this.heroes = this.heroService.getHeroes();
+        // this.heroes = this.heroService.getHeroes();
         // [Observable] Subscribe in HeroesComponent
         this.heroService.getHeroes()
             .subscribe(function (heroes) { return _this.heroes = heroes; });
+    };
+    HeroesComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this.heroService.addHero({ name: name })
+            .subscribe(function (hero) {
+            _this.heroes.push(hero);
+        });
+    };
+    HeroesComponent.prototype.delete = function (hero) {
+        var _this = this;
+        this.heroService.deleteHero(hero).subscribe(function () { return _this.heroes = _this.heroes.filter(function (h) { return h != hero; }); });
     };
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeroes();
