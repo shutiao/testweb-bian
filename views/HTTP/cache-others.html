@@ -4,82 +4,88 @@
     <% include ../partials/head.html %>
 </head>
 <body class='container'>
-    <% include ../partials/nav.html %>
-    <% include ../partials/echo.ejs %>
-    <hr>
+<% include ../partials/nav.html %>
+<% include ../partials/echo.ejs %>
+<hr>
 
-    <div id='HTTP-4-1' class='col-md-6 caseModule' zendao-case='2606,2605,2603'>
-        <h4>HTTP-4-1<span class = 'caseID'></span>	不保护的静态可缓存资源Font/CSS等任意头不会被篡改</h4>
-        <p>html引用css/font等静态资源,访问保护后的被测场景，比对sphinx接收到的请求，该请求经过sphinx后发送给上游的请求，上游返回的响应，经过sphinx返回给客户端的响应。分别检查两个阶段的请求和两个阶段的响应 </p>
-        <a href="cache-o/http-4-1"><button class="btn btn-success">HTTP-4-1</button></a>
-    </div>
+<div id='HTTP-4-1' class='col-md-6 caseModule' zendao-case='2606,2605,2603'>
+    <h4>HTTP-4-1<span class = 'caseID'></span>	不保护的静态可缓存资源Font/CSS等任意头不会被篡改</h4>
+    <p>html引用css/font等静态资源,访问保护后的被测场景，比对sphinx接收到的请求，该请求经过sphinx后发送给上游的请求，上游返回的响应，经过sphinx返回给客户端的响应。分别检查两个阶段的请求和两个阶段的响应 </p>
+    <a href="cache-o/http-4-1"><button class="btn btn-success">HTTP-4-1</button></a>
+</div>
 
 
-    <!--2018/5/17-->
-    <div id='HTTP-4-2' class='col-md-6 caseModule' zendao-case='2611'>
-        <h4>HTTP-4-2<span class = 'caseID'></span>CDN缓存用户通过query标示不同版本的js</h4>
-        <p>Describe: 用户html页面通过script src标签的qurey（version=1）引用版本1的js</p>
-        <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的js内容正确被混淆</p>
-        <form method='get' action="cache-o/http-4-2">
-            <div class="form-group">
-                <label for='Cache-Control'>Cache-Control</label>
-                <input type='text' id='Cache-Control' name='Cache-Control' placeholder='s-maxage=60, max-age=9999'
-                       value='public, max-age=0, s-maxage=60' class="form-control"/>
-            </div>
-            <div class="form-group">
-                <label for='Cache-Control'>Expires</label>
-                <input type='text' id='Expires' name='Expires' placeholder='Mon, 17 Apr 2028 07:46:32 GMT'
-                       value='Mon, 17 Apr 2028 07:46:32 GMT'
-                       class="form-control"/>
-            </div>
-            <input type='submit' value='HTTP-4-2' class='btn btn-success'/>
-            <a href="cache-o/http-4-2-switch-version?version=1"><button type="button" class="btn btn-info">Switch to V1</button></a>
-            <a href="cache-o/http-4-2-switch-version?version=2"><button type="button" class="btn btn-info">Switch to V2</button></a>
-            Current Version: <span id="http-4-2-current-version" style="font-size: larger;color:#29ae17;font-weight: bold;"></span>
-        </form>
-    </div>
+<!--2018/5/17-->
+<div id='HTTP-4-2' class='col-md-6 caseModule' zendao-case='2611'>
+    <h4>HTTP-4-2<span class = 'caseID'></span>CDN缓存用户通过query标示不同版本的js</h4>
+    <p>Describe: 用户html页面通过script src标签的qurey（version=1）引用版本1的js</p>
+    <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的js内容正确被混淆</p>
+    <form method='get' action="cache-o/http-4-2">
+        <div class="form-group">
+            <label for='Cache-Control'>Cache-Control</label>
+            <input type='text' id='Cache-Control' name='Cache-Control' placeholder='s-maxage=60, max-age=9999'
+                   value='public, max-age=0, s-maxage=60' class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for='Cache-Control'>Expires</label>
+            <input type='text' id='Expires' name='Expires' placeholder='Mon, 17 Apr 2028 07:46:32 GMT'
+                   value='Mon, 17 Apr 2028 07:46:32 GMT'
+                   class="form-control"/>
+        </div>
+        <input type='submit' value='HTTP-4-2' class='btn btn-success'/>
+        <a href="cache-o/http-4-2-switch-version?version=1"><button type="button" class="btn btn-info">Switch to V1</button></a>
+        <a href="cache-o/http-4-2-switch-version?version=2"><button type="button" class="btn btn-info">Switch to V2</button></a>
+        Current Version: <span id="http-4-2-current-version" style="font-size: larger;color:#29ae17;font-weight: bold;"></span>
+    </form>
+</div>
 
-    <div id='HTTP-4-3' class='col-md-6 caseModule' zendao-case='2612,2604,2661'>
-        <h4>HTTP-4-3<span class = 'caseID'></span>CDN缓存用户不以名字和query标志不同版本的js</h4>
-        <p>Describe: 定制两个不同版本的客户js，方法名一样但是内部逻辑不一样，在html上调用其方法回显 </p>
-        <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的期望的js，内容正确被混淆</p>
-        <form method='get' action="cache-o/http-4-3">
-            <div class="form-group">
-                <label for='Cache-Control'>Cache-Control</label>
-                <input type='text' id='Cache-Control' name='Cache-Control' placeholder='s-maxage=60, max-age=9999'
-                       value='public, max-age=0, s-maxage=60' class="form-control"/>
-            </div>
-            <div class="form-group">
-                <label for='Cache-Control'>Expires</label>
-                <input type='text' id='Expires' name='Expires' placeholder='Mon, 17 Apr 2028 07:46:32 GMT'
-                       value='Mon, 17 Apr 2028 07:46:32 GMT'
-                       class="form-control"/>
-            </div>
-            <input type='submit' value='HTTP-4-3' class='btn btn-success'/>
-            <a href="cache-o/http-4-3-switch-version?version=1"><button type="button" class="btn btn-info">Switch to V1</button></a>
-            <a href="cache-o/http-4-3-switch-version?version=2"><button type="button" class="btn btn-info">Switch to V2</button></a>
-            Current Version: <span id="http-4-3-current-version" style="font-size: larger;color:#29ae17;font-weight: bold;"></span>
-        </form>
-    </div>
-    <!--2018/5/17-->
+<div id='HTTP-4-3' class='col-md-6 caseModule' zendao-case='2612,2604,2661'>
+    <h4>HTTP-4-3<span class = 'caseID'></span>CDN缓存用户不以名字和query标志不同版本的js</h4>
+    <p>Describe: 定制两个不同版本的客户js，方法名一样但是内部逻辑不一样，在html上调用其方法回显 </p>
+    <p>Expect: script src正确被加上D9PVtGL=xxxxx参数，返回的期望的js，内容正确被混淆</p>
+    <form method='GET' id="HTTP-4-3-form" action="cache-o/http-4-3">
+        <div class="form-group">
+            <label for='Cache-Control'>Cache-Control</label>
+            <input type='text' id='Cache-Control' name='Cache-Control' placeholder='s-maxage=60, max-age=9999'
+                   value='public, max-age=0, s-maxage=60' class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for='Cache-Control'>Expires</label>
+            <input type='text' id='Expires' name='Expires' placeholder='Mon, 17 Apr 2028 07:46:32 GMT'
+                   value='Mon, 17 Apr 2028 07:46:32 GMT'
+                   class="form-control"/>
+        </div>
+        <button type='button' onclick="switch_form_method_and_submit('HTTP-4-3-form','GET')" class='btn btn-success'>GET</button>
+        <button type='button' onclick="switch_form_method_and_submit('HTTP-4-3-form','POST')" class='btn btn-success'>POST</button>
+        <a href="cache-o/http-4-3-switch-version?version=1"><button type="button" class="btn btn-info">Switch to V1</button></a>
+        <a href="cache-o/http-4-3-switch-version?version=2"><button type="button" class="btn btn-info">Switch to V2</button></a>
+        Current Version: <span id="http-4-3-current-version" style="font-size: larger;color:#29ae17;font-weight: bold;"></span>
+    </form>
+</div>
+<!--2018/5/17-->
 
-    <div id='HTTP-4-4' class='col-md-6 caseModule' zendao-case='2663'>
-        <h4>HTTP-4-4<span class = 'caseID'></span>fetch动态加载缓存页面</h4>
-        <p>Describe: 回显按钮会发起fetch请求（指向本页面的URI）; 写DOM按钮会发起相同的fetch请求; </p>
-        <p>Expect: 响应体内容显示在上方的Request Body井里; 写DOM获取的html内容挂载在当前页面里; 控制台不报错,fetch请求状态码200; </p>
-        <a id="http-4-4-echo" onclick="HTTP_4_4_echo()"><button class="btn btn-success">回显</button></a>
-        <a id="http-4-4-write-dom" onclick="HTTP_4_4_write_dom()"><button class="btn btn-success">写DOM</button></a>
-    </div>
-    <!--2018/5/17-->
+<div id='HTTP-4-4' class='col-md-6 caseModule' zendao-case='2663'>
+    <h4>HTTP-4-4<span class = 'caseID'></span>fetch动态加载缓存页面</h4>
+    <p>Describe: 回显按钮会发起fetch请求（指向本页面的URI）; 写DOM按钮会发起相同的fetch请求; </p>
+    <p>Expect: 响应体内容显示在上方的Request Body井里; 写DOM获取的html内容挂载在当前页面里; 控制台不报错,fetch请求状态码200; </p>
+    <a id="http-4-4-echo-get" onclick="HTTP_4_4_echo('get')"><button class="btn btn-success">GET回显</button></a>
+    <a id="http-4-4-write-dom-get" onclick="HTTP_4_4_write_dom('get')"><button class="btn btn-success">GET写DOM</button></a>
+    <a id="http-4-4-echo-post" onclick="HTTP_4_4_echo('post')"><button class="btn btn-success">POST回显</button></a>
+    <a id="http-4-4-write-dom-post" onclick="HTTP_4_4_write_dom('post')"><button class="btn btn-success">POST写DOM</button></a>
+</div>
+<!--2018/5/17-->
 
-    <div id='HTTP-4-5' class='col-md-6 caseModule' zendao-case='2664'>
-        <h4>HTTP-4-5<span class = 'caseID'></span> CDN缓存新旧RAS保护后的用户js </h4>
-        <p>Describe: HTTP-4-5 button链接的页面和JS文件全部被CDN缓存</p>
-        <p>Step: 升级RAS后,删除http-4-5.js在CDN上的缓存,刷新本页面,检查http-4-5.js的命中状态</p>
-        <p>Expect: 升级并删除cdn的JS缓存后,第一次访问命中状态是MISS,第二次访问是HIT</p>
-        <a href="cache-o/http-4-5"><button class="btn btn-success">HTTP-4-5</button></a>
-    </div>
-    <!--2018/5/18-->
+<div id='HTTP-4-5' class='col-md-6 caseModule' zendao-case='2664'>
+    <h4>HTTP-4-5<span class = 'caseID'></span> CDN缓存新旧RAS保护后的用户js </h4>
+    <p>Describe: HTTP-4-5 button链接的页面和JS文件全部被CDN缓存</p>
+    <p>Step: 升级RAS后,删除http-4-5.js在CDN上的缓存,刷新本页面,检查http-4-5.js的命中状态</p>
+    <p>Expect: 升级并删除cdn的JS缓存后,第一次访问命中状态是MISS,第二次访问是HIT</p>
+    <form action="cache-o/http-4-5" id="HTTP-4-5-form" method="post">
+        <button type='button' onclick="switch_form_method_and_submit('HTTP-4-5-form','GET')" class='btn btn-success'>GET</button>
+        <button type='button' onclick="switch_form_method_and_submit('HTTP-4-5-form','POST')" class='btn btn-success'>POST</button>
+    </form>
+</div>
+<!--2018/5/18-->
 
 </body>
 <script type="text/javascript" src="/HTTP/tSuite-4-cache-o.js"></script>

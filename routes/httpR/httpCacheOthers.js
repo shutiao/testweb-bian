@@ -5,8 +5,10 @@ var fs = require("fs");
 httpCacheOthers.route('/cache-o')
     .get(function (req, res) {
         res.render(__dirname + '/../../views/HTTP/cache-others.html');
+    })
+    .post(function (req, res) {
+        res.render(__dirname + '/../../views/HTTP/cache-others.html');
     });
-
 
 
 /**
@@ -39,14 +41,14 @@ httpCacheOthers.route('/cache-o/http-4-1.css')
             root: __dirname + '/../../public/HTTP/tSuite-4-cache-o-sources/',
             headers: http_4_1_common_header
         };
-        res.sendFile('http-4-1.css',options);
+        res.sendFile('http-4-1.css', options);
     });
 
 //no cache headers js
 httpCacheOthers.route('/cache-o/http-4-1.js')
     .get(function (req, res) {
         res.app.disable("etag");
-        fs.readFile(__dirname + '/../../public/HTTP/tSuite-4-cache-o-sources/' + 'v1.js', function(error, data){
+        fs.readFile(__dirname + '/../../public/HTTP/tSuite-4-cache-o-sources/' + 'v1.js', function (error, data) {
             if (error) {
                 throw console.log(error);
             }
@@ -145,6 +147,18 @@ httpCacheOthers.route('/cache-o/http-4-3')
         res.cookie("http_4_3_cache_headers", options.headers);
         var renderFile = __dirname + '/../../views/HTTP/cache-others/cache-http-4-3.html';
         res.render(renderFile, options);
+    })
+    .post(function (req, res) {
+        var options = {
+            headers: {}
+        };
+        for (var header in req.body) {
+            res.set(header, req.body[header]);
+            options.headers[header] = req.body[header];
+        }
+        res.cookie("http_4_3_cache_headers", options.headers);
+        var renderFile = __dirname + '/../../views/HTTP/cache-others/cache-http-4-3.html';
+        res.render(renderFile, options);
     });
 
 /**
@@ -155,7 +169,7 @@ httpCacheOthers.route('/cache-o/http-4-5.js')
         var options = {
             root: __dirname + '/../../public/HTTP/tSuite-4-cache-o-sources/',
             headers: {
-                'Cache-Control':'public,max-age=9999,s-maxage=999'
+                'Cache-Control': 'public,max-age=9999,s-maxage=999'
             }
         };
         res.sendFile('v1.js', options);
@@ -166,7 +180,16 @@ httpCacheOthers.route('/cache-o/http-4-5')
         var options = {
             root: __dirname + '/../../views/HTTP/cache-others/',
             headers: {
-                'Cache-Control':'public,max-age=9999,s-maxage=999'
+                'Cache-Control': 'public,max-age=9999,s-maxage=999'
+            }
+        };
+        res.sendFile("cache-http-4-5.html", options);
+    })
+    .post(function (req, res) {
+        var options = {
+            root: __dirname + '/../../views/HTTP/cache-others/',
+            headers: {
+                'Cache-Control': 'public,max-age=9999,s-maxage=999'
             }
         };
         res.sendFile("cache-http-4-5.html", options);

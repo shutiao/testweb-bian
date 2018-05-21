@@ -7,10 +7,12 @@ $(document).ready(function(){
     $.ajax({
         method: 'GET',
         url: 'cache',
-        dataType: "json",
-        success: function(response) {
-            updateHeaderWell(response);
-        }
+        dataType: "html",
+    });
+    $.ajax({
+        method: 'POST',
+        url: 'cache',
+        dataType: "html",
     })
 });
 
