@@ -72,7 +72,7 @@ httpMethod.route('/methods')
     })
 
     .patch(function(req, res){
-        var caseNum = req.query.case;
+        var caseNum = req.query.case || req.body.case;
         switch(caseNum){
             case "HTTP-1-5":
                 res.sendStatus(204);
@@ -83,6 +83,8 @@ httpMethod.route('/methods')
         var caseNum = req.query.case;
         switch(caseNum){
             case "HTTP-1-8":
+                // node is automatically sending the 100-continue response as per the node http module docs
+                // https://nodejs.org/api/http.html#http_event_checkcontinue
                 res.sendStatus(100);
         }
     })

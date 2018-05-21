@@ -54,12 +54,14 @@
             </form><br>
         </div><hr>
 
-        <div id = 'HTTP-1-5' class = 'col-md-6 caseModule' zendao-case = '2486'>
+        <div id = 'HTTP-1-5' class = 'col-md-6 caseModule' zendao-case = '2486,2533'>
             <h4>HTTP-1-5<span class = 'caseID'></span>PATCH = 204</h4>
             <p>Describe: 在 PUT 请求中进行资源更新，但是不需要改变当前展示给用户的页面，那么返回 204 No Content</p>
-            <p>Expect: 204 响应默认是可以被缓存的。在响应中需要包含头信息 ETag。</p>
+            <p>Expect: 由于204规定响应实体为空，所以本例中无法携带回服务器收到的原始请求报文</p>
+            <p>Expect: 204 响应默认是可以被缓存的，在响应中需要包含头信息 ETag。</p>
             <code>curl -i -X PATCH 'http://localhost:3000/HTTP/methods?case=HTTP-1-5'</code>
             <br>
+            <button class = 'btn btn-default'>HTTP-1-5 Ajax</button>
         </div><hr>
 
         <div id = 'HTTP-1-6' class = 'col-md-6 caseModule' zendao-case = '2489,2492'>
@@ -94,7 +96,7 @@
             <h4>HTTP-1-8<span class = 'caseID'></span>PUT + EXPECT (100-continue) = 100</h4>
             <p>Describe: 一般用于Ajax请求</p>
             <p>Expect: 保护后不改变原请求信息以及响应的response code、EXPECT头引发的与server端的通信过程</p>
-            <code>curl -i -X PUT --header "Expect:100-continue" PUT 'http://localhost:3000/HTTP/methods?case=HTTP-1-8'
+            <code>curl -i -X PUT --header "Expect:100-continue" 'http://localhost:3000/HTTP/methods?case=HTTP-1-8'
             </code>
             <br>
         </div><hr>
@@ -112,6 +114,7 @@
                     <input type = 'hidden' name = 'case' value = 'HTTP-1-9'/>
                 </div>
                 <input type = 'submit' value = 'HTTP-1-9' class = 'btn btn-default'/>
+                <button class = 'ajax btn btn-default'>HTTP-1-9 Ajax</button>
             </form><br>
         </div><hr>
 

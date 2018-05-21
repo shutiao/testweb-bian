@@ -12,6 +12,32 @@ $('#HTTP-1-1').on('click', 'button', function(){
     })
 })
 
+$('#HTTP-1-5').on('click', 'button', function(){
+    $.ajax({
+        method: 'PATCH',
+        url: '',
+        dataType: "json",
+        data: {
+            "case": 'HTTP-1-5'
+        },
+        success: function(response) {
+            $('#line').text('PATCH /HTTP/methods HTTP/1.1');
+        }
+    })
+})
+
+$('#HTTP-1-9').on('click', '.ajax', function(event){
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: '',
+        dataType: "json",
+        data: $('form[name="HTTP-1-9"]').serialize(),
+        success: function(response) {
+        }
+    })
+})
+
 function updateHeaderWell(reqPkg){
     // Update Request Line
     $('#line').text(reqPkg.reqLine);

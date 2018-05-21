@@ -5,8 +5,8 @@ module.exports = function(request, response, next){
 
     response.on('finish', function(){
         var duration = +new Date() - start.getTime();
-        var message = start + ' took ' + duration + ' ms \n'
-        + requestLine + '\n';
+        var message = start + ' took ' + duration + ' ms \n--\n'
+        + requestLine + '\n' + JSON.stringify(request.headers) + '\n--\n';
         var message_response = response._header;
         stream.write(message);
         stream.write(message_response);
