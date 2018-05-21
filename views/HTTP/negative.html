@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head.html %>
+    </head>
+    <body class = 'container'>
+        <% include ../partials/nav.html %>
+        <% include ../partials/echo.ejs %>
+        <hr>
+        
+        <div id = 'HTTP-5-1' class = 'col-md-6 caseModule' zendao-case = '2591'>
+            <h4>HTTP-5-1<span class = 'caseID'></span>上游返回若干个无final chunk</h4>
+            <p>Describe: chunk模式做数据传输（Transfer-Encoding：chunk），但无final chunk</p>
+            <p>Expect: 内存状态正常，无core dump，sphinx对该请求的处理合理</p>
+            <button class = 'btn btn-default'>HTTP-5-1</button>
+        </div><hr>
+
+        <div id = 'HTTP-5-2' class = 'col-md-6 caseModule' zendao-case = '2592'>
+            <h4>HTTP-5-2<span class = 'caseID'></span>上游返回超大的response</h4>
+            <p>Describe: 上游返回超大的html页面很大（2M？），高级保护</p>
+            <p>Expect: 内存状态正常，无core dump，sphinx对该请求的处理合理</p>
+            <button class = 'btn btn-default'>HTTP-5-2</button>
+        </div><hr>
+
+        <div id = 'HTTP-5-3' class = 'col-md-6 caseModule' zendao-case = '2596'>
+            <h4>HTTP-5-3<span class = 'caseID'></span>response异常：js超大</h4>
+            <p>Describe: 高级保护，页面中的js文件较大（10M）</p>
+            <p>Expect: 页面功能与保护前一致；js能正常执行；内存状态正常</p>
+            <button class = 'btn btn-default'>HTTP-5-3</button>
+        </div><hr>
+
+        <div id = 'HTTP-5-4' class = 'col-md-6 caseModule' zendao-case = '2655'>
+            <h4>HTTP-5-4<span class = 'caseID'></span>chunk编码格式的post请求中body为空</h4>
+            <p>Describe: 向保护站点发送chunk编码的post请求，请求体格式正常，内容为空</p>
+            <p>Expect: 无core dump，sphinx对该请求的处理合理</p>
+            <button class = 'btn btn-default'>HTTP-5-4</button>
+        </div><hr>
+
+    </body>
+    <script type = "text/javascript" src = "/HTTP/tSuite-5-negative.js"></script>
+</html>

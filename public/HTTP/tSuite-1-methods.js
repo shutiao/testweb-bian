@@ -34,6 +34,27 @@ $('#HTTP-1-9').on('click', '.ajax', function(event){
         dataType: "json",
         data: $('form[name="HTTP-1-9"]').serialize(),
         success: function(response) {
+            console.log('OK');
+        }
+    })
+})
+
+$('#HTTP-1-10').on('click', '.ajax', function(event){
+    event.preventDefault();
+    var rangeStart = $('#HTTP-1-10').find('input[name="range"]').val();
+    $.ajax({
+        method: 'GET',
+        url: '/asset/logo_bi-an.png',
+        dataType: "image/png",
+        headers: {
+            Range: "bytes = " + rangeStart + "-"
+        },
+        success: function(response) {
+            // ToDo: Find Out Why success callback is not executed.
+            var img = document.createElement('img');
+            img.src = "data:image/png;base64," + btoa(response);
+            document.body.appendChild(img);
+           //$('#body').html(response);
         }
     })
 })

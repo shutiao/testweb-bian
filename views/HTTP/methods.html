@@ -118,6 +118,22 @@
             </form><br>
         </div><hr>
 
+        <div id = 'HTTP-1-10' class = 'col-md-6 caseModule' zendao-case = '2488'>
+            <h4>HTTP-1-10<span class = 'caseID'></span>GET + Range = 206 + IMG+Content-Range</h4>
+            <p>Describe: 高级保护</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的response code、IMG的分断获取</p>
+            <form method = 'POST' name = 'HTTP-1-10' class = 'form-inline'>
+                <div class="form-group">
+                    <label for = 'Range'>Range</label>
+                    <input type = 'text' name = 'range' placeholder = "30143" value = '30143' class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type = 'hidden' name = 'case' value = 'HTTP-1-10'/>
+                </div>
+                <button class = 'ajax btn btn-default'>HTTP-1-10 Ajax</button>
+            </form><br>
+        </div><hr>
+
     </body>
     <script type = "text/javascript" src = "/HTTP/tSuite-1-methods.js"></script>
 </html>

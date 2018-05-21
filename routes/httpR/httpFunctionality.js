@@ -23,7 +23,10 @@ httpFunctionality.route('/functionality')
                     res.render(__dirname + '/../../views/HTTP/functionality.html');
                     break;
                 case "HTTP-3-2":
+                    var options_root = options.root;
+                    options.root += '/cache-html';
                     res.sendFile('cache-static.html', options);
+                    options.root = options_root;
                     break;
                 case "HTTP-3-3":
                     res.redirect(301, '/HTTP/functionality');
