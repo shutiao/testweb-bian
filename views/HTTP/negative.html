@@ -17,16 +17,16 @@
 
         <div id = 'HTTP-5-2' class = 'col-md-6 caseModule' zendao-case = '2592'>
             <h4>HTTP-5-2<span class = 'caseID'></span>上游返回超大的response</h4>
-            <p>Describe: 上游返回超大的html页面很大（2M？），高级保护</p>
+            <p>Describe: 上游返回超大的html页面很大（2M），高级保护</p>
             <p>Expect: 内存状态正常，无core dump，sphinx对该请求的处理合理</p>
             <a href="http-5-2"><button class="btn btn-default">HTTP-5-2</button></a>
         </div><hr>
 
         <div id = 'HTTP-5-3' class = 'col-md-6 caseModule' zendao-case = '2596'>
             <h4>HTTP-5-3<span class = 'caseID'></span>response异常：js超大</h4>
-            <p>Describe: 高级保护，页面中的js文件较大（10M）</p>
+            <p>Describe: 高级保护，页面中的js文件较大（3M)，单页应用会打包出很大的JS文件</p>
             <p>Expect: 页面功能与保护前一致；js能正常执行；内存状态正常</p>
-            <button class = 'btn btn-default'>HTTP-5-3</button>
+            <a href="/angular/dashboard"><button class="btn btn-default">HTTP-5-2</button></a>
         </div><hr>
 
         <div id = 'HTTP-5-4' class = 'col-md-6 caseModule' zendao-case = '2655'>
