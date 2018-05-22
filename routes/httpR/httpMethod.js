@@ -2,7 +2,7 @@ var express = require('express');
 var httpMethod = express.Router();
 var auth = require('basic-auth');
 
-httpMethod.route('/methods')
+httpMethod.route('/')
     .get(function(req, res){
         var caseNum = req.query.case;
         if (!caseNum){
