@@ -57,6 +57,8 @@ httpMethod.route('/')
                     break;
                 case "HTTP-1-9":
                     res.sendStatus(req.body.StatusCode);
+                case "HTTP-1-11":
+                    res.send(res.locals);
             }
         }
     })

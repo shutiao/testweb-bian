@@ -14,15 +14,15 @@ var bodyParser = require('body-parser'),
 
 var logger = require('./logger');
 var timeout = require('./timeout');
-var template = require('./template');
+var loopback = require('./loopback');
 
 module.exports = exports = function(app){
     app.use(timeout);
     app.use(logger);
-    app.use(template);    // Populate EJS Content
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(cookieParser());
+    app.use(loopback);    // Populate EJS Content
     app.get('/', function(req, res){
         res.redirect('/NGJS/tSuite/1');
     });

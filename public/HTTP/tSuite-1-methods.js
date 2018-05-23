@@ -49,12 +49,36 @@ $('#HTTP-1-10').on('click', '.ajax', function(event){
         headers: {
             Range: "bytes = " + rangeStart + "-"
         },
-        success: function(response) {
+        complete: function(response) {
             // ToDo: Find Out Why success callback is not executed.
+            var responseText = response.responseText;
             var img = document.createElement('img');
-            img.src = "data:image/png;base64," + btoa(response);
+            img.src = "data:image/png;base64," + btoa(responseText);
             document.body.appendChild(img);
-           //$('#body').html(response);
+           $('#body').html(responseText);
+        }
+    })
+})
+
+$('#HTTP-1-11').on('click', 'button', function(event){
+    event.preventDefault();
+    var enabled = $('#HTTP-1-11').find('input[name="enabled"]').is(':checked');
+    var reqHeaderField = $('#HTTP-1-11').find('input[name="reqHeaderField"]').val();
+    var reqHeaderVal = $('#HTTP-1-11').find('input[name="reqHeaderVal"]').val();
+    $.ajax({
+        method: 'POST',
+        url: '',
+        dataType: "application/json",
+        data: $('form[name="HTTP-1-11"]').serialize(),
+        beforeSend: function(xhr) {
+            if(enabled){
+                xhr.setRequestHeader(reqHeaderField, reqHeaderVal);
+            }
+        },
+        complete: function(response) {
+            var responseText = JSON.parse(response.responseText);
+            console.log(responseText);
+            updateHeaderWell(responseText);
         }
     })
 })

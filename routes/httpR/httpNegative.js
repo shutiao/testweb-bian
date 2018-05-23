@@ -12,7 +12,7 @@ httpNegative.route('/http-5-1')
         res.write("<p>Dog is running.</p>");
         setTimeout(function(){
             res.write("<p>Dog is done.</p>");
-            //res.end();
+            res.end();
         }, 3000);
     })
 

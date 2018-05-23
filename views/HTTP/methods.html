@@ -134,6 +134,43 @@
             </form><br>
         </div><hr>
 
+        <div id = 'HTTP-1-11' class = 'col-md-6 caseModule' zendao-case = '2525'>
+            <h4>HTTP-1-11<span class = 'caseID'></span>ajax + POST + 自定义头 + Body = 200 + json</h4>
+            <p>Describe: 使用下表自定义请求头，请求报文将回环显示于页面上方的井中。</p>
+            <p>Expect: 保护后不改变原请求信息以及响应的response code、 json</p>
+            <form method = 'POST' name = 'HTTP-1-11'>
+                <table id="headerTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="td-center"></th>
+                                <th class="td-center">请求首部字段</th>
+                                <th class="td-center">字段值</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-center">
+                                        <input type="checkbox" name = "enabled" checked>
+                                    </td>
+                                    <td class="td-center">
+                                        <input type="text" name="reqHeaderField" class="form-control" placeholder="case" value="Hello">
+                                    </td>
+                                    <td class="td-center">
+                                        <input type="text" name="reqHeaderVal" class="form-control" placeholder="HTTP-1-11" value="HTTP-1-11">
+                                    </td>
+                                </tr>
+                            </tbody>   
+                    </table>
+                <div class="form-group">
+                    <input type = 'hidden' name = 'case' value = 'HTTP-1-11'/>
+                </div>
+                <button class = 'ajax btn btn-default'>HTTP-1-11 Ajax</button>
+            </form><br>
+
+
+           
+        </div><hr>
+
     </body>
     <script type = "text/javascript" src = "/HTTP/tSuite-1-methods.js"></script>
 </html>
