@@ -54,6 +54,20 @@ $('#HTTP-1-6').on('click', '.ajax', function(event){
     })
 })
 
+$('#HTTP-1-7').on('click', '.ajax', function(event){
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+        url: '',
+        dataType: "json",
+        data: $('form[name="HTTP-1-7"]').serialize(),
+        complete: function(response) {
+            $("#body").parent().find('h4').text('Response Body');
+            $("#body").text(response.responseText);
+        }
+    })
+})
+
 $('#HTTP-1-9').on('click', '.ajax', function(event){
     event.preventDefault();
     $.ajax({
