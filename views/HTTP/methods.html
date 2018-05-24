@@ -38,7 +38,7 @@
             </form>
         </div><hr>
 
-        <div id = 'HTTP-1-4' class = 'col-md-6 caseModule' zendao-case = '2485'>
+        <div id = 'HTTP-1-4' class = 'col-md-6 caseModule' zendao-case = '2485,2532'>
             <h4>HTTP-1-4<span class = 'caseID'></span>POST = 201 + Location</h4>
             <p>Describe: 访问保护后的被测场景，比对原站的请求和保护后请求经过sphinx后发送给上游的请求内容</p>
             <p>Expect: 保护后不改变原请求信息以及响应的response code、跳转后的location(?)</p>
@@ -51,6 +51,7 @@
                     <input type = 'hidden' name = 'case' value = 'HTTP-1-4'/>
                 </div>
                 <input type = 'submit' value = 'HTTP-1-4' class = 'btn btn-default'/>
+                <button class = 'ajax btn btn-default'>HTTP-1-4 Ajax</button>
             </form><br>
         </div><hr>
 

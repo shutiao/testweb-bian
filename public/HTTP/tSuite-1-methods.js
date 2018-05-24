@@ -12,6 +12,20 @@ $('#HTTP-1-1').on('click', 'button', function(){
     })
 })
 
+$('#HTTP-1-4').on('click', '.ajax', function(event){
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: '',
+        dataType: "json",
+        data: $('form[name="HTTP-1-4"]').serialize(),
+        complete: function(response) {
+            $("#body").parent().find('h4').text('Response Body');
+            $("#body").text(response.responseText);
+        }
+    })
+})
+
 $('#HTTP-1-5').on('click', 'button', function(){
     $.ajax({
         method: 'PATCH',
