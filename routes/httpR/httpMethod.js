@@ -30,6 +30,8 @@ httpMethod.route('/')
                         res.end('Acces granted');
                     }
                     break;
+                default:
+                    res.sendStatus(200);
             }
         }
     })
@@ -66,12 +68,17 @@ httpMethod.route('/')
     })
 
     .delete(function(req, res){
-        var caseNum = req.query.case;
+        var caseNum = req.query.case || req.body.case;
         var statusCode = req.query.code || 200;
         switch(caseNum){
             case "HTTP-1-3":
                 res.status(statusCode).send(res.locals);
                 break;
+            case "HTTP-1-11":
+                res.send(res.locals);
+                break;
+            default:
+                res.sendStatus(200);
         }
     })
 
@@ -81,6 +88,8 @@ httpMethod.route('/')
             case "HTTP-1-5":
                 res.sendStatus(204);
                 break;
+            default:
+                res.sendStatus(200);
         }
     })
 

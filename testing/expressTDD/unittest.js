@@ -48,3 +48,40 @@ describe('Request to Tour Of Heroes Dashboard', function() {
             });
     })
 });
+
+describe('HTTP-1-11 (#2525, #2527, #2529) ajax + POST/PUT/DELETE + 自定义头 + Body = 200 + json', function() {
+    var messageBody = {
+        'case': 'HTTP-1-11'
+    }
+    it('POST to HTTP-1-11', function(done){
+        request(app)
+            .post('/HTTP/methods')
+            .send(messageBody)
+            .expect(200)
+            .end(function(error) {
+                if(error) throw error;
+                done();
+            });
+    });
+    it('PUT to HTTP-1-11', function(done){
+        request(app)
+            .put('/HTTP/methods')
+            .send(messageBody)
+            .expect(200)
+            .end(function(error) {
+                if(error) throw error;
+                done();
+            });
+    });
+    it('DELETE to HTTP-1-11', function(done){
+        request(app)
+            .delete('/HTTP/methods')
+            .send(messageBody)
+            .expect(200)
+            .end(function(error) {
+                if(error) throw error;
+                done();
+            });
+    });
+});
+
