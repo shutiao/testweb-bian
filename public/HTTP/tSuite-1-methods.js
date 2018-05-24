@@ -77,7 +77,6 @@ $('#HTTP-1-11').on('click', 'button', function(event){
         },
         complete: function(response) {
             var responseText = JSON.parse(response.responseText);
-            console.log(responseText);
             updateHeaderWell(responseText);
         }
     })

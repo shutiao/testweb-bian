@@ -29,7 +29,7 @@ httpMethod.route('/')
                     else{
                         res.end('Acces granted');
                     }
-
+                    break;
             }
         }
     })
@@ -57,8 +57,10 @@ httpMethod.route('/')
                     break;
                 case "HTTP-1-9":
                     res.sendStatus(req.body.StatusCode);
+                    break;
                 case "HTTP-1-11":
                     res.send(res.locals);
+                    break;
             }
         }
     })
@@ -78,6 +80,7 @@ httpMethod.route('/')
         switch(caseNum){
             case "HTTP-1-5":
                 res.sendStatus(204);
+                break;
         }
     })
 
@@ -88,6 +91,7 @@ httpMethod.route('/')
                 // node is automatically sending the 100-continue response as per the node http module docs
                 // https://nodejs.org/api/http.html#http_event_checkcontinue
                 res.sendStatus(100);
+                break;
         }
     })
 ;
