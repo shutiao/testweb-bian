@@ -62,11 +62,12 @@ $('#HTTP-1-10').on('click', '.ajax', function(event){
 
 $('#HTTP-1-11').on('click', 'button', function(event){
     event.preventDefault();
-    var enabled = $('#HTTP-1-11').find('input[name="enabled"]').is(':checked');
+    var enabled = $('#HTTP-1-11').find('select[name="httpMethod"]').val();
+    var httpMethpd = $('#HTTP-1-11').find('select').find(':selected').val();
     var reqHeaderField = $('#HTTP-1-11').find('input[name="reqHeaderField"]').val();
     var reqHeaderVal = $('#HTTP-1-11').find('input[name="reqHeaderVal"]').val();
     $.ajax({
-        method: 'POST',
+        method: httpMethpd || 'POST',
         url: '',
         dataType: "application/json",
         data: $('form[name="HTTP-1-11"]').serialize(),

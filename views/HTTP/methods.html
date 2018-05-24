@@ -134,11 +134,19 @@
             </form><br>
         </div><hr>
 
-        <div id = 'HTTP-1-11' class = 'col-md-6 caseModule' zendao-case = '2525'>
-            <h4>HTTP-1-11<span class = 'caseID'></span>ajax + POST + 自定义头 + Body = 200 + json</h4>
+        <div id = 'HTTP-1-11' class = 'col-md-6 caseModule' zendao-case = '2525,2527'>
+            <h4>HTTP-1-11<span class = 'caseID'></span>ajax + POST/PUT + 自定义头 + Body = 200 + json</h4>
             <p>Describe: 使用下表自定义请求头，请求报文将回环显示于页面上方的井中。</p>
             <p>Expect: 保护后不改变原请求信息以及响应的response code、 json</p>
             <form method = 'POST' name = 'HTTP-1-11'>
+                <div class = 'form-group form-inline'>
+                    <label class = 'col-form-label'>HTTP Method</label>
+                    <select name = 'httpMethod' class = 'form-control'>
+                        <option value = 'POST' selected>POST</option>
+                        <option value = 'PUT'>PUT</option>
+                    </select>
+                </div>
+                
                 <table id="headerTable" class="table table-bordered">
                         <thead>
                             <tr>
