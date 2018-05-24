@@ -97,7 +97,7 @@
 
         <div id = 'HTTP-1-8' class = 'col-md-6 caseModule' zendao-case = '2484'>
             <h4>HTTP-1-8<span class = 'caseID'></span>PUT + EXPECT (100-continue) = 100</h4>
-            <p>Describe: 一般用于Ajax请求</p>
+            <p>Describe: 在命令行中发送put请求</p>
             <p>Expect: 保护后不改变原请求信息以及响应的response code、EXPECT头引发的与server端的通信过程</p>
             <code>curl -i -X PUT --header "Expect:100-continue" 'http://localhost:3000/HTTP/methods?case=HTTP-1-8'
             </code>
