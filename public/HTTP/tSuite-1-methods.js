@@ -40,6 +40,20 @@ $('#HTTP-1-5').on('click', 'button', function(){
     })
 })
 
+$('#HTTP-1-6').on('click', '.ajax', function(event){
+    event.preventDefault();
+    $.ajax({
+        method: 'GET',
+        url: '',
+        dataType: "json",
+        data: $('form[name="HTTP-1-6"]').serialize(),
+        complete: function(response) {
+            $("#body").parent().find('h4').text('Response Body');
+            $("#body").text(response.responseText);
+        }
+    })
+})
+
 $('#HTTP-1-9').on('click', '.ajax', function(event){
     event.preventDefault();
     $.ajax({
@@ -48,7 +62,7 @@ $('#HTTP-1-9').on('click', '.ajax', function(event){
         dataType: "json",
         data: $('form[name="HTTP-1-9"]').serialize(),
         success: function(response) {
-            console.log('OK');
+            console.log('HTTP-1-9: OK');
         }
     })
 })
