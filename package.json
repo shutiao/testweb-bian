@@ -5,7 +5,8 @@
 	"main": "app.js",
 	"scripts": {
 		"build": "./bin/www",
-		"test": "mocha ./testing/expressTDD/unittest.js"
+		"test": "mocha ./testing/expressTDD/unittest.js",
+		"start": "./bin/www"
 	},
 	"dependencies": {
 		"basic-auth": "^2.0.0",

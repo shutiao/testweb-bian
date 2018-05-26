@@ -6,15 +6,18 @@ var npm_install_cmd = 'npm install;';
 
 console.log('Running npm install ... || Wait for a moment');
 
+/*
 exec(path_cmd + npm_install_cmd, function(error, stdout, stderr) {
     if (error != null){
         console.log(error);
     }
     console.log(stdout);
 
-    var server = require('./../app');
+    
+});
+*/
+
+var server = require('./../app');
     server.listen(port, function() {
         console.log('Express Server is Listening on Port', server.address().port);
     });
-});
-
