@@ -8,7 +8,7 @@
         <% include ../partials/echo.ejs %>
         <hr>
     </body>
-    <script type = "text/javascript" src = "/HTTP/tSuite-3-functionality.js"></script>
+    
     <div id = 'HTTP-3-1' class = 'col-md-6 caseModule' zendao-case = '2667'>
         <h4>HTTP-3-1<span class = 'caseID'></span>CSP发送违例报告的请求会被Sphinx保护</h4>
         <p>Describe: 访问标准保护后的测试场景; 访问高级保护后的测试场景</p>
@@ -81,4 +81,29 @@
             <input type = 'submit' value = '302 Found' class = 'btn btn-default'/>
         </form>
     </div>
+
+    <div id = 'HTTP-3-5' class = 'col-md-6 caseModule' zendao-case = '2562'>
+        <h4>HTTP-3-5 <span class = 'caseID'></span>PUT = 303</h4>
+        <p>Describe: 该状态码表示由于请求对应的资源存在着另一个URI，应使用GET方法定向获取请求的资源</p>
+        <p>Expect: 1、能正常跳转; 2、该用例产生的请求无异常</p>
+        <form name = 'HTTP-3-5' class = 'form-inline'>
+            <div class = 'form-group'>
+                <label class = 'col-form-label'>HTTP Method</label>
+                <select name = 'httpMethod' class = 'form-control'>
+                    <option value = 'PUT'>PUT</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for = 'StatusCode'>Status Code</label>
+                <input type = 'text'  name = 'StatusCode' placeholder = "303" value = '303' class="form-control" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-5'/>
+            </div>
+            <button class = 'ajax btn btn-default'>303 See Other</button>
+        </form><br>
+    </div>
+    
+    <script type = "text/javascript" src = "/HTTP/tSuite-3-functionality.js"></script>
+    </body>
 </html>

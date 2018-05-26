@@ -8,6 +8,22 @@ var HTTP_3_3 = function (){
     $('#HTTP-3-3').find('input[name="StatusCode"]').val("302");
 }
 
+$('#HTTP-3-5').on('click', 'button', function(event){
+    event.preventDefault();
+    var el = $('#HTTP-3-5');
+    var httpMethod = el.find('select[name="httpMethod"]').val();
+    $.ajax({
+        method: httpMethod || 'PUT',
+        url: '',
+        dataType: "application/json",
+        data: $('form[name="HTTP-3-5"]').serialize(),
+        complete: function(response) {
+            var responseText = JSON.parse(response.responseText);
+            updateHeaderWell(responseText);
+        }
+    })
+})
+
 $.fn.updateCaseID = function() {
     this.each(function(){
         var idArray = $(this).attr('zendao-case').split(',');

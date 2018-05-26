@@ -34,6 +34,11 @@ httpFunctionality.route('/functionality')
                 case "HTTP-3-4":
                     res.redirect(302, '/HTTP/functionality');
                     break;
+                case "HTTP-3-5":
+                    res.sendStatus(200);
+                    break;
+                default:
+                    res.json(res.locals);
             }
         }
     })
@@ -47,6 +52,24 @@ httpFunctionality.route('/functionality')
             case 'HTTP-3-4':
                 res.redirect(302, '/HTTP/functionality');
                 break;
+        }
+    })
+    
+    .put(function(req, res){
+        var caseNum = req.query.case || req.body.case;
+        if (caseNum == undefined){
+            res.sendStatus(200);
+        }
+        else{
+            switch(caseNum){
+                case 'HTTP-3-5':
+                    res.location('/HTTP/functionality?case=HTTP-3-5');
+                    res.statusCode = 303;
+                    res.end();
+                    break;
+                default:
+                    res.json(res.locals);
+            }
         }
     });
 

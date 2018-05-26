@@ -1,6 +1,7 @@
 # 狴犴
 开发新测试网站“狴犴”，整合多种JavaScript框架及复杂测试场景  
-演示地址：http://10.10.68.90:3000/  
+内网演示地址：http://10.10.68.90:3000/  
+公网演示地址：https://bianweb.herokuapp.com  
 ## To Deploy the Web Server
 ```sh
 git clone https://github.com/SphinxWork/tests.git
