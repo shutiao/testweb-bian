@@ -57,14 +57,15 @@ httpFunctionality.route('/functionality')
     
     .put(function(req, res){
         var caseNum = req.query.case || req.body.case;
+        var statusCode = req.query.StatusCode || req.body.StatusCode;
         if (caseNum == undefined){
             res.sendStatus(200);
         }
         else{
             switch(caseNum){
                 case 'HTTP-3-5':
-                    res.location('/HTTP/functionality?case=HTTP-3-5');
-                    res.statusCode = 303;
+                    res.location('/HTTP/methods');
+                    res.statusCode = statusCode;
                     res.end();
                     break;
                 default:
