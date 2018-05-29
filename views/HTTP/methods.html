@@ -8,11 +8,12 @@
         <% include ../partials/echo.ejs %>
         <hr>
         
-        <div id = 'HTTP-1-1' class = 'col-md-6 caseModule' zendao-case = '2524'>
+        <div id = 'HTTP-1-1' class = 'col-md-6 caseModule' zendao-case = '2524,2477'>
             <h4>HTTP-1-1<span class = 'caseID'></span>Ajax + GET + Accept = 200 + content-location</h4>
-            <p>Describe: 访问保护后的被测场景，比对sphinx接收到的请求和该请求经过sphinx后发送给上游的请求内容</p>
-            <p>Expect: 保护后不改变原请求信息以及响应的状态码、能根据content-location内容正常访问协商后的地址</p>
-            <button class = 'btn btn-default'>HTTP-1-1</button>
+            <p>Describe: 向/HTTP/methods?case=HTTP-1-1请求资源，响应返回Content-Location与Content-Type</p>
+            <p>Expect: Content-Location 首部指定的是要返回的数据的地址选项。最主要的用途是用来指定要访问的资源经过内容协商后的结果的URL</p>
+            <button class = 'btn btn-default'>HTTP-1-1 Ajax</button>
+            <a href = '/HTTP/methods?case=HTTP-1-1'><button class = 'btn btn-default'>HTTP-1-1 Non-Ajax</button></a>
         </div><hr>
 
         <div id = 'HTTP-1-2' class = 'col-md-6 caseModule' zendao-case = '2479'>
