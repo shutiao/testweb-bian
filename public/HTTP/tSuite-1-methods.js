@@ -12,6 +12,12 @@ $('#HTTP-1-1').on('click', 'button', function(){
     })
 })
 
+var HTTP_1_3 = function (){
+    var code = $('#HTTP-1-3').find('input[name="status"]').val();
+    var cmd = "curl -i -X DELETE 'http://localhost:3000/HTTP/methods?case=HTTP-1-3&code=" + code + "'";
+    $('#HTTP-1-3').find('code').text(cmd);
+}
+
 $('#HTTP-1-4').on('click', '.ajax', function(event){
     event.preventDefault();
     $.ajax({
@@ -104,10 +110,11 @@ $('#HTTP-1-10').on('click', '.ajax', function(event){
 
 $('#HTTP-1-11').on('click', 'button', function(event){
     event.preventDefault();
-    var enabled = $('#HTTP-1-11').find('input[name="enabled"]').is(':checked');
-    var httpMethod = $('#HTTP-1-11').find('select[name="httpMethod"]').val();
-    var reqHeaderField = $('#HTTP-1-11').find('input[name="reqHeaderField"]').val();
-    var reqHeaderVal = $('#HTTP-1-11').find('input[name="reqHeaderVal"]').val();
+    var el = $('#HTTP-1-11');
+    var enabled = el.find('input[name="enabled"]').is(':checked');
+    var httpMethod = el.find('select[name="httpMethod"]').val();
+    var reqHeaderField = el.find('input[name="reqHeaderField"]').val();
+    var reqHeaderVal = el.find('input[name="reqHeaderVal"]').val();
     $.ajax({
         method: httpMethod || 'POST',
         url: '',
@@ -150,12 +157,6 @@ function transformJSON2HTML(object, selector){
         liArray.push(li);
     }
     $(selector).html(liArray);
-}
-
-var HTTP_1_3 = function (){
-        var code = $('#HTTP-1-3').find('input[name="status"]').val();
-        var cmd = "curl -i -X DELETE 'http://localhost:3000/HTTP/methods?case=HTTP-1-3&code=" + code + "'";
-        $('#HTTP-1-3').find('code').text(cmd);
 }
 
 $.fn.updateCaseID = function() {

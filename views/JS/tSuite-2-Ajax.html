@@ -8,16 +8,59 @@
         <% include ../partials/echo.ejs %>
         <hr>
         
-        <div id = 'JS-2-1' class = 'col-md-6 caseModule' zendao-case = '????'>
-            <h4>HTML-5-1<span class = 'caseID'></span>文件上传</h4>
-            <p>Describe: content-type: multipart/form-data</p>
-            <p>Expect: </p>
-            <form method="post" action = 'HTML-5-1' enctype="multipart/form-data" class = 'form-inline'>
-                <label for="file">Choose file to upload</label>
-                <input type="file" name="file" multiple class="form-control-file">
-                <button class = 'btn btn-default'>Upload</button>
+        <div id = 'JS-2-1' class = 'col-md-6 caseModule' zendao-case = '3025'>
+            <h4>JS-2-1<span class = 'caseID'></span>Ajax 跨域请求</h4>
+            <p>Describe: 本用例使用jQuery来实现Ajax请求</p>
+            <p>Note: jQuery可以对使用者屏蔽不同浏览器的DOM接口差异。IE上或许通过禁用"Enable native XMLHTTP support"可以触发ActiveX</p>
+            <p>Expect: 使用下表自定义方法与路径，请求报文将回环显示于页面上方的井中</p>
+            <form name = 'JS-2-1'>
+                <div class="form-group form-inline">
+                    <label class="col-form-label">HTTP Method</label>
+                    <select name="httpMethod" class="form-control">
+                        <option value="GET" selected="">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="HEAD">HEAD</option>
+                    </select>
                 </div>
+                <label>请输入远程服务器的域名与路径</label>
+                <table id="serverTable" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="td-center" style="width:80px;">协议</th>
+                            <th class="td-center">IP</th>
+                            <th class="td-center">端口</th>
+                            <th class="td-center">路径</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="upstreamServerList">
+                        <tr>
+                            <td class="td-center" style="width:92px;">
+                                <select class="switchProtocolHttpOrHttps" name="upstream_protocol">
+                                    <option value="http://" selected="">http://</option>
+                                    <option value="https://">https://</option>
+                                </select>
+                            </td>
+                            <td class="td-center" style="width:150px;">
+                                <input type="text" name="upstream_ip" class="form-control" placeholder="服务器IP" value="10.10.32.231">
+                            </td>
+                            <td class="td-center" style="width:80px;">
+                                <input type="text" name="upstream_port" class="form-control" placeholder="被保护服务器端口" value="3000">
+                            </td>
+                            <td class="td-center">
+                                <input type="text" name="relative_path" class="form-control" placeholder="/" value="/JS/Ajax/JS-2-1">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type = 'hidden' name = 'case' value = 'JS-2-1'/>
+                <div class="form-group">
+                    <button class = 'ajax btn btn-default'>JS-2-1 Ajax</button>
+                </form><br>
             </form>
+            <echo></echo>
         </div><hr>
 
     </body>

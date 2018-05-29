@@ -1,6 +1,6 @@
 var express = require('express');
 var jsR = express.Router();
 
-jsR.use('/ajax', require('./ajax'));
+jsR.use('/Ajax', require('./ajax'));
 
 module.exports = jsR;

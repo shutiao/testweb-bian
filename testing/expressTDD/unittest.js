@@ -85,3 +85,16 @@ describe('HTTP-1-11 (#2525, #2527, #2529) ajax + POST/PUT/DELETE + 自定义头 
     });
 });
 
+describe('JS-2-1 Ajax 跨域请求', function(){
+    it('GET to /JS-2-1 With Query', function(done){
+        request(app)
+            .get('/JS/Ajax/JS-2-1?key=value')
+            .expect(200, done)
+    });
+
+    it('POST to /JS-2-1 With Query', function(done){
+        request(app)
+            .post('/JS/Ajax/JS-2-1?key=value')
+            .expect(200, done)
+    });
+})
