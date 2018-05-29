@@ -11,7 +11,8 @@ var chat_console = document.getElementById('chat-console');
 socket.on('connected', function (isConnected){
     if (isConnected.status){
         document.getElementById('status').innerText = 'Connected To Chattr';
-        var nickname = prompt('What is your nickname?');
+        //var nickname = prompt('What is your nickname?');
+        var nickname = socket.io.opts.hostname;
         socket.emit('join', nickname);
     }
     else{
