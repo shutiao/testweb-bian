@@ -7,6 +7,7 @@ var ngjsR = require('./ngjsR'),
     httpR = require('./httpR'),
     statusR = require('./statusR.js'),
     htmlR = require('./htmlR'),
+    jsR = require('./jsR');
     miscR = require('./miscR');
 
 var bodyParser = require('body-parser'),
@@ -32,5 +33,6 @@ module.exports = exports = function(app){
     app.use('/HTTP', httpR);
     app.use('/StatusCode', statusR);
     app.use('/HTML', htmlR);
+    app.use('/JS', jsR);
     app.use('/Misc/', miscR);
 }
