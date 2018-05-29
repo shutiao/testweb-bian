@@ -8,16 +8,17 @@
         <% include ../partials/echo.ejs %>
         <hr>
         
-        <div id = 'HTML-5-1' class = 'col-md-6 caseModule' zendao-case = '????'>
+        <div id = 'HTML-5-1' class = 'col-md-6 caseModule' zendao-case = '?'>
             <h4>HTML-5-1<span class = 'caseID'></span>文件上传</h4>
             <p>Describe: content-type: multipart/form-data</p>
-            <p>Expect: </p>
+            <p>Expect: 上传会显示上传进度。上传文件后，可以下载，打开文件需要自行修改扩展名</p>
             <form method="post" action = 'HTML-5-1' enctype="multipart/form-data" class = 'form-inline'>
                 <label for="file">Choose file to upload</label>
                 <input type="file" name="file" multiple class="form-control-file">
-                <button class = 'btn btn-default'>Upload</button>
-                </div>
+                <button class = 'btn btn-default upload'>Upload</button>
             </form>
+            <a href = '/asset/editMyExtention.xxx'><button class = 'btn btn-default'>Download</button></a>
+            <button class = 'btn btn-default delete'>Delete</button>
         </div><hr>
 
     </body>

@@ -1,20 +1,8 @@
-$('#HTTP-1-11').on('click', 'button', function(event){
-    event.preventDefault();
-    var enabled = $('#HTTP-1-11').find('input[name="enabled"]').is(':checked');
-    var httpMethod = $('#HTTP-1-11').find('select[name="httpMethod"]').val();
-    var reqHeaderField = $('#HTTP-1-11').find('input[name="reqHeaderField"]').val();
-    var reqHeaderVal = $('#HTTP-1-11').find('input[name="reqHeaderVal"]').val();
+$('#HTML-5-1').on('click', '.delete', function(event){
     $.ajax({
-        method: httpMethod || 'POST',
+        method: 'delete',
         url: '',
-        dataType: "application/json",
-        data: $('form[name="HTTP-1-11"]').serialize(),
-        beforeSend: function(xhr) {
-            if(enabled){
-                xhr.setRequestHeader(reqHeaderField, reqHeaderVal);
-            }
-        },
-        success: function(response) {
+        complete: function(response) {
             var responseText = JSON.parse(response.responseText);
             updateHeaderWell(responseText);
         }
