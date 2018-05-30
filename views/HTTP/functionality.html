@@ -131,6 +131,29 @@
             <button class = 'ajax btn btn-default'>AJAX + POST </button>
         </form><br>
     </div>
+
+    <div id = 'HTTP-3-7' class = 'col-md-6 caseModule' zendao-case = '2558,2565'>
+            <h4>HTTP-3-7 <span class = 'caseID'></span>反复跳转 (POST = 308) * 10</h4>
+            <p>Describe: 首次请求会发到/HTTP/functionality/HTTP-3-7/<code>0</code></p>
+            <p>Expect: 不断重定向到/HTTP/functionality/HTTP-3-7/<code>9</code>，返回200</p>
+            <form name = 'HTTP-3-5' method = 'POST' action = '/HTTP/functionality/HTTP-3-7/0' class = 'form-inline'>
+                <div class = 'form-group'>
+                    <label class = 'col-form-label'>HTTP Method</label>
+                    <select name = 'httpMethod' class = 'form-control'>
+                        <option value = 'GET'>GET</option>
+                        <option value = 'POST' selected>POST</option>
+                        <option value = 'PUT'>PUT</option>
+                        <option value = 'DELETE'>DELETE</option>
+                        <option value = 'HEAD'>HEAD</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type = 'hidden' name = 'case' value = 'HTTP-3-7'/>
+                </div>
+                <input type = 'submit' value = 'POST + Non-Ajax' class = 'btn btn-default'/>
+                <button class = 'ajax btn btn-default'> Method + Ajax </button>
+            </form><br>
+        </div>
     
     <script type = "text/javascript" src = "/HTTP/tSuite-3-functionality.js"></script>
     </body>
