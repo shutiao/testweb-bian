@@ -24,6 +24,22 @@ $('#HTTP-3-5').on('click', 'button', function(event){
     })
 })
 
+$('#HTTP-3-6').on('click', '.ajax', function(event){
+    event.preventDefault();
+    var el = $('#HTTP-3-6');
+    var httpMethod = el.find('select[name="httpMethod"]').val();
+    $.ajax({
+        method: httpMethod || 'POST',
+        url: '/HTTP/functionality/HTTP-3-6',
+        dataType: "application/json",
+        data: $('form[name="HTTP-3-6"]').serialize(),
+        complete: function(response) {
+            var responseText = JSON.parse(response.responseText);
+            updateHeaderWell(responseText);
+        }
+    })
+})
+
 $.fn.updateCaseID = function() {
     this.each(function(){
         var idArray = $(this).attr('zendao-case').split(',');

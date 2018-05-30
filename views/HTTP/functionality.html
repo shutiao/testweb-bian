@@ -104,6 +104,33 @@
             <button class = 'ajax btn btn-default'>AJAX + PUT</button>
         </form><br>
     </div>
+
+    <div id = 'HTTP-3-6' class = 'col-md-6 caseModule' zendao-case = '2557,2564'>
+        <h4>HTTP-3-6 <span class = 'caseID'></span>POST = 308</h4>
+        <p>Describe: 308 Permanent Redirect, The request method and the body will not be altered, whereas 301 may incorrectly sometimes be changed to a GET method.</p>
+        <p>Expect: 浏览器重定向到 /HTTP/methods/HTTP-3-6</p>
+        <form name = 'HTTP-3-5' method = 'POST' action = '/HTTP/functionality/HTTP-3-6' class = 'form-inline'>
+            <div class = 'form-group'>
+                <label class = 'col-form-label'>HTTP Method</label>
+                <select name = 'httpMethod' class = 'form-control'>
+                    <option value = 'GET'>GET</option>
+                    <option value = 'POST' selected>POST</option>
+                    <option value = 'PUT'>PUT</option>
+                    <option value = 'DELETE'>DELETE</option>
+                    <option value = 'HEAD'>HEAD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for = 'StatusCode'>Status Code</label>
+                <input type = 'text'  name = 'StatusCode' placeholder = "308" value = '308' class="form-control" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-6'/>
+            </div>
+            <input type = 'submit' value = 'POST Non-Ajax' class = 'btn btn-default'/>
+            <button class = 'ajax btn btn-default'>AJAX + POST </button>
+        </form><br>
+    </div>
     
     <script type = "text/javascript" src = "/HTTP/tSuite-3-functionality.js"></script>
     </body>

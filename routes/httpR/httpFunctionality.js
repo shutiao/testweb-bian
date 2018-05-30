@@ -74,4 +74,15 @@ httpFunctionality.route('/functionality')
         }
     });
 
+
+httpFunctionality.route('/functionality/HTTP-3-6')
+    .all(function(req, res){
+        res.redirect(308, '/HTTP/functionality/HTTP-3-6/redirect');
+    })
+
+httpFunctionality.route('/functionality/HTTP-3-6/redirect')
+    .all(function(req, res){
+        res.sendStatus(200);
+    })
+
 module.exports = httpFunctionality;
