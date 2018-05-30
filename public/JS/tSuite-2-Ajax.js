@@ -6,7 +6,7 @@ $('#JS-2-1').on('click', 'button', function(event){
         upstream_ip = el.find('input[name="upstream_ip"]').val(),
         upstream_port = el.find('input[name="upstream_port"]').val(),
         relative_path = el.find('input[name="relative_path"]').val();
-    var absolute_path = upstream_protocol + upstream_ip + ':' + upstream_port + relative_path;
+    var absolute_path = upstream_protocol + upstream_ip + upstream_port + relative_path;
 
     console.log(absolute_path);
     $.ajax({

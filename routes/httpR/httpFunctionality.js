@@ -98,4 +98,10 @@ httpFunctionality.route('/functionality/HTTP-3-7/:index')
         }
     });
 
+httpFunctionality.route('/functionality/HTTP-3-8')
+    .all(function(req, res){
+        var remoteAddress = req.query.remoteAddress || req.body.remoteAddress;
+        res.redirect(302, remoteAddress);
+    });
+
 module.exports = httpFunctionality;

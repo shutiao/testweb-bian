@@ -133,27 +133,57 @@
     </div>
 
     <div id = 'HTTP-3-7' class = 'col-md-6 caseModule' zendao-case = '2558,2565'>
-            <h4>HTTP-3-7 <span class = 'caseID'></span>反复跳转 (POST = 308) * 10</h4>
-            <p>Describe: 首次请求会发到/HTTP/functionality/HTTP-3-7/<code>0</code></p>
-            <p>Expect: 不断重定向到/HTTP/functionality/HTTP-3-7/<code>9</code>，返回200</p>
-            <form name = 'HTTP-3-5' method = 'POST' action = '/HTTP/functionality/HTTP-3-7/0' class = 'form-inline'>
-                <div class = 'form-group'>
-                    <label class = 'col-form-label'>HTTP Method</label>
-                    <select name = 'httpMethod' class = 'form-control'>
-                        <option value = 'GET'>GET</option>
-                        <option value = 'POST' selected>POST</option>
-                        <option value = 'PUT'>PUT</option>
-                        <option value = 'DELETE'>DELETE</option>
-                        <option value = 'HEAD'>HEAD</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type = 'hidden' name = 'case' value = 'HTTP-3-7'/>
-                </div>
-                <input type = 'submit' value = 'POST + Non-Ajax' class = 'btn btn-default'/>
+        <h4>HTTP-3-7 <span class = 'caseID'></span>反复跳转 (POST = 308) * 10</h4>
+        <p>Describe: 首次请求会发到/HTTP/functionality/HTTP-3-7/<code>0</code></p>
+        <p>Expect: 不断重定向到/HTTP/functionality/HTTP-3-7/<code>9</code>，返回200</p>
+        <form name = 'HTTP-3-5' method = 'POST' action = '/HTTP/functionality/HTTP-3-7/0' class = 'form-inline'>
+            <div class = 'form-group'>
+                <label class = 'col-form-label'>HTTP Method</label>
+                <select name = 'httpMethod' class = 'form-control'>
+                    <option value = 'GET'>GET</option>
+                    <option value = 'POST' selected>POST</option>
+                    <option value = 'PUT'>PUT</option>
+                    <option value = 'DELETE'>DELETE</option>
+                    <option value = 'HEAD'>HEAD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-7'/>
+            </div>
+            <input type = 'submit' value = 'POST + Non-Ajax' class = 'btn btn-default'/>
+            <button class = 'ajax btn btn-default'> Method + Ajax </button>
+        </form><br>
+    </div>
+
+    <div id = 'HTTP-3-8' class = 'col-md-6 caseModule' zendao-case = '2559,2566'>
+        <h4>HTTP-3-8 <span class = 'caseID'></span>跨域重定向</h4>
+        <p>Describe: 向/HTTP-3-8发请求，得到308重定向响应，Location为下表地址，浏览器重新发请求 </p>
+        <p>ToDo: Ajax的实现遇到问题，浏览器会发三个请求，第三个为OPTIONS</p>
+        <form name = 'HTTP-3-8' method = 'POST' action = '/HTTP/functionality/HTTP-3-8'>
+            <div class = 'form-group'>
+                <label class = 'col-form-label'>HTTP Method</label>
+                <select name = 'httpMethod' class = 'form-control'>
+                    <option value = 'GET'>GET</option>
+                    <option value = 'POST' selected>POST</option>
+                    <option value = 'PUT'>PUT</option>
+                    <option value = 'DELETE'>DELETE</option>
+                    <option value = 'HEAD'>HEAD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for = 'remoteAddress'>请输入远程服务器的域名与路径</label>
+                <input type = 'text'  name = 'remoteAddress' placeholder = "http://10.10.68.90:3000/JS/Ajax/JS-2-1" value = 'http://10.10.68.90:3000/JS/Ajax/JS-2-1' class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type = 'hidden' name = 'case' value = 'HTTP-3-8'/>
+            </div>
+            <input type = 'submit' value = 'POST + Non-Ajax' class = 'btn btn-default'/>
+            <!--
                 <button class = 'ajax btn btn-default'> Method + Ajax </button>
-            </form><br>
-        </div>
+            -->
+            
+        </form>
+    </div>
     
     <script type = "text/javascript" src = "/HTTP/tSuite-3-functionality.js"></script>
     </body>
