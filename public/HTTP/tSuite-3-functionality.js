@@ -24,6 +24,22 @@ $('#HTTP-3-3').on('click', '.ajax', function(event){
     })
 })
 
+$('#HTTP-3-4').on('click', '.ajax', function(event){
+    event.preventDefault();
+    var el = $('#HTTP-3-4');
+    var httpMethod = el.find('select[name="Method"]').val();
+    $.ajax({
+        method: httpMethod || 'POST',
+        url: '',
+        dataType: "application/json",
+        data: $('form[name="HTTP-3-4"]').serialize(),
+        complete: function(response) {
+            $("#body").parent().find('h4').text('Response Body');
+            $("#body").text(response.responseText);
+        }
+    })
+})
+
 $('#HTTP-3-5').on('click', 'button', function(event){
     event.preventDefault();
     var el = $('#HTTP-3-5');
