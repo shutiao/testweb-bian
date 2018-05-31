@@ -43,7 +43,7 @@
 
     <div id = 'HTTP-3-3' class = 'col-md-6 caseModule' zendao-case = '2553'>
         <h4>HTTP-3-3 <span class = 'caseID'></span>普通：GET = 301 + Location</h4>
-        <p>Describe: 该状态码表示请求的资源已被分配了新的URI</p>
+        <p>Describe: 301 Moved Permanently, 该状态码表示请求的资源已被分配了新的URI</p>
         <p>Expect: 点击按钮后，将使用下表的方法请求，并且返回对应的状态码；重定向到本页</p>
         <form name = 'HTTP-3-3' method = 'get' class = 'form-inline'>
             <div class="form-group">
@@ -57,7 +57,8 @@
             <div class="form-group">
                 <input type = 'hidden' name = 'case' value = 'HTTP-3-3'/>
             </div>
-            <input type = 'submit' value = '301 Moved Permanently ' class = 'btn btn-default'/>
+            <input type = 'submit' value = 'GET + Non-Ajax' class = 'btn btn-default'/>
+            <button class = 'ajax btn btn-default'>GET + Ajax </button>
         </form>
     </div>
 
@@ -66,7 +67,7 @@
         <p>Describe: 临时性重定向，希望用户本次能使用新的URI访问。</p>
         <p>Note: 301、302标准禁止将POST方法改变成GET方法，但几乎所有的浏览器都会这么做，并删除请求报文主体，再次发送</p>
         <p>Expect: 点击按钮后，将使用下表的方法请求，并且返回对应的状态码；重定向到本页</p>
-        <form name = 'HTTP-3-3' method = 'post' class = 'form-inline'>
+        <form name = 'HTTP-3-4' method = 'post' class = 'form-inline'>
             <div class="form-group">
                 <label for = 'Method'>HTTP Verb</label>
                 <input type = 'text' name = 'Method' placeholder = "POST" value = 'POST' class="form-control" readonly="readonly"/>

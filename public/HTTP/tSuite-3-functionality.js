@@ -8,6 +8,22 @@ var HTTP_3_3 = function (){
     $('#HTTP-3-3').find('input[name="StatusCode"]').val("302");
 }
 
+$('#HTTP-3-3').on('click', '.ajax', function(event){
+    event.preventDefault();
+    var el = $('#HTTP-3-3');
+    var httpMethod = el.find('select[name="Method"]').val();
+    $.ajax({
+        method: httpMethod || 'GET',
+        url: '',
+        dataType: "application/json",
+        data: $('form[name="HTTP-3-3"]').serialize(),
+        complete: function(response) {
+            $("#body").parent().find('h4').text('Response Body');
+            $("#body").text(response.responseText);
+        }
+    })
+})
+
 $('#HTTP-3-5').on('click', 'button', function(event){
     event.preventDefault();
     var el = $('#HTTP-3-5');
