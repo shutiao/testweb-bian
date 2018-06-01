@@ -20,6 +20,38 @@ $('#JS-2-1').on('click', 'button', function(event){
     })
 })
 
+document.getElementById('JS-2-2').addEventListener('click', function(event){
+    event.preventDefault()
+});
+
+var JS_2_2 = function(){
+    if (typeof XMLHttpRequest == 'undefined'){
+        alert("Your browser doesn't support XMLHttpRequest");
+        return;
+    }
+
+    var xhr = new XMLHttpRequest();
+    var uri = $('#JS-2-2').find('input[name="remoteAddress"]').val(),
+        method = $('#JS-2-2').find('select[name="httpMethod"]').val();
+
+    if (xhr){
+        xhr.open(method, uri);
+        xhr.send(null);
+    }
+
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState === 4){
+            if (xhr.status === 200){
+                var responseText = JSON.parse(xhr.responseText);
+                updateHeaderWell(responseText);
+            }
+            else{
+                $('#body').text(xhr.responseText);
+            }
+        }
+    }
+
+}
 
 function updateHeaderWell(reqPkg){
     // Update Request Line

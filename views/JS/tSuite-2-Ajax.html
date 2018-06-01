@@ -10,7 +10,7 @@
         
         <div id = 'JS-2-1' class = 'col-md-6 caseModule' zendao-case = '3025'>
             <h4>JS-2-1<span class = 'caseID'></span>Ajax 跨域请求</h4>
-            <p>Describe: 本用例使用jQuery来实现Ajax请求</p>
+            <p>Describe: 本用例使用jQuery API来实现Ajax请求</p>
             <p>Note: jQuery可以对使用者屏蔽不同浏览器的DOM接口差异。IE上或许通过禁用"Enable native XMLHTTP support"可以触发ActiveX</p>
             <p>Expect: 使用下表自定义方法与路径，请求报文将回环显示于页面上方的井中</p>
             <form name = 'JS-2-1'>
@@ -59,6 +59,36 @@
                 <input type = 'hidden' name = 'case' value = 'JS-2-1'/>
                 <div class="form-group">
                     <button class = 'ajax btn btn-default'>JS-2-1 Ajax</button>
+                </div>
+            </form><br>
+            <echo></echo>
+        </div>
+
+
+        <div id = 'JS-2-2' class = 'col-md-6 caseModule' zendao-case = '3025'>
+            <h4>JS-2-2<span class = 'caseID'></span>Ajax 跨域请求</h4>
+            <p>Describe: 本用例使用XMLHttpRequest对象来实现Ajax请求</p>
+            <p>Note: </p>
+            <p>Expect: 使用下表自定义方法与路径，请求报文将回环显示于页面上方的井中</p>
+            <form name = 'JS-2-2'>
+                <div class="form-group form-inline">
+                    <label class="col-form-label">HTTP Method</label>
+                    <select name="httpMethod" class="form-control">
+                        <option value="GET" selected="">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="HEAD">HEAD</option>
+                        <option value="OPTIONS">OPTIONS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for = 'remoteAddress'>请输入远程服务器的域名与路径</label>
+                    <input type = 'text'  name = 'remoteAddress' placeholder = "" value = 'http://10.10.68.90:3000/JS/Ajax/JS-2-1' class="form-control"/>
+                </div>
+                <input type = 'hidden' name = 'case' value = 'JS-2-2'/>
+                <div class="form-group">
+                    <button class = 'xhr btn btn-default' onclick='JS_2_2();'>JS-2-2 xhr</button>
                 </form><br>
             </form>
             <echo></echo>
