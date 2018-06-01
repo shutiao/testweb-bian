@@ -64,9 +64,25 @@ httpCacheHtml.route('/cache')
     });
 
 
-/**
- * http 2-7
- */
+httpCacheHtml.route('/cache/http-2-1')
+    .get(function (req, res) {
+        var options = {
+            root: __dirname + '/../../views/HTTP/cache-html',
+            headers: {}
+        };
+        var index, headerField, headerVal;
+        var regex = /\d+$/;
+        for (var header in req.query) {
+            if (header.startsWith('resHeaderField')){
+                headerField = req.query[header];
+                index = regex.exec(header);
+                headerVal = req.query['resHeaderVal' + index];
+                options.headers[headerField] = headerVal;
+            }
+        }
+        res.sendFile('cache-static.html', options);
+    });
+
 httpCacheHtml.route('/cache/http-2-7')
     .get(function (req, res) {
         var options = {

@@ -12,24 +12,41 @@
     <h4>HTTP-2-1 (#2496) 静态可缓存HTML</h4>
     <p>Describe: 若干与CDN相关的响应头与请求头，分别检查两个阶段的请求和两个阶段的响应</p>
     <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
-    <form method='get'>
-        <div class="form-group">
-            <label for='Cache-Control'>Cache-Control</label>
-            <input type='text' id='Cache-Control' name='Cache-Control'
-                   placeholder='s-maxage=600, max-age=2592000, public' value='s-maxage=600, max-age=2592000, public'
-                   class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label for='Cache-Control'>Expires</label>
-            <input type='text' id='Expires' name='Expires' placeholder='Mon, 17 Apr 2028 07:46:32 GMT'
-                   value='Mon, 17 Apr 2028 07:46:32 GMT' class="form-control"/>
-        </div>
+    <form method = 'get' action = '/HTTP/cache/HTTP-2-1'>
+        <table id="headerTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="td-center">响应首部字段</th>
+                    <th class="td-center">字段值</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-center" style="width:150px;">
+                            <input type="text" name="resHeaderField1" class="form-control" placeholder="响应首部字段" value="Cache-Control">
+                        </td>
+                        <td class="td-center">
+                            <input type="text" name="resHeaderVal1" class="form-control" placeholder="字段值" value="s-maxage=600, max-age=2592000, public">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td-center">
+                            <input type="text" name="resHeaderField2" class="form-control" placeholder="响应首部字段" value="Expires">
+                        </td>
+                        <td class="td-center">
+                            <input type="text" name="resHeaderVal2" class="form-control" placeholder="字段值" value="Mon, 17 Apr 2028 07:46:32 GMT">
+                        </td>
+                    </tr>
+                </tbody>   
+        </table>
         <div>
             <input type='hidden' name='case' value='HTTP-2-1' class='form-control'/>
         </div>
         <input type='submit' value='Apply Response Header' class="btn btn-default"/>
     </form>
 </div>
+
 
 <div id='HTTP-2-2' class='col-md-6' zendao-case='2548,2549'>
     <h4>HTTP-2-2 (#2548,#2549) 动态不可/可缓存HTML</h4>

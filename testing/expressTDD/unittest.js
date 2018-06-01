@@ -98,3 +98,11 @@ describe('JS-2-1 Ajax 跨域请求', function(){
             .expect(200, done)
     });
 })
+
+describe('HTTP-2-1 自定义响应头', function(){
+    it('GET to /HTTP-2-1/HTTP-2-1 With Query', function(done){
+        request(app)
+            .get('/HTTP/cache/HTTP-2-1?resHeaderField1=a&resHeaderVal1=apple&resHeaderField2=b&resHeaderVal2=bear')
+            .expect(200, done)
+    });
+})
