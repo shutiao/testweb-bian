@@ -9,10 +9,10 @@
 <hr>
 
 <div id='HTTP-2-1' class='col-md-6' zendao-case='2496'>
-    <h4>HTTP-2-1 (#2496) 静态可缓存HTML</h4>
-    <p>Describe: 若干与CDN相关的响应头与请求头，分别检查两个阶段的请求和两个阶段的响应</p>
-    <p>Expect: 需要与原站一致，保护后不改变原请求信息以及响应。</p>
-    <form method = 'get' action = '/HTTP/cache/HTTP-2-1'>
+    <h4>HTTP-2-1 (#2496) 自定义响应首部，静态可缓存HTML</h4>
+    <p>Describe: 点击按钮后将指向/HTTP/cache/HTTP-2-1，使用下表可以自定义响应头与对应的字段值</p>
+    <p>Expect: 响应报文中的首部将按照下表的配置下发，返回一个HTML静态页面</p>
+    <form method = 'post' action = '/HTTP/cache/HTTP-2-1'>
         <table id="headerTable" class="table table-bordered">
             <thead>
                 <tr>
