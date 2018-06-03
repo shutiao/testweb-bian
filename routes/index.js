@@ -4,6 +4,7 @@ var express = require('express'),
 var ngjsR = require('./ngjsR'),
     vueR = require('./vueR'),
     ngR = require('./ngR.js'),
+    reactR = require('./reactR.js'),
     httpR = require('./httpR'),
     statusR = require('./statusR.js'),
     htmlR = require('./htmlR'),
@@ -30,6 +31,7 @@ module.exports = exports = function(app){
     app.use('/NGJS', ngjsR);
     app.use('/Vue', vueR);
     app.use('/angular', ngR);
+    app.use('/react', reactR);
     app.use('/HTTP', httpR);
     app.use('/StatusCode', statusR);
     app.use('/HTML', htmlR);

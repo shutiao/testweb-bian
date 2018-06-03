@@ -15,6 +15,7 @@ app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/lib'));
 app.use(express.static(__dirname + '/angular-app/dist'));
+app.use(express.static(__dirname + '/react-app/dist'));
 routers(app);
 
 chattr(server);

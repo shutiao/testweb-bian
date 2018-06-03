@@ -7,7 +7,7 @@ gulp.task("default", () => {
   return browserify("src/component.js")
     .transform("babelify")
     .bundle()
-    .pipe(source("bundle.js"))
+    .pipe(source("botBundle.js"))
     .pipe(gulp.dest("dist"));
 
 });

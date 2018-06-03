@@ -69,13 +69,49 @@ var CommentBox = function (_React$Component2) {
         var _this2 = _possibleConstructorReturn(this, (CommentBox.__proto__ || Object.getPrototypeOf(CommentBox)).call(this));
 
         _this2.state = {
-            showComments: false,
-            commentList: [{ id: 1, author: 'Anne Droid', body: 'I wanna know what love is ...' }, { id: 2, author: 'Bending Bender', body: 'Excellent stuff' }]
+            showComments: true,
+            comments: [
+                /*
+                // Set the initial state of comments as an empty array so we can later populate it with data from an API server
+                { id: 1, author: 'Anne Droid', body: 'I wanna know what love is ...' },
+                { id: 2, author: 'Bending Bender', body: 'Excellent stuff'}
+                */
+            ]
         };
         return _this2;
     }
 
+    // The componentWillMount method is called before the component is rendered to the page
+
+
     _createClass(CommentBox, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this._fetchComments();
+        }
+
+        // Getting Periodic Updates
+
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this3 = this;
+
+            // Polling the server every five seconds
+            this._timer = setInterval(function () {
+                return _this3._fetchComments();
+            }, 5000);
+        }
+
+        // Each component is responsible for removing any timers it has created.
+        // We will remove the timer on the componentWillUnmount method
+
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            clearInterval(this._timer);
+        }
+    }, {
         key: 'render',
         value: function render() {
             var comments = this._getComments();
@@ -93,24 +129,37 @@ var CommentBox = function (_React$Component2) {
             }
             return React.createElement(
                 'div',
-                { className: 'comment-box' },
-                React.createElement(CommentForm, { addComment: this._addComment.bind(this) }),
+                { className: 'row comments-container' },
                 React.createElement(
-                    'h3',
-                    null,
-                    'Comments'
-                ),
-                React.createElement(
-                    'h4',
-                    { className: 'comment-count' },
-                    this._getCommentsTitle(comments.length)
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this._handleClick.bind(this) },
-                    buttonText
-                ),
-                commentNodes
+                    'div',
+                    { className: 'cell' },
+                    React.createElement(
+                        'h2',
+                        null,
+                        'Join The Discussion'
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'comment-box' },
+                        React.createElement(CommentForm, { addComment: this._addComment.bind(this) }),
+                        React.createElement(
+                            'h3',
+                            null,
+                            'Comments'
+                        ),
+                        React.createElement(
+                            'h4',
+                            { className: 'comment-count' },
+                            this._getCommentsTitle(comments.length)
+                        ),
+                        React.createElement(
+                            'button',
+                            { onClick: this._handleClick.bind(this) },
+                            buttonText
+                        ),
+                        commentNodes
+                    )
+                )
             );
         }
 
@@ -119,12 +168,17 @@ var CommentBox = function (_React$Component2) {
     }, {
         key: '_getComments',
         value: function _getComments() {
+            var _this4 = this;
 
-            return this.state.commentList.map(function (comment) {
+            return this.state.comments.map(function (comment) {
                 return React.createElement(Comment, {
                     author: comment.author,
                     body: comment.body,
-                    key: comment.id
+                    key: comment.id,
+                    id: comment.id,
+                    avatarUrl: comment.avatarUrl
+                    //Will be lated be called in the context of the CommentBox component
+                    , onDelete: _this4._deleteComment.bind(_this4)
                 });
             });
         }
@@ -169,6 +223,43 @@ var CommentBox = function (_React$Component2) {
                 comments: this.state.comments.concat([comment])
             });
         }
+
+        // make Ajax requests in the CommentBox component
+
+    }, {
+        key: '_fetchComments',
+        value: function _fetchComments() {
+            var _this5 = this;
+
+            jQuery.ajax({
+                method: 'GET',
+                url: '/react/api/comments',
+                // Arrow function preserves the this binding to our class
+                success: function success(comments) {
+                    // this refers to CommentBox
+                    // setSatte will calls render()
+                    _this5.setState({ comments: comments });
+                }
+            });
+        }
+
+        // The CommentBox component needs a new method to delete individual comments
+
+    }, {
+        key: '_deleteComment',
+        value: function _deleteComment(commentID) {
+            jQuery.ajax({
+                method: 'DELETE',
+                url: '/react/api/comments/' + commentID
+            });
+
+            var comments = this.state.comments.filter(function (comment) {
+                return comment.id !== commentID;
+            });
+
+            // Update state with modified comments array
+            this.setState({ comments: comments });
+        }
     }]);
 
     return CommentBox;
@@ -192,6 +283,7 @@ var Comment = function (_React$Component3) {
             return React.createElement(
                 'div',
                 { className: 'comment' },
+                React.createElement('img', { src: this.props.avatarUrl, alt: this.props.author + '\'s picture' }),
                 React.createElement(
                     'p',
                     { className: 'comment-header' },
@@ -204,14 +296,26 @@ var Comment = function (_React$Component3) {
                 ),
                 React.createElement(
                     'div',
-                    { className: 'comment-footer' },
+                    { className: 'comment-actions' },
                     React.createElement(
                         'a',
-                        { href: '#', className: 'comment-footer-delete' },
-                        'Delete comment'
+                        { href: '#'
+                            /*
+                            Adding an event listener to the delete button
+                             When a user clicks on the link, the onClick event is emitted, which invokes the _handleDelete() function
+                            */
+                            , onClick: this._handleDelete.bind(this),
+                            className: 'comment-footer-delete' },
+                        'Delete comment?'
                     )
                 )
             );
+        }
+    }, {
+        key: '_handleDelete',
+        value: function _handleDelete(event) {
+            event.preventDefault();
+            this.props.onDelete(this.props.id);
         }
     }]);
 
@@ -233,7 +337,7 @@ var CommentForm = function (_React$Component4) {
     _createClass(CommentForm, [{
         key: 'render',
         value: function render() {
-            var _this5 = this;
+            var _this8 = this;
 
             return React.createElement(
                 'form',
@@ -246,7 +350,7 @@ var CommentForm = function (_React$Component4) {
                 React.createElement(
                     'label',
                     null,
-                    'Join the discussuon'
+                    'NEW COMMENT'
                 ),
                 React.createElement(
                     'div',
@@ -257,11 +361,11 @@ var CommentForm = function (_React$Component4) {
                             this refers to CommentForm
                         */
                         , ref: function ref(input) {
-                            return _this5._author = input;
+                            return _this8._author = input;
                         } }),
                     React.createElement('textarea', { placeholder: 'Comment:',
                         ref: function ref(textarea) {
-                            return _this5._body = textarea;
+                            return _this8._body = textarea;
                         }
                     })
                 ),

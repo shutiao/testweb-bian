@@ -569,7 +569,7 @@ p {
 }
 
 .comment-form::before {
-  background: url("images/illo-gears.svg") center no-repeat;
+  background: url("/illo-gears.svg") center no-repeat;
   content: '';
   height: 80px;
   position: absolute;
