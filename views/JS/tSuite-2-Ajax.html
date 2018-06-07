@@ -11,7 +11,7 @@
         <div id = 'JS-2-1' class = 'col-md-6 caseModule' zendao-case = '3025'>
             <h4>JS-2-1<span class = 'caseID'></span>Ajax 跨域请求</h4>
             <p>Describe: 本用例使用jQuery API来实现Ajax请求</p>
-            <p>Note: jQuery可以对使用者屏蔽不同浏览器的DOM接口差异。IE上或许通过禁用"Enable native XMLHTTP support"可以触发ActiveX</p>
+            <p>Note: jQuery可以对使用者屏蔽不同浏览器的DOM接口差异。IE上通过禁用"Enable native XMLHTTP support"来禁用xhr从而触发ActiveX</p>
             <p>Expect: 使用下表自定义方法与路径，请求报文将回环显示于页面上方的井中</p>
             <form name = 'JS-2-1'>
                 <div class="form-group form-inline">
@@ -67,8 +67,9 @@
 
         <div id = 'JS-2-2' class = 'col-md-6 caseModule' zendao-case = '3025'>
             <h4>JS-2-2<span class = 'caseID'></span>Ajax 跨域请求</h4>
-            <p>Describe: 本用例使用XMLHttpRequest对象来实现Ajax请求</p>
-            <p>Note: </p>
+            <p>Describe: 本用例使用XMLHttpRequest/fetch对象来实现Ajax请求</p>
+            <p>Describe: 选定ActiveXObject对象名后，将使用对应的对象生成IE上的AJAX请求</p>
+            <p>Note: 同源请求，请使用相对路径<code>Ajax/JS-2-1</code></p>
             <p>Expect: 使用下表自定义方法与路径，请求报文将回环显示于页面上方的井中</p>
             <form name = 'JS-2-2'>
                 <div class="form-group form-inline">
@@ -88,7 +89,26 @@
                 </div>
                 <input type = 'hidden' name = 'case' value = 'JS-2-2'/>
                 <div class="form-group">
-                    <button class = 'xhr btn btn-default' onclick='JS_2_2();'>JS-2-2 xhr</button>
+                    <button class = 'xhr btn btn-default' onclick='JS_2_2_xhr()'>JS-2-2 xhr</button>
+                    <button class = 'fetch btn btn-default' onclick='JS_2_2_fetch()'>JS-2-2 fetch()</button>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-form-label">ActiveXObject</label>
+                    <select name="ActiveX" class="form-control">
+                        <option value="Microsoft.XMLHTTP" selected="">Microsoft.XMLHTTP</option>
+                        <option value="Microsoft.XMLHTTP.1.0">Microsoft.XMLHTTP.1.0</option>
+                        <option value="Msxml2.ServerXMLHTTP">Msxml2.ServerXMLHTTP</option>
+                        <option value="Msxml2.ServerXMLHTTP.3.0">Msxml2.ServerXMLTTP.3.0</option>
+                        <option value="Msxml2.ServerXMLHTTP.4.0">Msxml2.ServerXMLHTTP.4.0</option>
+                        <option value="Msxml2.ServerXMLHTTP.5.0">Msxml2.ServerXMLHTTP.5.0</option>
+                        <option value="Msxml2.ServerXMLHTTP.6.0">Msxml2.ServerXMLHTTP.6.0</option>
+                        <option value="Msxml2.XMLHTTP.3.0">Msxml2.XMLHTTP.3.0</option>
+                        <option value="Msxml2.XMLHTTP.4.0">Msxml2.XMLHTTP.4.0</option>
+                        <option value="Msxml2.XMLHTTP.5.0">Msxml2.XMLHTTP.5.0</option>
+                        <option value="Msxml2.XMLHTTP.6.0">Msxml2.XMLHTTP.6.0</option>
+                    </select>
+                    <button class = 'fetch btn btn-default' onclick='JS_2_2_ActiveX();'>JS-2-2 ActiveX()</button>
+                </div>
                 </form><br>
             </form>
             <echo></echo>

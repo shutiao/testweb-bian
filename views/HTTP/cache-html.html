@@ -12,7 +12,7 @@
     <h4>HTTP-2-1 (#2496) 自定义响应首部，静态可缓存HTML</h4>
     <p>Describe: 点击按钮后将指向/HTTP/cache/HTTP-2-1，使用下表可以自定义响应头与对应的字段值</p>
     <p>Expect: 响应报文中的首部将按照下表的配置下发，返回一个HTML静态页面</p>
-    <form method = 'post' action = '/HTTP/cache/HTTP-2-1'>
+    <form method = 'get' action = '/HTTP/cache/HTTP-2-1'>
         <table id="headerTable" class="table table-bordered">
             <thead>
                 <tr>

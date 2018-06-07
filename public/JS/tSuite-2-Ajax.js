@@ -20,11 +20,20 @@ $('#JS-2-1').on('click', 'button', function(event){
     })
 })
 
-document.getElementById('JS-2-2').addEventListener('click', function(event){
-    event.preventDefault()
-});
+// Internet Explorer doesn't support addEventListener until IE 9
+var el_js_2_2 = document.getElementById('JS-2-2');
+if (el_js_2_2.addEventListener) {
+    el_js_2_2.addEventListener('click', function(event){
+        event.preventDefault();
+    });
+}
+else{
+    el_js_2_2.attachEvent('onclick', function(event){
+        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+    })
+}
 
-var JS_2_2 = function(){
+var JS_2_2_xhr = function(){
     if (typeof XMLHttpRequest == 'undefined'){
         alert("Your browser doesn't support XMLHttpRequest");
         return;
@@ -52,6 +61,48 @@ var JS_2_2 = function(){
     }
 
 }
+
+var JS_2_2_fetch = function(){
+        var uri = $('#JS-2-2').find('input[name="remoteAddress"]').val(),
+           method = $('#JS-2-2').find('select[name="httpMethod"]').val();
+        fetch(uri, {method: method}).then(function(response){
+            return response.json();
+        }).then(function(resData) {
+            updateHeaderWell(resData);
+        });
+    }
+    
+var JS_2_2_ActiveX = function(){
+    var objName = $('#JS-2-2').find('select[name="ActiveX"]').val(),
+        uri = $('#JS-2-2').find('input[name="remoteAddress"]').val(),
+        method = $('#JS-2-2').find('select[name="httpMethod"]').val();
+
+    var request;
+    try {
+        request = new ActiveXObject(objName);
+    }
+    catch (ex) {
+        alert("Your browser doesn't support " + objName);
+        return;
+    }
+    if (request){
+        request.open(method, uri, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.send('username=admin&password=root');
+    }
+
+    request.onreadystatechange = function(){
+        if (request.readyState === 4){
+            if (request.status === 200 && window.JSON){
+                var responseText = JSON.parse(request.responseText);
+                updateHeaderWell(responseText);
+            }
+            else{
+                $('#body').text(request.responseText);
+            }
+        }
+    }
+}		  
 
 function updateHeaderWell(reqPkg){
     // Update Request Line
