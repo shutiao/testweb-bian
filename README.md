@@ -44,6 +44,16 @@ ng build
 git config --global http.proxy 'socks5://10.10.8.66:1080'
 git config --global https.proxy 'socks5://10.10.8.66:1080'
 ``` 
+### Edit Lisntening Port
+服务器默认监听在 3000 端口    
+更改port变量可以修改监听端口   
+``` JavaScript
+|---bian
+        |___bin
+                |___www
+
+var port = process.env.PORT || 3000;
+```
 ### Run server in the backend continuously
 ``` bash
 [sudo] npm install forever -g
@@ -54,8 +64,8 @@ forever start ./bian/bin/www
 |--- bian
         └── routes
                 └── timeout.js
-// the delay is 0 milliseconds to wait before proceeding to next middleware
-setTimeout(function(){next();}, 0);
+// the delay is 5000 milliseconds(5s) to wait before proceeding to next middleware
+setTimeout(function(){next();}, 5000);
 ```
 ## Design and Development
 ### File Organizing

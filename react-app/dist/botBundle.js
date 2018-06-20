@@ -22,7 +22,7 @@ var StoryBox = function (_React$Component) {
         key: 'render',
         value: function render() {
             var now = new Date();
-            var topicsList = ['HTML', 'JavaScript', 'React'];
+            var topicsList = ['HTML', 'jQuery 1.10.2', 'React 16.4'];
 
             return React.createElement(
                 'div',
@@ -208,6 +208,11 @@ var CommentBox = function (_React$Component2) {
         }
 
         // Gets triggered by CommentForm when a new comment is added
+        /* ToDo: 
+            post new comments to a remote server so they can persist across sessions
+            ID should be generated on the server side
+            Should make the server-side request before updating the state
+        */
 
     }, {
         key: '_addComment',
@@ -315,6 +320,7 @@ var Comment = function (_React$Component3) {
         key: '_handleDelete',
         value: function _handleDelete(event) {
             event.preventDefault();
+            // if (confirm('Are you sure?')) {}
             this.props.onDelete(this.props.id);
         }
     }]);

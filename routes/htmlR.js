@@ -12,6 +12,9 @@ htmlR.route('/:testSuite')
             case "Form":
                 res.render(pathPrefix + 'tSuite-5-Form.html');
                 break;
+            case "Parse":
+                res.render(pathPrefix + 'tSuite-1-Parse.html');
+                break;
             default:
                 res.render(pathPrefix + 'tSuite-5-Form.html');
         }
@@ -22,7 +25,6 @@ htmlR.route('/:testSuite')
         var pathPrefix = __dirname + '/../views/HTML/';
         switch(testSuite){
             case "HTML-5-1":
-                
                 res.writeHead(200);
                 var newFile = fs.createWriteStream(filePath);
                 var fileBytes = req.headers['content-length'];
@@ -60,5 +62,10 @@ htmlR.route('/:testSuite')
         res.sendStatus(204);
     })
     ;
+
+htmlR.route('/parse/HTML-1-1')
+    .get(function(req, res){
+        res.render(__dirname + '/../views/HTML/HTML-1-1.html');
+    });
 
 module.exports = htmlR;

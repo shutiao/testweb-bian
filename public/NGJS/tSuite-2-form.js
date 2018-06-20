@@ -8,10 +8,9 @@
 	app.controller('AddruleController', ['$scope', '$http', function($scope, $http){
 		this.rules = rules_config;
 		this.rule = {};
+		this.formUrl = '/NGJS/tSuite/2';
+
 		this.addRule = function(){
-			//alert('addRule is called');
-			//console.log(this.rules);
-			//this.rule.createdOn = Date.now();
 			this.rule.rule_id = this.rules.length + 1;
 			this.rules.push(this.rule);
 		

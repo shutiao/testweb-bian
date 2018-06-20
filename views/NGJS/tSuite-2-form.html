@@ -44,7 +44,7 @@
                     <h4 >NGJS-2-2: Submit a Rule</h4>
                     <p>Describe: Submit Rule By ngSubmit, action: abc(double-submission)</p>
                     <P>Expect: addRule() is called and default action is also triggered</P>
-                    <form name = "NGJS_2_2" action = '/NGJS/tSuite/2' ng-submit = 'ubbrules.addRule()'>
+                    <form name = "NGJS_2_2" action = '{{ubbrules.formUrl}}'  method = 'POST'>
                         <select class="form-control" ng-model = 'ubbrules.rule.action'>
                             <option value = "">Choose the Action</option>
                             <option value = "block">Block</option>

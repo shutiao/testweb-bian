@@ -59,7 +59,6 @@ var JS_2_2_xhr = function(){
             }
         }
     }
-
 }
 
 var JS_2_2_fetch = function(){

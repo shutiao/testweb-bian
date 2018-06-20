@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head.html %>
+    </head>
+    <body class = 'container'>
+        <% include ../partials/nav.html %>
+        <% include ../partials/echo.ejs %>
+        <hr>
+        
+        <div id = 'HTTP-6-1' class = 'col-md-6 caseModule' zendao-case = ''>
+            <h4>HTTP-6-1<span class = 'caseID'></span>上游将收到的Cookie无差别标记HttpOnly</h4>
+            <p>Describe: 等级保护建议Web服务商将Cookie设置为HttpOnly</p>
+            <p>【Step1】 在RAS中允许Put与Delete请求方法 </p>
+            <p>【Step2】 将保护站点设置为透传模式</p>
+            <p>【Step3】 点击本页的“设置HttpOnly标记”按钮</p>
+            <p>【Expect】观察到CookieToken被标记为HttpOnly</p>
+            <p>【Step4】 将保护站点设置为拦截模式</p>
+            <p>【Step5】 刷新本页面</p>
+            <p>【Expect】观察到本页无限刷新</p>
+            <button class="set btn btn-danger">设置HttpOnly标记</button></a>
+            <button class="reset btn btn-success">复原HttpOnly标记</button>
+        </div><hr>
+
+    </body>
+    <script type = "text/javascript" src = "/HTTP/tSuite-6-cookie.js"></script>
+</html>

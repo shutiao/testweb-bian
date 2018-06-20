@@ -1,7 +1,7 @@
 class StoryBox extends React.Component {
     render() {
         const now = new Date();
-        const topicsList = ['HTML', 'JavaScript', 'React'];
+        const topicsList = ['HTML', 'jQuery 1.10.2', 'React 16.4'];
 
         return( <div>
                     <h3>Story Box</h3>

@@ -1,20 +1,26 @@
 [
   {
     "id": 1,
-    "author": "Clu",
-    "body": "A machine’s ability to think logically and devoid of emotion is our greatest strength over humans. Cold, unfeeling decision-making is the best kind. Just say no to love!",
+    "author": "Elle",
+    "body": "Elle只看看没有吃",
     "avatarUrl": "/images/avatars/avatar-default.png"
   },
   {
     "id": 2,
-    "author": "Anne Droid",
-    "body": "I wanna know what love is...",
+    "author": "Joey",
+    "body": "你撕了试试～",
     "avatarUrl": "/images/avatars/avatar-benderson.png"
   },
   {
     "id": 3,
-    "author": "Morgan McCircuit",
-    "body": "Great picture!",
+    "author": "小聪",
+    "body": "你们这儿还有工位嘛？",
+    "avatarUrl": "/images/avatars/avatar-sumo.png"
+  },
+  {
+    "id": 4,
+    "author": "Kevin",
+    "body": "还有多少bug没有发现？",
     "avatarUrl": "/images/avatars/avatar-sumo.png"
   }
 ]
