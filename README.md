@@ -16,7 +16,8 @@ Dependency module doesn't come with the source code, use npm install before rest
 tests$ git pull
 cd bian
 npm install
-./bin/www
+./bin/www      (Simply start)
+./bin/hot -s   (Start with supervisor)
 ```
 ## Routes Description
 Level-1 Name | Function
