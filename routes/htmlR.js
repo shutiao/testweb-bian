@@ -25,8 +25,11 @@ htmlR.route('/:testSuite')
         var pathPrefix = __dirname + '/../views/HTML/';
         switch(testSuite){
             case "HTML-5-1":
+                /*DAP-4366
                 res.writeHead(200);
+                DAP-4366*/
                 var newFile = fs.createWriteStream(filePath);
+                /*DAP-4366
                 var fileBytes = req.headers['content-length'];
                 var uploadedBytes = 0;
                 req.on('readable', function(){
@@ -39,7 +42,9 @@ htmlR.route('/:testSuite')
                         }
                     }
                 });
+                DAP-4366*/
                 req.pipe(newFile);
+                /*DAP-4366
                 req.on('end', function(){
                     if (fileBytes){
                         res.end('Progress: 100%\n');
@@ -49,7 +54,8 @@ htmlR.route('/:testSuite')
                         res.render(pathPrefix + 'tSuite-5-Form.html');
                     }
                 });
-                //res.render(pathPrefix + 'tSuite-5-Form.html');
+                */
+                res.render(pathPrefix + 'tSuite-5-Form.html');
                 break;
             
             default:

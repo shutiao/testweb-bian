@@ -2,22 +2,11 @@
 开发新测试网站“狴犴”，整合多种JavaScript框架及复杂测试场景  
 内网演示地址：http://10.10.68.90:3000/  
 公网演示地址：https://bianweb.herokuapp.com  
-## To Deploy the Web Server
-```sh
-git clone https://github.com/SphinxWork/tests.git
+## To Deploy & Run the Web Server
+```shell
 cd bian
 npm install
-chmod +x ./bin/www
-```
-## To run the Web Server  
-The app needs restart everytime source code is updated  
-Dependency module doesn't come with the source code, use npm install before restarting  
-``` bash
-tests$ git pull
-cd bian
-npm install
-./bin/www      (Simply start)
-./bin/hot -s   (Start with supervisor)
+npm start
 ```
 ## Routes Description
 Level-1 Name | Function
