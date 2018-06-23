@@ -1,25 +1,62 @@
 #!/usr/bin/env node
+var exec = require('child_process').exec;
+var cmd = {
+    "npm_install": "cd " + __dirname + "/../" + ";npm install",
+};
 
-var port = process.env.PORT || 3000;
-var server = require('./../app');
 
-if (process.env.HEROKU){
-    server.listen(port, function() {
-        console.log('Express Server is Listening on Port', server.address().port);
+/**
+ * start server.js with npm install
+ */
+function start_server_with_npm_install() {
+    console.log('Running npm install ...');
+
+    exec(cmd.npm_install, function (error, stdout, stderr) {
+        if (checkStderr(stderr)) {
+            console.log(stdout)
+            console.log("npm install successfully!\n")
+        } else {
+            console.log("Error Occurred on 'npm install': ")
+            console.log(stderr)
+        }
+        start_server();
     });
 }
-else{
-    var exec = require('child_process').exec;
-    var path_cmd = 'cd ' + __dirname + ';cd ../;';
-    var npm_install_cmd = 'npm install;';
-    console.log('Running npm install ... || Wait for a moment');
-    exec(path_cmd + npm_install_cmd, function(error, stdout, stderr) {
-        if (error != null){
-            console.log(error);
-        }
-        console.log(stdout);
-        server.listen(port, function() {
+
+/**
+ * start server.js after npm install
+ */
+function start_server() {
+    var port = process.env.PORT || 3000;
+    var server = require('./../app');
+
+    if (process.env.HEROKU) {
+        server.listen(port, function () {
             console.log('Express Server is Listening on Port', server.address().port);
         });
-    });
+    }
+    else {
+        server.listen(port, function () {
+            console.log('Express Server is Listening on Port', server.address().port);
+        });
+    }
 }
+
+
+/**
+ * check out if cmd exe successful by stderr
+ * @param stderr
+ * @returns {boolean}
+ */
+function checkStderr(stderr) {
+    if (stderr == undefined || stderr == '') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * main entrance
+ */
+start_server_with_npm_install();

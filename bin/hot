@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+var flag = process.argv.splice(2);
+
+var exec = require('child_process').exec;
+const execSync = require('child_process').execSync;
+var watch_file = " -w package.json,app.js,bin/.,routes/.,views/. ";
+var watch_extension = " -e js,'',html,ejs,json "
+var cmd = {
+    "check_supervisor": "supervisor",
+    "install_supervisor": "npm install -g supervisor",
+    "start_server_with_supervisor": "cd " + __dirname + "/../" + ";supervisor " + watch_file + watch_extension + "bin/www > /dev/tty",
+    "start_server_without_supervisor": "cd " + __dirname + "/../" + ";" + "bin/www > /dev/tty"
+};
+
+/*
+ * install supervisor
+ */
+function install_supervisor() {
+    if (flag[0] != '-s') {
+        console.log("\nError parameter:\nplease run with 'sudo ./hot -s'\n")
+        return;
+    }
+
+    console.log('Installing supervisor ... \n');
+
+    exec(cmd.check_supervisor, function (error, stdout, stderr) {
+        if (checkStderr(stderr)) {
+            console.log("supervisor already been installed!")
+            console.log('\n\n\n\n')
+            console.log('start server.js by supervisor')
+            execSync(cmd.start_server_with_supervisor)
+        } else {
+            exec(cmd.install_supervisor, function (error, stdout, stderr) {
+                if (checkStderr(stderr)) {
+                    console.log("supervisor was successfully installed!")
+                    console.log('\n\n\n\n')
+                    console.log('start server.js by supervisor')
+                    execSync(cmd.start_server_with_supervisor)
+                } else {
+                    console.log("Error Occurred: ")
+                    console.log(stderr);
+                    console.log('\n\n\n\n')
+                    console.log('start server.js clean')
+                    execSync(cmd.start_server_without_supervisor)
+                }
+            });
+        }
+    });
+}
+
+
+/**
+ * check out if cmd exe successful by stderr
+ * @param stderr
+ * @returns {boolean}
+ */
+function checkStderr(stderr) {
+    if (stderr == undefined || stderr == '') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * main entrance
+ */
+install_supervisor();
+
