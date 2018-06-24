@@ -1,13 +1,33 @@
 #!/usr/bin/env node
+
+//main entrance
+start_server();
+
+//start server.js after npm install
+function start_server() {
+    const port = process.env.PORT || 3000;
+    var server = require('./../app');
+
+    if (process.env.HEROKU) {
+        server.listen(port, function () {
+            console.log('Express Server is Listening on Port', server.address().port);
+        });
+    }
+    else {
+        server.listen(port, function () {
+            console.log('Express Server is Listening on Port', server.address().port);
+        });
+    }
+}
+
+
 var exec = require('child_process').exec;
 var cmd = {
     "npm_install": "cd " + __dirname + "/../" + ";npm install",
 };
 
 
-/**
- * start server.js with npm install
- */
+//start server.js with npm install
 function start_server_with_npm_install() {
     console.log('Running npm install ...');
 
@@ -24,26 +44,6 @@ function start_server_with_npm_install() {
 }
 
 /**
- * start server.js after npm install
- */
-function start_server() {
-    var port = process.env.PORT || 3000;
-    var server = require('./../app');
-
-    if (process.env.HEROKU) {
-        server.listen(port, function () {
-            console.log('Express Server is Listening on Port', server.address().port);
-        });
-    }
-    else {
-        server.listen(port, function () {
-            console.log('Express Server is Listening on Port', server.address().port);
-        });
-    }
-}
-
-
-/**
  * check out if cmd exe successful by stderr
  * @param stderr
  * @returns {boolean}
@@ -56,7 +56,4 @@ function checkStderr(stderr) {
     }
 }
 
-/**
- * main entrance
- */
-start_server_with_npm_install();
+//start_server_with_npm_install();

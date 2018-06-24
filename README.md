@@ -3,7 +3,7 @@
 内网演示地址：http://10.10.68.90:3000/  
 公网演示地址：https://bianweb.herokuapp.com  
 ## To Deploy & Run the Web Server
-```shell
+```sh
 cd bian
 npm install
 npm start
